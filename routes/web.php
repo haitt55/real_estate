@@ -30,6 +30,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     Route::get('/home', 'HomeController@index');
     Route::group(['middleware' => 'auth.admin'], function () {
         Route::get('/', ['uses' => 'HomeController@index', 'as' => 'admin.home.index']);
+        Route::resource('project', 'ProjectController', ['names' => [
+            'index' => 'admin.project.index'
+        ]]);
     });
 });
 // Web
