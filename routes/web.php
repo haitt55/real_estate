@@ -33,6 +33,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         Route::resource('project', 'ProjectController', ['names' => [
             'index' => 'admin.project.index'
         ]]);
+        Route::resource('position', 'PositionController', ['names' => [
+            'index' => 'admin.position.index'
+        ]]);
+        Route::resource('customer', 'CustomerController', ['names' => [
+            'index' => 'admin.customer.index'
+        ]]);
     });
 });
 // Web
