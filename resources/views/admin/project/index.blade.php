@@ -34,7 +34,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="dataTable_wrapper">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-positions">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-projects">
                                     <thead>
                                     <tr>
                                         <th>Title</th>
