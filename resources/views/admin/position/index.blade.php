@@ -36,12 +36,13 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="dataTable_wrapper">
+                            	<a href="/admin/position/create" class="btn btn-info"><i class="fa fa-newspaper-o"></i> Tạo mới</a>
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-positions">
                                     <thead>
                                     <tr>
                                         <th>Title</th>
                                         <th>Last Modified</th>
-                                        <th></th>
+                                        <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -50,7 +51,12 @@
                                             <td><a href="">{{ $position->title }}</a></td>
                                             <td>{{ $position->updated_at }}</td>
                                             <td>
-                                                <a href="" class="btn btn-info"><i class="fa fa-edit"></i> Chỉnh sửa</a>
+                                                <a href="/admin/position/{{ $position->id }}/edit" class="btn btn-info"><i class="fa fa-edit"></i> Chỉnh sửa</a>
+                                                <a href="/admin/position/{{ $position->id }}" class="btn btn-info"><i class="fa fa-eye"></i> Xem</a>
+                                                 {{ Form::open(array('url' => 'admin/position/' . $position->id, 'class' => 'pull-right')) }}
+								                    {{ Form::hidden('_method', 'DELETE') }}
+								                    {{ Form::submit('Delete', array('class' => 'btn btn-warning')) }}
+								                {{ Form::close() }}
                                             </td>
                                         </tr>
                                     @endforeach

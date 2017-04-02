@@ -41,7 +41,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="dataTable_wrapper">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-positions">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-projects">
                                     <thead>
                                     <tr>
                                         <th>Tên dự án</th>
@@ -94,7 +94,7 @@
 @section('inline_scripts')
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#dataTables-positions").DataTable({
+            $("#dataTables-projects").DataTable({
                 responsive: true,
                 "order": [[ 2, "desc" ]],
                 "aoColumns": [
