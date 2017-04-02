@@ -79,7 +79,7 @@
 @section('inline_scripts')
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#dataTables-positions").DataTable({
+            $("#dataTables-projects").DataTable({
                 responsive: true,
                 "order": [[ 1, "desc" ]],
                 "aoColumns": [
