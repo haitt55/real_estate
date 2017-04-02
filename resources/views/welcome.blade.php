@@ -81,14 +81,24 @@
                 <div class="title m-b-md">
                     Laravel
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+				<?php
+				$servername = "104.237.3.191:10034";
+				$username = "bds";
+				$password = "hainico";
+				
+				try {
+					$conn = new PDO ( "mysql:host=$servername;dbname=bdsdb", $username, $password );
+					// set the PDO error mode to exception
+					$conn->setAttribute ( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+					$user = DB::table('users')->count();
+					
+					echo "Connected successfully <br />";
+					echo $user;
+				} catch ( PDOException $e ) {
+					echo "Connection failed: " . $e->getMessage ();
+				}
+				?>
+                
             </div>
         </div>
     </body>

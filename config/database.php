@@ -41,11 +41,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'host' => env('DB_HOST', '104.237.3.191'),
+            'port' => env('DB_PORT', '10034'),
+            'database' => env('DB_DATABASE', 'bdsdb'),
+            'username' => env('DB_USERNAME', 'bds'),
+            'password' => env('DB_PASSWORD', 'hainico'),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
