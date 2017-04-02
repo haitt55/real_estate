@@ -23,6 +23,7 @@
     <!-- Custom CSS -->
     <link href="/templates/admin/sbadmin2/dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="/templates/admin/sbadmin2/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">

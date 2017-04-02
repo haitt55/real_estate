@@ -20,6 +20,7 @@ class Project extends Model
      */
     protected $fillable = [
         'project_name', 'project_image_header', 'project_image_ads', 'is_current',
+        'page_title', 'meta_keyword', 'meta_description'
     ];
 
     /**

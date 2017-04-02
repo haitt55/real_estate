@@ -31,7 +31,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     Route::group(['middleware' => 'auth.admin'], function () {
         Route::get('/', ['uses' => 'HomeController@index', 'as' => 'admin.home.index']);
         Route::resource('project', 'ProjectController', ['names' => [
-            'index' => 'admin.project.index'
+            'index' => 'admin.project.index',
+            'create' => 'admin.project.create',
+            'store' => 'admin.project.store',
+            'show' => 'admin.project.show',
+            'edit' => 'admin.project.edit',
+            'update' => 'admin.project.update',
+            'destroy' => 'admin.project.destroy'
         ]]);
         Route::resource('position', 'PositionController', ['names' => [
             'index' => 'admin.position.index'

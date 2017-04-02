@@ -11,6 +11,13 @@
     <link href="/templates/admin/sbadmin2/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
 @endsection
 @section('content')
+    @if(session('message'))
+        <div class="alert alert-success" style="margin-top: 10px; margin-bottom: 0px;">
+            <ul>
+                <li>{{session('message')}}</li>
+            </ul>
+        </div>
+    @endif
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Dự án</h1>
@@ -20,7 +27,7 @@
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 text-right">
-            {{--<a href="" class="btn btn-success"><i class="fa fa-plus-circle"></i> Thêm dự án</a>--}}
+            <a href="{{ route('admin.project.create') }}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Thêm dự án</a>
         </div>
     </div>
     <br />
@@ -37,18 +44,26 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-positions">
                                     <thead>
                                     <tr>
-                                        <th>Title</th>
-                                        <th>Last Modified</th>
+                                        <th>Tên dự án</th>
+                                        <th>Trạng thái</th>
+                                        <th>Chỉnh sửa lần cuối</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach ($projects as $project)
                                         <tr>
-                                            <td><a href="">{{ $project->project_name }}</a></td>
+                                            <td><a href="{{ route('admin.project.show', $project->id) }}">{{ $project->project_name }}</a></td>
+                                            <td>
+                                                @if ($project->is_current)
+                                                    <span class="label label-success">Dự án đang chạy</span>
+                                                @else
+                                                    <span class="label label-danger">Dự án cũ</span>
+                                                @endif
+                                            </td>
                                             <td>{{ $project->updated_at }}</td>
                                             <td>
-                                                <a href="" class="btn btn-info"><i class="fa fa-edit"></i> Chỉnh sửa</a>
+                                                <a href="{{ route('admin.project.edit', $project->id) }}" class="btn btn-info"><i class="fa fa-edit"></i> Chỉnh sửa</a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -81,9 +96,9 @@
         $(document).ready(function() {
             $("#dataTables-positions").DataTable({
                 responsive: true,
-                "order": [[ 1, "desc" ]],
+                "order": [[ 2, "desc" ]],
                 "aoColumns": [
-                    null, null,
+                    null, null, null,
                     { bSortable: false }
                 ]
             });
