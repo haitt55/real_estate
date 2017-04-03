@@ -40,14 +40,74 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
             'destroy' => 'admin.project.destroy'
         ]]);
         Route::resource('position', 'PositionController', ['names' => [
-            'index' => 'admin.position.index'
+            'index' => 'admin.position.index',
+        	'checkProject' => 'admin.position.checkProject',
+        	'create' => 'admin.position.create',
+        	'store' => 'admin.position.store',
+        	'show' => 'admin.position.show',
+        	'edit' => 'admin.position.edit',
+        	'update' => 'admin.position.update',
+        	'destroy' => 'admin.position.destroy'
         ]]);
-        Route::post('/position/store','PositionController@store');
         
         Route::resource('customer', 'CustomerController', ['names' => [
-            'index' => 'admin.customer.index',
-            'show' => 'admin.customer.show',
+            'index' => 'admin.customer.index'
         ]]);
+        
+        Route::post('/position/store','PositionController@store');
+        Route::post('/position/checkProject','PositionController@checkProject');
+        Route::resource('ground', 'GroundController', ['names' => [
+        		'index' => 'admin.ground.index',
+        		'checkProject' => 'admin.ground.checkProject',
+        		'create' => 'admin.ground.create',
+        		'store' => 'admin.ground.store',
+        		'show' => 'admin.ground.show',
+        		'edit' => 'admin.ground.edit',
+        		'update' => 'admin.ground.update',
+        		'destroy' => 'admin.ground.destroy'
+        ]]);
+        Route::post('/ground/store','GroundController@store');
+        Route::post('/ground/checkProject','GroundController@checkProject');
+        Route::resource('utility', 'UtilitiesController', ['names' => [
+        		'index' => 'admin.utility.index',
+        		'checkProject' => 'admin.utility.checkProject',
+        		'create' => 'admin.utility.create',
+        		'store' => 'admin.utility.store',
+        		'show' => 'admin.utility.show',
+        		'edit' => 'admin.utility.edit',
+        		'update' => 'admin.utility.update',
+        		'destroy' => 'admin.utility.destroy'
+        		
+        ]]);
+        Route::post('/utility/store','UtilitiesController@store');
+        Route::post('/utility/checkProject','PricePoliciesController@checkProject');
+        Route::resource('pricePolicy', 'PricePoliciesController', ['names' => [
+        		'index' => 'admin.pricePolicy.index',
+        		'checkProject' => 'admin.pricePolicy.checkProject',
+        		'create' => 'admin.pricePolicy.create',
+        		'store' => 'admin.pricePolicy.store',
+        		'show' => 'admin.pricePolicy.show',
+        		'edit' => 'admin.pricePolicy.edit',
+        		'update' => 'admin.pricePolicy.update',
+        		'destroy' => 'admin.pricePolicy.destroy'
+        		
+        ]]);
+        Route::post('/pricePolicy/store','PricePoliciesController@store');
+        Route::post('/pricePolicy/checkProject','PricePoliciesController@checkProject');
+        Route::resource('new', 'NewsController', ['names' => [
+        		'index' => 'admin.pricePolicy.index',
+        		'checkProject' => 'admin.new.checkProject',
+        		'create' => 'admin.new.create',
+        		'store' => 'admin.new.store',
+        		'show' => 'admin.new.show',
+        		'edit' => 'admin.new.edit',
+        		'update' => 'admin.new.update',
+        		'destroy' => 'admin.new.destroy'
+        		
+        ]]);
+        Route::post('/new/store','NewsController@store');
+        Route::post('/new/checkProject','NewsController@checkProject');
+        
     });
 });
 // Web

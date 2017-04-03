@@ -1,4 +1,4 @@
-@extends('admin.layouts.master') @section('title', 'vị trí')
+@extends('admin.layouts.master') @section('title', 'Mặt bằng')
 
 @section('css') @parent
 
@@ -14,27 +14,27 @@
 @endsection @section('content')
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Dự án - vị trí</h1>
+		<h1 class="page-header">Dự án - Mặt bằng</h1>
 	</div>
 	<!-- /.col-lg-12 -->
 </div>
 <!-- /.row -->
 <div class="row">
 	<div class="col-lg-12 text-right">
-		<a href="/admin/position/create" class="btn btn-success"><i
-			class="fa fa-plus-circle"></i> Tạo vị trí cho dự án</a>
+		<a href="/admin/ground/create" class="btn btn-success"><i
+			class="fa fa-plus-circle"></i> Tạo Mặt bằng cho dự án</a>
 	</div>
 </div>
 <br />
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
-			<div class="panel-heading">Tạo mới Vị trí</div>
+			<div class="panel-heading">Tạo mới Mặt bằng</div>
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="dataTable_wrapper">
-							{{ Form::open(array('url' => 'admin/position/store')) }}
+							{{ Form::open(array('url' => 'admin/ground/store')) }}
 							<div class="form-group">{{ Form::label('project_id', 'Dự án') }}
 								{{ Form::select('project_id', $projects, null, ['class' =>
 								'form-control']) }}</div>
@@ -56,7 +56,7 @@
 								Meta') }} {{ Form::textarea('meta_description',
 								Input::old('meta_description'), array('class' =>
 								'form-control')) }}</div>
-							{{ Form::submit('Create the Position!', array('class' => 'btn
+							{{ Form::submit('Create the ground!', array('class' => 'btn
 							btn-primary')) }} {{ Form::close() }}
 						</div>
 					</div>
@@ -69,12 +69,11 @@
 	<!-- /.col-lg-12 -->
 </div>
 <!-- /.row -->
-@endsection 
-@section('inline_scripts')
+@endsection @section('inline_scripts')
 <script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace( 'content' );
-        CKEDITOR.replace( 'meta_description' );
+    CKEDITOR.replace( 'content' );
+    CKEDITOR.replace( 'meta_description' );
     </script>
 <script type="text/javascript">
 			
@@ -110,7 +109,7 @@
                                         success: function(data) {
                                             if(data.code == 1){
                                             	
-                                                alert("Delete");
+                                                alert(Delete);
                                             	}
                                             },
                                         
