@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Input;
 use Redirect;
 use Validator;
+use App\Project;
 
 class PositionController extends Controller {
 	/**
@@ -29,7 +30,8 @@ class PositionController extends Controller {
 	 */
 	public function create() {
 		//
-		return view ( 'admin.position.create' );
+		$projects = Project::pluck('project_name', 'id');
+		return view ( 'admin.position.create' )->with('projects', $projects);
 	}
 	
 	/**
@@ -43,13 +45,12 @@ class PositionController extends Controller {
 		$rules = array(
 		'project_id' => 'required|numeric',
 		'title' => 'required',
-		'slug' => 'required',
 		'content' => 'required'
 		);
 		$validator = Validator::make(Input::all(), $rules);
 		
 		if ($validator->fails()) {
-		return Redirect::to('position/create')
+		return Redirect::to('admin/position/create')
 		->withErrors($validator)
 		;
 		} else {
@@ -94,11 +95,10 @@ class PositionController extends Controller {
 	public function edit($id) {
 		//
 		$position = Position::find($id);
-		
+		$projects = Project::pluck('project_name', 'id');
 		// show the view and pass the nerd to it
 		return view ( 'admin.position.edit' )->with ( [
-				'position' => $position
-		] );
+				'position' => $position, 'projects'=> $projects] );
 	}
 	
 	/**
@@ -113,13 +113,12 @@ class PositionController extends Controller {
 		$rules = array(
 				'project_id' => 'required|numeric',
 				'title' => 'required',
-				'slug' => 'required',
 				'content' => 'required'
 		);
 		$validator = Validator::make(Input::all(), $rules);
 		
 		if ($validator->fails()) {
-			return Redirect::to('position/create')
+			return Redirect::to('admin/position/'. $id .'/edit')
 			->withErrors($validator)
 			;
 		} else {
@@ -147,11 +146,61 @@ class PositionController extends Controller {
      */
     public function destroy($id)
     {
-        //
-    	$position = Position::find($id);
-    	$position->delete();
+    	try {
+    		//            DB::table('users')->where('votes', '>', 100)->delete();
+    		$position = Position::find($id);
+    		$position->delete();
+    	} catch (Exception $ex) {
+    		event(new ExceptionOccurred($ex));
+    		
+    		return response()->json([
+    				'error' => [
+    						'message' => $ex->getMessage(),
+    				]
+    		]);
+    	}
     	
-    	// redirect
-    	return Redirect::to('admin/position');
+    	return response()->json();
+    }
+    public function checkProject(Request $request){
+    	try {
+    		if($request->input('id') != null){
+    		$position = Position::where('project_id', '=', $request->input('projectId') , 'and id !=', $request->input('id'))->first();}
+    		else{
+    			$position = Position::where('project_id', '=', $request->input('projectId'))->first();
+    		}
+    		if($position!= null){
+    			
+    			return response()->json(['code' => 1, 'positionId' => $position->id]);
+    		}
+    	} catch (Exception $ex) {
+    		event(new ExceptionOccurred($ex));
+    		
+    		return response()->json([
+    				'error' => [
+    						'message' => $ex->getMessage(),
+    				]
+    		]);
+    	}
+    	
+    }
+    public function delete(Request $request){
+    	try {
+    		
+    		$position = Position::where('project_id', '=', $request->input('projectId'))->first();
+    		$position->delete();
+    		
+    			return response()->json(['code' => 1]);
+    		
+    	} catch (Exception $ex) {
+    		event(new ExceptionOccurred($ex));
+    		
+    		return response()->json([
+    				'error' => [
+    						'message' => $ex->getMessage(),
+    				]
+    		]);
+    	}
+    	
     }
 }

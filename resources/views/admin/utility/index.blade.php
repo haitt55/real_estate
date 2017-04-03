@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'vị trí')
+@section('title', 'Tiện ích')
 
 @section('css')
     @parent
@@ -15,14 +15,14 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dự án - vị trí</h1>
+            <h1 class="page-header">Dự án - Tiện ích</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 text-right">
-            <a href="/admin/position/create" class="btn btn-success"><i class="fa fa-plus-circle"></i> Thêm vị trí cho dự án</a>
+            <a href="/admin/utility/create" class="btn btn-success"><i class="fa fa-plus-circle"></i> Thêm Tiện ích cho dự án</a>
         </div>
     </div>
     <br />
@@ -30,13 +30,13 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Vị trí
+                    Tiện ích
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="dataTable_wrapper">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-positions">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-utilityList">
                                     <thead>
                                     <tr>
                                         <th>Tên dự án</th>
@@ -44,13 +44,13 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($positions as $position)
+                                    @foreach ($utilityList as $utility)
                                         <tr>
-                                            <td><a href="/admin/position/{{ $position->id }}">{{ $position->title }}</a></td>
-                                            <td>{{ $position->updated_at }}</td>
+                                            <td><a href="/admin/utility/{{ $utility->id }}">{{ $utility->title }}</a></td>
+                                            <td>{{ $utility->updated_at }}</td>
                                             <td>
-                                                <a href="/admin/position/{{ $position->id }}/edit" class="btn btn-info"><i class="fa fa-edit"></i> Chỉnh sửa</a>
-<!--                                                  {{ Form::open(array('url' => 'admin/position/' . $position->id, 'class' => 'pull-right')) }} -->
+                                                <a href="/admin/utility/{{ $utility->id }}/edit" class="btn btn-info"><i class="fa fa-edit"></i> Chỉnh sửa</a>
+<!--                                                  {{ Form::open(array('url' => 'admin/utility/' . $utility->id, 'class' => 'pull-right')) }} -->
 <!-- 								                    {{ Form::hidden('_method', 'DELETE') }} -->
 <!-- 								                    {{ Form::submit('Delete', array('class' => 'btn btn-warning')) }} -->
 <!-- 								                {{ Form::close() }} -->
@@ -84,7 +84,7 @@
 @section('inline_scripts')
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#dataTables-positions").DataTable({
+            $("#dataTables-utilityList").DataTable({
                 responsive: true,
                 "order": [[ 1, "desc" ]],
                 "aoColumns": [

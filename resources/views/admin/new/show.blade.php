@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'vị trí')
+@section('title', 'Tin Tức')
 
 @section('css')
     @parent
@@ -15,14 +15,14 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dự án - vị trí</h1>
+            <h1 class="page-header">Dự án - Tin Tức</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 text-right">
-            <a href="/admin/position/create" class="btn btn-success"><i class="fa fa-plus-circle"></i> Tạo vị trí cho dự án</a>
+            <a href="/admin/new/create" class="btn btn-success"><i class="fa fa-plus-circle"></i> Tạo Tin Tức cho dự án</a>
         </div>
     </div>
     <br />
@@ -30,32 +30,32 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Xem Vị trí :{{$position->title }}
+                    Xem Tin Tức :{{$new->title }}
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="dataTable_wrapper">
-                            	<h1>Showing {{$position->title }}</h1>
+                            	<h1>Showing {{$new->title }}</h1>
 
 								    <div class="jumbotron text-center">
-								        <h2>{{ $position->name }}</h2>
+								        <h2>{{ $new->name }}</h2>
 								    </div>
 								    <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-4"><label for="name">Slug</label></div>
-                                        <div class="col-md-8"><p class="form-control-static">{{ $position->slug }}</p></div>
+                                        <div class="col-md-8"><p class="form-control-static">{{ $new->slug }}</p></div>
                                     </div>
                                 	</div>
 								    <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-4"><label for="name">Nội dung</label></div>
-                                        <div class="col-md-8"><p class="form-control-static">{!! $position->content !!}</p></div>
+                                        <div class="col-md-8"><p class="form-control-static">{!! $new->content!!}</p></div>
                                     </div>
                                 	</div>
 								    <div class="row">
 			                        <div class="col-lg-12">
-			                            <button class="btn btn-danger" id="btn-delete" data-link="{{ route('admin.position.destroy', $position->id) }}"><i class="fa fa-remove"></i> Xóa Vị trí</button>
+			                            <button class="btn btn-danger" id="btn-delete" data-link="{{ route('admin.new.destroy', $new->id) }}"><i class="fa fa-remove"></i> Xóa Tin Tức</button>
 			                        </div>
 			                    </div>
                             </div>
@@ -87,13 +87,13 @@
                         },
                         success: function(data) {
                             if (data.error) {
-                                window.location.href = '{{ URL::route('admin.position.show', $position->id) }}';
+                                window.location.href = '{{ URL::route('admin.new.show', $new->id) }}';
                             } else {
-                                window.location.href = '{{ URL::route('admin.position.index') }}';
+                                window.location.href = '{{ URL::route('admin.new.index') }}';
                             }
                         },
                         error: function(data) {
-                            window.location.href = '{{ URL::route('admin.position.index') }}';
+                            window.location.href = '{{ URL::route('admin.new.index') }}';
                         }
                     });
                 }
