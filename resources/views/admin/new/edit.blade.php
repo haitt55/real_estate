@@ -63,7 +63,8 @@
 											{{ Form::textarea('meta_description', Input::old('meta_description'), array('class' => 'form-control')) }}									    
 										</div>
 										<div class="form-group">
-											{{ Form::Checkbox('published', '1', Input::old('published'))}} 
+											<input type="checkbox" name="published" value="{{$new->published}}" />
+												   
 											{{ Form::label('published', 'Đã được đăng') }}</div>
 									    {{ Form::submit('Update the new!', array('class' => 'btn btn-primary')) }}
 									
@@ -89,8 +90,8 @@
     </script>
     <script type="text/javascript">
     $(document).ready(function() {
-        if($( "input[name='published']" ).value == 1){
-        	$( "input[name='published']" ).attr('checked');
+        if($( "input[name='published']" ).val() == 1){
+        	$( "input[name='published']" ).attr('checked','checked');
             }
         });
     $( "input[name='published']" ).on( "click", function(){

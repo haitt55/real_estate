@@ -63,7 +63,11 @@ class NewsController extends Controller {
 			$new->page_title = Input::get ( 'page_title' );
 			$new->meta_keyword = Input::get ( 'meta_keyword' );
 			$new->meta_description = Input::get ( 'meta_description' );
+			if(Input::get('published') != null){
 			$new->published= Input::get('published');
+			} else {
+				$new->published = 0;
+			}
 			$new->save ();
 			
 			// redirect

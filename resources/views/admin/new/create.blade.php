@@ -80,10 +80,15 @@
         CKEDITOR.replace( 'meta_description' );
     </script>
     <script type="text/javascript">
+    $(document).ready(function() {
+        if($( "input[name='published']" ).val() == 1){
+            
+        	$( "input[name='published']" ).attr('checked', 'checked');
+            }
+        });
     $( "input[name='published']" ).on( "click", function(){
-    	$( "input[name='published']" ).on( "click", function(){
-        	this.value = this.checked ? 1 : 0;
-        	   // alert(this.value);
-        	}).change();
+    	this.value = this.checked ? 1 : 0;
+    	   // alert(this.value);
+    	}).change();
     </script>
     @endsection 
