@@ -8,10 +8,10 @@
                 <a href="{{ route('admin.project.index') }}"><i class="fa fa-file-o fa-fw"></i> Dự án</a>
             </li>
             <li>
-                <a href="{{ route('admin.position.index') }}"><i class="fa fa-file-o fa-fw"></i> Vị trí dự án</a>
+                <a href="{{ route('admin.position.index') }}"><i class="fa fa-map-marker fa-fw"></i> Vị trí dự án</a>
             </li>
             <li>
-                <a href="{{ route('admin.customer.index') }}"><i class="fa fa-file-o fa-fw"></i> Khách hàng</a>
+                <a href="{{ route('admin.customer.index') }}"><i class="fa fa-user fa-fw"></i> Khách hàng</a>
             </li>
         </ul>
     </div>

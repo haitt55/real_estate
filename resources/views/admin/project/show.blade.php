@@ -48,7 +48,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-4"><label for="name">Mô tả</label></div>
-                                        <div class="col-md-8"><p class="form-control-static">{!! $project->description !!}</p></div>
+                                        <div class="col-md-8" style="border: groove"><p class="form-control-static">{!! $project->description !!}</p></div>
                                     </div>
                                 </div>
                             </form>
