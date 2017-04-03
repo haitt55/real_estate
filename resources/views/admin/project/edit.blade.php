@@ -69,8 +69,11 @@
                                         <label><input type="checkbox" name="is_current" id="is_current" value="1"{{ old('is_current', $project->is_current) ? ' checked="checked"' : '' }}> Đặt là dự án đang chạy</label>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Lưu</button>
+                                <div class="form-group row">
+                                    <div class="col-md-1"><button type="submit" class="btn btn-primary">Lưu</button></div>
+                                    <div class="col-md-1">
+                                        <button style="@if($project->is_current)pointer-events:none; opacity: 0.6; @endif"
+                                                class="btn btn-danger" id="btn-delete" data-link="{{ route('admin.project.destroy', $project->id) }}"><i class="fa fa-remove"></i> Xóa dự án</button></div>
                                 </div>
                             </form>
                         </div>
@@ -108,5 +111,34 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#btn-delete").click(function() {
+                if (confirm('Do you really want to delete this data?')) {
+                    var url = $(this).attr('data-link');
+                    $.ajax({
+                        url : url,
+                        type : 'DELETE',
+                        beforeSend: function (xhr) {
+                            var token = $('meta[name="csrf_token"]').attr('content');
+                            if (token) {
+                                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                            }
+                        },
+                        success: function(data) {
+                            if (data.error) {
+                                window.location.href = '{{ URL::route('admin.project.edit', $project->id) }}';
+                            } else {
+                                window.location.href = '{{ URL::route('admin.project.index') }}';
+                            }
+                        },
+                        error: function(data) {
+                            window.location.href = '{{ URL::route('admin.project.index') }}';
+                        }
+                    });
+                }
+            });
+        });
     </script>
 @endsection

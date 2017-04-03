@@ -83,6 +83,9 @@ class ProjectController extends Controller
             $project->meta_keyword = $data['meta_keyword'];
             $project->meta_description = $data['meta_description'];
             $project->save();
+            if ($project->is_current = 1) {
+                $this->changeStatusOtherProject($project->id);
+            }
             DB::commit();
             return redirect()->route('admin.project.index')->with('message','Success');
         } catch (\Exception $e) {
@@ -188,12 +191,19 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         try {
-//            DB::table('users')->where('votes', '>', 100)->delete();
+            DB::beginTransaction();
             $project = Project::find($id);
-            $project->delete();
+            if ($project->delete()) {
+                DB::table('positions')->where('project_id', $id)->delete();
+                DB::table('grounds')->where('project_id', $id)->delete();
+                DB::table('utilities')->where('project_id', $id)->delete();
+                DB::table('prices_policies')->where('project_id', $id)->delete();
+                DB::table('news')->where('project_id', $id)->delete();
+                DB::table('images')->where('project_id', $id)->delete();
+            }
+            DB::commit();
         } catch (Exception $ex) {
-            event(new ExceptionOccurred($ex));
-
+            DB::rollback();
             return response()->json([
                 'error' => [
                     'message' => $ex->getMessage(),
@@ -202,5 +212,10 @@ class ProjectController extends Controller
         }
 
         return response()->json();
+    }
+
+    public function changeStatusOtherProject($id)
+    {
+        DB::table('projects')->where('id', '<>', $id)->update(['is_current' => 0]);
     }
 }

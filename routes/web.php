@@ -45,7 +45,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         Route::post('/position/store','PositionController@store');
         
         Route::resource('customer', 'CustomerController', ['names' => [
-            'index' => 'admin.customer.index'
+            'index' => 'admin.customer.index',
+            'show' => 'admin.customer.show',
         ]]);
     });
 });
