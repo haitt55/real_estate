@@ -83,7 +83,7 @@ class ProjectController extends Controller
             $project->meta_keyword = $data['meta_keyword'];
             $project->meta_description = $data['meta_description'];
             $project->save();
-            if ($project->is_current = 1) {
+            if ($project->is_current == 1) {
                 $this->changeStatusOtherProject($project->id);
             }
             DB::commit();
@@ -172,6 +172,9 @@ class ProjectController extends Controller
                 $data['is_current'] = 1;
             } else {
                 $data['is_current'] = 0;
+            }
+            if ($data['is_current'] == 1) {
+                $this->changeStatusOtherProject($project->id);
             }
             $project->update($data);
             DB::commit();

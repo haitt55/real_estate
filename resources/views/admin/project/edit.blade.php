@@ -89,6 +89,10 @@
 @endsection
 
 @section('inline_scripts')
+    <script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'description' );
+    </script>
     <script>
         $(function() {
             $("#project_image_header").change(function(){
