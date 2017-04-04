@@ -11,6 +11,18 @@
                 <a href="{{ route('admin.position.index') }}"><i class="fa fa-map-marker fa-fw"></i> Vị trí dự án</a>
             </li>
             <li>
+                <a href="{{ route('admin.ground.index') }}"><i class="fa fa-tree fa-fw"></i> Mặt bằng dự án</a>
+            </li>
+            <li>
+                <a href="{{ route('admin.utility.index') }}"><i class="fa fa-wrench fa-fw"></i> Tiện ích dự án</a>
+            </li>
+            <li>
+                <a href="{{ route('admin.pricePolicy.index') }}"><i class="fa fa-usd fa-fw"></i> Bảng giá và Chính sách dự án</a>
+            </li>
+            <li>
+                <a href="{{ route('admin.new.index') }}"><i class="fa fa-newspaper-o fa-fw"></i>Tin tức dự án</a>
+            </li>
+            <li>
                 <a href="{{ route('admin.customer.index') }}"><i class="fa fa-user fa-fw"></i> Khách hàng</a>
             </li>
         </ul>

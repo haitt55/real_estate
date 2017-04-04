@@ -95,7 +95,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         Route::post('/pricePolicy/store','PricePoliciesController@store');
         Route::post('/pricePolicy/checkProject','PricePoliciesController@checkProject');
         Route::resource('new', 'NewsController', ['names' => [
-        		'index' => 'admin.pricePolicy.index',
+        		'index' => 'admin.new.index',
         		'checkProject' => 'admin.new.checkProject',
         		'create' => 'admin.new.create',
         		'store' => 'admin.new.store',

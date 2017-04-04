@@ -39,7 +39,7 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
-                                <i class="fa fa-envelope-o fa-5x"></i>
+                                <i class="fa fa-map-marker fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge">{{ $countPositions }}</div>
@@ -48,6 +48,95 @@
                         </div>
                     </div>
                     <a href="{{ route('admin.position.index') }}">
+                        <div class="panel-footer">
+                            <span class="pull-left">Xem chi tiết</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="panel" style="background-color: lime">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-tree fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ $countGrounds }}</div>
+                                <div>Mặt Bằng</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{{ route('admin.ground.index') }}">
+                        <div class="panel-footer">
+                            <span class="pull-left">Xem chi tiết</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel" style="background-color: cornflowerblue">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-wrench fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ $countUtilities }}</div>
+                                <div>Tiện ích</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{{ route('admin.utility.index') }}">
+                        <div class="panel-footer">
+                            <span class="pull-left">Xem chi tiết</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel" style="background-color: aqua">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-usd fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ $countPricePolicies }}</div>
+                                <div>Bảng giá và Chính sách</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{{ route('admin.pricePolicy.index') }}">
+                        <div class="panel-footer">
+                            <span class="pull-left">Xem chi tiết</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-newspaper-o fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ $countNews }}</div>
+                                <div>Tin tức</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{{ route('admin.new.index') }}">
                         <div class="panel-footer">
                             <span class="pull-left">Xem chi tiết</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
