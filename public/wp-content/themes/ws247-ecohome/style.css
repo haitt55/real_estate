@@ -1,0 +1,652 @@
+/*
+Theme Name: ECOHOMES
+Theme URI: https://www.facebook.com/trung.240195
+Author: Trung Phạm
+Author URI: https://www.facebook.com/trung.240195
+Description: Theme wordpress được xây dựng bởi Trung Phạm.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: theme-wp
+Tags:
+*/
+/* CSS chung */
+body{
+	background: url('inc/img/bg-body.jpg');
+}
+#masthead, #content{
+	background: #fff;
+}
+#content{
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+img{
+	max-width: 100%;
+	height: auto;
+}
+.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    display:none;
+    z-index: 10;
+}
+.entry-title h1{
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 25px;
+    color: #357D02;
+    text-transform: uppercase;
+}
+#home-slider{
+	margin-bottom:30px;
+}
+/* CSS menu main */
+.menu-main.navbar-default {
+    background-color: #357D02;
+    border-color: #357D02;
+    margin-bottom: 0;
+}
+.menu-main.navbar-default button{
+	background-color: #fff;
+}
+.menu-main.navbar-default ul li{
+	list-style: none;
+	border-right:1px #307002 solid;
+}
+.menu-main.navbar-default ul li a{
+	color: #fff;
+	text-transform: uppercase;
+}
+.menu-main.navbar-default ul.sub-menu li a{
+	color: #333;
+}
+.menu-main.navbar-default ul li a:hover, .menu-main.navbar-default ul li a:focus{
+	background: #307002;
+	color: #fff;
+	text-decoration: none;
+}
+.menu-main.navbar-default > div > ul ul{
+	margin: 0;
+	padding: 0;
+	background: #f5f5f5;
+}
+.menu-main.navbar-default > div > ul ul > li > a{
+	padding:15px;
+    display:block;
+}
+.menu-main.navbar-default > div > ul ul > li{
+    border-bottom:1px solid rgba(0, 0, 0, 0.1);
+}
+.menu-main.navbar-default > div > ul ul > li:last-child{
+    border-bottom:none;
+}
+/* CSS danh mục bài viết*/
+header.page-header{
+	padding: 0;
+	margin-top: 0;
+	border: none;
+	background: #ffffff url(inc/img/dong-ke.png) center center repeat-x;
+    text-align: center;
+}
+header.page-header > h1.page-title{
+	background: #ffffff;
+    padding: 0 5px;
+    color: #357D02;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+    margin: 0;
+}
+header.page-header .archive-description{
+	text-align: justify;
+	line-height: 1.5;
+	margin-top: 10px;
+}
+.list-post > .row > .col-sm-12{
+	margin-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+}
+.list-post > .row > .col-sm-12:last-child{
+	border-bottom: none;
+}
+.list-post a{
+	text-decoration: none;
+}
+.list-post a img{
+	width: 100%;
+}
+.list-post a > h2{
+	color: #333;
+	font-size: 17px;
+	font-weight: bold;
+	margin-top: 0;
+	line-height: 1.5;
+}
+/* CSS danh mục bài viết khóa học */
+.list-post .col-sm-4.col-md-3 .col-sm-12 > a.thumbnail{
+	margin-bottom: 10px;
+}
+.list-post .col-sm-4.col-md-3 .col-sm-12 > a > h2{
+	margin-bottom: 0;
+}
+/* CSS bài viết */
+header.entry-header h1.entry-title{
+	margin-top: 0;
+	font-size: 20px;
+	font-weight: bold;
+	color: #357D02;
+}
+header.entry-header > h1.entry-title:before{
+	font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    content: "\e044";
+    margin-right: 10px;
+}
+.entry-content{
+	line-height: 1.5;
+}
+.entry-content h1{
+	font-size: 30px;
+}
+.entry-content h2{
+	font-size: 25px;
+}
+.entry-content h3{
+	font-size: 22px;
+}
+.entry-content td, .entry-content th{
+	border: 1px solid #333;
+}
+.entry-footer{
+	margin-bottom: 10px;
+}
+.entry-footer .edit-link .post-edit-link{
+	text-decoration: none;
+	font-weight: bold;
+}
+.entry-footer .edit-link .post-edit-link:before{
+	font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    content: "\e065";
+    margin-right: 5px;
+}
+.title-noi-dung{
+	background: #ffffff url(inc/img/dong-ke.png) center center repeat-x;
+	text-align: center;
+	margin: 10px 0;
+}
+.title-noi-dung > span{
+	background: #ffffff;
+	padding: 0 5px;
+	color: #357D02;
+	font-size: 18px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+/* == WordPress WYSIWYG Editor Styles == */
+.entry-content img {
+    margin: 0 0 1.5em 0;
+}
+.alignleft, img.alignleft {
+    margin-right: 1.5em;
+    display: inline;
+    float: left;
+}
+.alignright, img.alignright {
+    margin-left: 1.5em;
+    display: inline;
+    float: right;
+}
+.aligncenter, img.aligncenter {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    clear: both;
+}
+.wp-caption {
+    margin-bottom: 1.5em;
+    text-align: center;
+    padding-top: 5px;
+    max-width: 100%;
+}
+.wp-caption img {
+    border: 0 none;
+    padding: 0;
+    margin: 0;
+}
+.wp-caption p.wp-caption-text {
+    line-height: 1.5;
+    font-size: 10px;
+    margin: 0;
+}
+.wp-smiley {
+    margin: 0 !important;
+    max-height: 1em;
+}
+blockquote.left {
+    margin-right: 20px;
+    text-align: right;
+    margin-left: 0;
+    width: 33%;
+    float: left;
+}
+blockquote.right {
+    margin-left: 20px;
+    text-align: left;
+    margin-right: 0;
+    width: 33%;
+    float: right;
+}
+/* CSS page */
+.page-y-kien > .col-sm-12 > .row > .col-md-3{
+	padding-right: 0;
+}
+/* CSS bài viết khóa học */
+.entry-header > .col-sm-4{
+	padding-right: 0;
+}
+.entry-header > .col-sm-4 > img{
+	height: auto;
+}
+p.gia{
+	color: #F44336;
+    font-weight: bold;
+}
+/* CSS thư viện ảnh */
+.gallery-item {
+	display: inline-block;
+	margin: 0 0 10px;
+	padding:0 5px;
+	width: 25%;
+}
+.gallery-columns-5 .gallery-item{
+	width: 20%;
+}
+.gallery-item a,
+.gallery-item a:hover,
+.gallery-item a:focus {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	background: none;
+	display: inline-block;
+	max-width: 100%;
+}
+.gallery-item a img {
+	display: block;
+	height: 150px;
+	object-fit: cover;
+	-webkit-transition: -webkit-filter 0.2s ease-in;
+	transition: -webkit-filter 0.2s ease-in;
+	transition: filter 0.2s ease-in;
+	transition: filter 0.2s ease-in, -webkit-filter 0.2s ease-in;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+.gallery-item a:hover img,
+.gallery-item a:focus img {
+	-webkit-filter: opacity(60%);
+	filter: opacity(60%);
+}
+.gallery-caption {
+	display: block;
+	text-align: center;
+	padding: 0;
+	margin-bottom: 0;
+}
+/* CSS bình luận và bài viết liên quan */
+.post-lien-quan a{
+	text-decoration: none;
+}
+.post-lien-quan img{
+	height: 150px;
+	width:100%;
+	object-fit: cover;
+}
+.post-lien-quan a > h4{
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 1.5;
+	margin: 0;
+}
+/* CSS sidebar */
+.sidebar .widget-title{
+	font-size: 20px;
+    background: #357D02;
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 10px;
+    line-height: 1.5;
+	clear:both;
+}
+.sidebar section:first-child .widget-title{
+	margin-top: 0;
+}
+.sidebar img{
+	width:100%;
+}
+/* CSS new posts sidebar */
+.widget_new_posts .row .col-xs-4{
+	padding-right: 0;
+}
+.widget_new_posts .row .col-xs-4 img{
+	height: 60px;
+	object-fit: cover;
+}
+.widget_new_posts .row .col-xs-8 a{
+	text-decoration: none;
+}
+/* CSS menu sidebar */
+.sidebar .widget_nav_menu ul{
+	margin: 0;
+	padding: 0;
+}
+.sidebar .widget_nav_menu ul li{
+	list-style: none;
+	margin: 0;
+}
+.sidebar .widget_nav_menu ul li a{
+	color: #333;
+	border: 1px solid #fff;
+	text-decoration: none;
+	display: block;
+	padding: 5px;
+	transition: all 0.5s;
+}
+.sidebar .widget_nav_menu ul li a:hover, .sidebar .widget_nav_menu ul li.current-menu-item a{
+	color: #fff;
+	background: #e82b2b;
+}
+.sidebar .widget_nav_menu ul li a:hover{
+	padding-left: 20px;
+}
+.sidebar .widget_nav_menu ul li a:before{
+	font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    content: "\e127";
+    margin-right: 5px;
+}
+/* CSS footer */
+.container .widget{
+	line-height:25px;
+}
+.container .widget{
+	margin-left:0;
+	padding-left:0;
+}
+.container .widget li {
+    list-style-type: none;
+    background: url(../../../../2.bp.blogspot.com/-KcNjaC-rbiE/VzwetAkkuAI/AAAAAAAAAdU/p8gQzKRaJuo6EpdkZV2j2ELoHmLkfmMjQCLcB/s1600/icon_footer.png) no-repeat 0 13px;
+    padding-left: 28px !important;
+	padding:10px 0px;
+	font-weight:bold;
+}
+
+footer#colophon{
+	background: #357D02;
+	padding: 20px 0;
+}
+footer#colophon .widget-footer{
+	color: #fff;
+	line-height: 1.5;
+	text-align: justify;
+}
+/* CSS menu footer */
+footer#colophon .widget-footer .widget-title{
+	font-size: 25px;
+	line-height: 1.4;
+	margin: 0 0 20px 0;
+	text-transform: uppercase;
+	color: #09F457;
+	border-bottom: dotted 1px #A6B7B6;
+	padding-bottom: 9px;
+}
+footer#colophon .widget-footer .widget_nav_menu ul{
+	margin: 0;
+	padding: 0;
+}
+footer#colophon .widget-footer .widget_nav_menu ul li{
+	list-style: none;
+	margin-bottom: 10px;
+}
+footer#colophon .widget-footer .widget_nav_menu ul li a{
+	color: #fff;
+	border: 1px solid #fff;
+	border-radius: 10px;
+	text-decoration: none;
+	display: block;
+	padding: 5px;
+	background: #ef5350;
+	transition: all 0.5s;
+}
+footer#colophon .widget-footer .widget_nav_menu ul li a:hover{
+	color: #fff;
+	padding-left: 20px;
+	background: rgba(84, 74, 74, 0.6);
+}
+footer#colophon .widget-footer .widget_nav_menu ul li a:before{
+	font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    content: "\e250";
+    margin-right: 5px;
+}
+/* CSS hỗ trợ trực tuyến */
+#cfacebook{
+	position:fixed;
+	bottom:0;
+	right:20px;
+	z-index:9999;
+	width:220px;
+	height:auto;
+	overflow:hidden;
+}
+#cfacebook .fchat{
+	float:left;
+	width:100%;
+	height:300px;
+	overflow:hidden;
+	display:none;
+	background-color:#fff;
+}
+#cfacebook .fchat .fb-page{
+	float:left;
+}
+#cfacebook a.chat_fb{
+	float:left;
+	padding:0 20px;
+	width:100%;
+	color:#fff;
+	text-decoration:none;
+	height:40px;
+	line-height:40px;
+	text-shadow:0 1px 0 rgba(0,0,0,0.1);
+	background-repeat:repeat-x;
+	background-size:auto;
+	background-position:0 0;
+	background-color:#3a5795;
+	border:0;
+	border-bottom:1px solid #133783;
+	font-size:18px;
+}
+#cfacebook a.chat_fb:hover{
+	color:yellow;
+	text-decoration:none;
+}
+/* CSS quiz */
+input[type="text"].wpProQuiz_questionInput{
+	width:100% !important;
+}
+li.wpProQuiz_questionListItem.ui-sortable-handle, ul[data-type="sort_answer"] li.wpProQuiz_questionListItem.wpProQuiz_answerCorrect, ul[data-type="sort_answer"] li.wpProQuiz_questionListItem.wpProQuiz_answerIncorrect{
+	float:left;
+}
+ul.wpProQuiz_questionList.ui-sortable, ul.wpProQuiz_questionList{
+	overflow:auto;
+}
+.wpProQuiz_button, .wpProQuiz_button:hover {
+    background: #357D02 !important;
+    border: 1px solid #357D02 !important;
+    box-shadow: 1px 1px 1px #357D02 !important;
+}
+ul.wpProQuiz_questionList[data-type="matrix_sort_answer"] .wpProQuiz_questionListItem{
+	width: 20%;
+	float: left;
+}
+table tr.wpProQuiz_mextrixTr td{
+	width: 50% !important;
+}
+/* CSS fix Ultimate member */
+.tipsy-n{
+	display: none !important;
+}
+/* CSS responsive */
+@media screen and (min-width: 1200px) {
+	/* CSS menu main desktop */
+	.menu-main > div{
+		max-width: 1170px;
+		margin: 0 auto;
+	}
+	.menu-main ul > li.menu-item-has-children{
+		position: relative;
+	}
+	.menu-main > div > ul > li > a{
+		font-weight: bold;
+		padding: 18px 25px;
+		font-size: 15px;
+	}
+	.menu-main > div > ul > li.menu-item-has-children > a:after{
+		font-family: 'Glyphicons Halflings';
+	    font-style: normal;
+	    content: "\e259";
+	    font-size: 13px;
+	    margin-left: 7px;
+	}
+	.menu-main > div > ul li.menu-item-has-children > ul.sub-menu{
+		z-index: 2;
+		position: absolute;
+		display: none;
+		top: 101%;
+		border: 1px solid rgba(0,0,0,0.1);
+	}
+	.menu-main > div > ul li.menu-item-has-children:hover > ul.sub-menu{
+		display: block;
+	}
+	.menu-main > div > ul ul.sub-menu > li > a{
+	    min-width: 300px;
+	}
+	.menu-main > div > ul ul.sub-menu > li.menu-item-has-children > a:after{
+		font-family: 'Glyphicons Halflings';
+	    font-style: normal;
+	    content: "\e258";
+	    font-size: 12px;
+	    float: right;
+	}
+	.menu-main > div > ul li.menu-item-has-children > ul.sub-menu > li > ul.sub-menu{
+		top:0;
+		left: 100%;
+	}
+}
+@media screen and (max-width: 1199px) {
+	/* CSS menu main mobile */
+	.menu-main.navbar-default .navbar-collapse.collapse{
+		display: none !important;
+	}
+	.menu-main.navbar-default .navbar-collapse.collapse.in{
+		display: block !important;
+	}
+	.menu-main.navbar-default .navbar-header, .menu-main.navbar-default .navbar-nav>li, .menu-main.navbar-default .navbar-nav{
+		float: none;
+	}
+	.menu-main.navbar-default .navbar-toggle{
+		display: block;
+	}
+	.menu-main.navbar-default .navbar-nav .open .dropdown-menu{
+		position: static;
+	    float: none;
+	    width: auto;
+	    margin-top: 0;
+	    border: 0;
+	    -webkit-box-shadow: none;
+	    box-shadow: none;
+		background: #f5f5f5;
+	}
+	.menu-main.navbar-default .navbar-collapse{
+		border: none;
+	}
+	.menu-main.navbar-default .navbar-nav .open .dropdown-menu .dropdown-header, .menu-main.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+	    padding: 5px 15px 5px 25px;
+	}
+	.menu-main.navbar-default > div > ul > li > a{
+		border-bottom: 1px solid #e84747;
+	}
+	.menu-main.navbar-default > div > ul > li:last-child > a{
+		border-bottom:none;
+	}
+	.menu-main.navbar-default li.open ul.dropdown-menu>li>a{
+		color: #333;
+	}
+	.menu-main.navbar-default li.open ul.dropdown-menu>li>a:before{
+		font-family: 'Glyphicons Halflings';
+    	font-style: normal;
+    	content: "\e250";
+    	margin-right: 5px;
+	}
+	.menu-main.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus, .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover, .menu-main.navbar-default .navbar-nav>.open>a, .menu-main.navbar-default .navbar-nav>.open>a:focus, .menu-main.navbar-default .navbar-nav>.open>a:hover{
+	    color: #fff;
+	    background-color: #e84747;
+	    font-weight: bold;
+	}
+}
+@media screen and (max-width: 991px) {
+	/* CSS bài viết liên quan */
+	.post-lien-quan .col-xs-6:nth-child(2n+1){
+		clear: both;
+	}
+	/* CSS quiz */
+	ul.wpProQuiz_questionList[data-type="matrix_sort_answer"] .wpProQuiz_questionListItem{
+		width: 25%;
+	}
+}
+@media screen and (max-width: 767px) {
+	/* CSS new posts sidebar */
+	.widget_new_posts .row .col-xs-4 img{
+		height: 110px;
+	}
+	/* CSS bài viết khóa học */
+	article.khoahoc .col-xs-8.col-sm-8 .col-sm-4.share, article.khoahoc .col-xs-8.col-sm-8 .col-sm-4.text-left{
+		margin-bottom: 10px;
+	}
+	/* CSS bài viết liên quan */
+	.post-lien-quan img{
+		height: 250px;
+	}
+	/* CSS thư viện ảnh */
+	.gallery-item {
+		width: 33.33% !important;
+	}
+	/* CSS quiz */
+	ul.wpProQuiz_questionList[data-type="matrix_sort_answer"] .wpProQuiz_questionListItem{
+		width: 33.33%;
+	}
+}
+@media screen and (max-width: 480px) {
+	/* CSS new posts sidebar */
+	.widget_new_posts .row .col-xs-4 img{
+		height: 90px;
+	}
+	/* CSS bài viết liên quan */
+	.post-lien-quan img{
+		height: 130px;
+	}
+	/* CSS thư viện ảnh */
+	.gallery-item {
+		width: 50% !important;
+	}
+	/* CSS quiz */
+	ul.wpProQuiz_questionList[data-type="matrix_sort_answer"] .wpProQuiz_questionListItem{
+		width: 50%;
+	}
+}
