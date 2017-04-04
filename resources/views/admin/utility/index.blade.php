@@ -39,7 +39,7 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-utilityList">
                                     <thead>
                                     <tr>
-                                        <th>Tên dự án</th>
+                                        <th>Tên Tiện ích</th>
                                         <th>Chỉnh sửa lần cuối</th>
                                     </tr>
                                     </thead>
