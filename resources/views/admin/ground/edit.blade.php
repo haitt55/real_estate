@@ -37,7 +37,7 @@
                         <div class="col-lg-12">
                             <div class="dataTable_wrapper">
 										{{ Form::model($ground, array('route' => array('admin.ground.update', $ground->id), 'method' => 'PUT')) }}				
-										<input type="hidden" id="id" value="{{$position->id}}">						
+										<input type="hidden" id="id" value="{{$ground->id}}">						
 										<div class="form-group">
 									        {{ Form::label('project_id', 'Dự án') }}
 									        {{ Form::select('project_id', $projects, null, ['class' => 'form-control']) }}
@@ -88,7 +88,7 @@
     <script type="text/javascript">
 			
 				$('#project_id').change(function() {
-					var url = "/admin/position/checkProject";
+					var url = "/admin/ground/checkProject";
 					projectId = $(this).val();
 					id = $("#id").val();
                     $.ajax({
@@ -129,7 +129,7 @@
                                         }
                                     });
                             	} else {
-                            		window.location.href = '/admin/position/'+ data.positionId+'/edit';
+                            		window.location.href = '/admin/ground/'+ data.groundId+'/edit';
                             	}
                             
                             }	

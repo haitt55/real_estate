@@ -9,6 +9,7 @@ use Redirect;
 use Validator;
 use App\Project;
 use App\PricesPolicies;
+use Illuminate\Support\Facades\DB;
 
 class PricePoliciesController extends Controller {
 	/**
@@ -17,7 +18,10 @@ class PricePoliciesController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$pricePolicyList = PricesPolicies::all ();
+		$pricePolicyList= DB::table('prices_policies')
+		->join('projects', 'prices_policies.project_id', '=', 'projects.id')
+		->select('prices_policies.id', 'prices_policies.title', 'prices_policies.project_id','prices_policies.updated_at', 'projects.project_name' )
+		->get();
 		return view ( 'admin.pricePolicy.index' )->with ( [
 				'pricePolicyList' => $pricePolicyList
 		] );

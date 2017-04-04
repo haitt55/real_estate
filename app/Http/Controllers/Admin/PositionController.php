@@ -9,6 +9,7 @@ use Input;
 use Redirect;
 use Validator;
 use App\Project;
+use Illuminate\Support\Facades\DB;
 
 class PositionController extends Controller {
 	/**
@@ -17,7 +18,11 @@ class PositionController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$positions = Position::all ();
+// 		$positions = Position::all ();
+		$positions = DB::table('positions')
+		->join('projects', 'positions.project_id', '=', 'projects.id')
+		->select('positions.id', 'positions.title', 'positions.project_id','positions.updated_at', 'projects.project_name' )
+		->get();
 		return view ( 'admin.position.index' )->with ( [ 
 				'positions' => $positions 
 		] );

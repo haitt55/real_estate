@@ -40,6 +40,7 @@
                                     <thead>
                                     <tr>
                                         <th>Tên dự án</th>
+                                        <th>Tên dự án</th>
                                         <th>Chỉnh sửa lần cuối</th>
                                     </tr>
                                     </thead>
@@ -47,6 +48,7 @@
                                     @foreach ($groundList as $ground)
                                         <tr>
                                             <td><a href="/admin/ground/{{ $ground->id }}">{{ $ground->title }}</a></td>
+                                            <td>{{ $ground->project_name }}</td>
                                             <td>{{ $ground->updated_at }}</td>
                                             <td>
                                                 <a href="/admin/ground/{{ $ground->id }}/edit" class="btn btn-info"><i class="fa fa-edit"></i> Chỉnh sửa</a>

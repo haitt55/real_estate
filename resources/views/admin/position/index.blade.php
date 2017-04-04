@@ -39,6 +39,7 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-positions">
                                     <thead>
                                     <tr>
+                                        <th>Tên Vị trí</th>
                                         <th>Tên dự án</th>
                                         <th>Chỉnh sửa lần cuối</th>
                                     </tr>
@@ -47,6 +48,7 @@
                                     @foreach ($positions as $position)
                                         <tr>
                                             <td><a href="/admin/position/{{ $position->id }}">{{ $position->title }}</a></td>
+                                            <td>{{ $position->project_name }}</td>
                                             <td>{{ $position->updated_at }}</td>
                                             <td>
                                                 <a href="/admin/position/{{ $position->id }}/edit" class="btn btn-info"><i class="fa fa-edit"></i> Chỉnh sửa</a>

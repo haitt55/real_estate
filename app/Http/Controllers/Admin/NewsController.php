@@ -9,18 +9,45 @@ use Redirect;
 use Validator;
 use App\Project;
 use App\News;
+use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller {
+	protected $currentProject;
+	function __construct()
+	{
+		$this->currentProject = Project::where('is_current', 1)->get()->first();
+	}
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index() {
-		$newList = News::all ();
-		return view ( 'admin.new.index' )->with ( [
-				'newList' => $newList
-		] );
+	public function index(Request $request) {
+		$chosenProject = '';
+		$projectOptions = DB::table('projects')->orderBy('created_at', 'desc')->pluck('project_name', 'id')->toArray();
+		if ($this->currentProject) {
+			$newList= News::all()->where('project_id', $this->currentProject->id)->sortByDesc('published');
+			$chosenProject = $this->currentProject->id;
+		} else {
+			$chosenProject = '';
+			$newList= News::all()->sortByDesc('published');
+		}
+		$data = $request->all();
+		if (array_key_exists('project_id', $data)) {
+			if ($request->get('project_id') !== '') {
+				$chosenProject = $request->get('project_id');
+				$newList= News::all()->where('project_id', $request->get('project_id'))->sortByDesc('published');
+			} else {
+				$chosenProject = '';
+				$newList= Customer::all()->sortByDesc('published');
+			}
+		}
+		return view('admin.new.index')->with([
+				'newList' => $newList,
+				'projectOptions' => $projectOptions,
+				'currentProject' => $this->currentProject,
+				'chosenProject' => $chosenProject
+		]);
 	}
 	
 	/**
@@ -137,6 +164,11 @@ class NewsController extends Controller {
 			$new->meta_keyword = Input::get ( 'meta_keyword' );
 			$new->meta_description = Input::get ( 'meta_description' );
 			$new->published = Input::get('published');
+			if(Input::get('published') != null){
+				$new->published= Input::get('published');
+			} else {
+				$new->published = 0;
+			}
 			$new->save ();
 			
 			// redirect

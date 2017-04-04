@@ -13,9 +13,35 @@
 @endsection
 
 @section('content')
+@if(session('message'))
+        <div class="alert alert-success" style="margin-top: 10px; margin-bottom: 0px;">
+            <ul>
+                <li>{{session('message')}}</li>
+            </ul>
+        </div>
+    @endif
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dự án - Tin Tức</h1>
+            <h1 class="page-header">Danh sách Tin tức</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <br />
+    <div class="row">
+        <div class="col-lg-12">
+            <form class="form-inline" action="{{ route('admin.new.index') }}" method="GET">
+                <div class="form-group">
+                    <label for="project_id">Lọc theo dự án:</label>
+                    <select class="form-control" name="project_id" id="project_id">
+                        <option value="">Tất cả các dự án</option>
+                        @foreach($projectOptions as $key => $value)
+                            <option value="{{ $key }}" @if($key == $chosenProject)selected="selected"@endif>{{ $value }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search">&nbsp;</span>Lọc</button>
+            </form>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -40,6 +66,7 @@
                                     <thead>
                                     <tr>
                                         <th>Tên Tin Tức</th>
+                                        <th>Trạng thái</th>
                                         <th>Chỉnh sửa lần cuối</th>
                                     </tr>
                                     </thead>
@@ -47,7 +74,15 @@
                                     @foreach ($newList as $new)
                                         <tr>
                                             <td><a href="/admin/new/{{ $new->id }}">{{ $new->title }}</a></td>
+                                            <td>
+                                                @if ($new->published == 1)
+                                                    <span class="label label-success">Đã đăng</span>
+                                                @else
+                                                    <span class="label label-danger">Chưa đăng</span>
+                                                @endif
+                                            </td>
                                             <td>{{ $new->updated_at }}</td>
+                                            
                                             <td>
                                                 <a href="/admin/new/{{ $new->id }}/edit" class="btn btn-info"><i class="fa fa-edit"></i> Chỉnh sửa</a>
 <!--                                                  {{ Form::open(array('url' => 'admin/new/' . $new->id, 'class' => 'pull-right')) }} -->

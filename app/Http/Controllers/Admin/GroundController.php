@@ -9,6 +9,7 @@ use Redirect;
 use Validator;
 use App\Project;
 use App\Grounds;
+use Illuminate\Support\Facades\DB;
 
 class GroundController extends Controller {
 	/**
@@ -17,7 +18,10 @@ class GroundController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$groundList = Grounds::all ();
+		$groundList= DB::table('grounds')
+		->join('projects', 'grounds.project_id', '=', 'projects.id')
+		->select('grounds.id', 'grounds.title', 'grounds.project_id','grounds.updated_at', 'projects.project_name' )
+		->get();
 		return view ( 'admin.ground.index' )->with ( [
 				'groundList' => $groundList
 		] );

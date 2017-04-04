@@ -40,6 +40,7 @@
                                     <thead>
                                     <tr>
                                         <th>Tên Tiện ích</th>
+                                        <th>Tên dự án</th>
                                         <th>Chỉnh sửa lần cuối</th>
                                     </tr>
                                     </thead>
@@ -47,6 +48,7 @@
                                     @foreach ($utilityList as $utility)
                                         <tr>
                                             <td><a href="/admin/utility/{{ $utility->id }}">{{ $utility->title }}</a></td>
+                                            <td>{{ $utility->project_name }}</td>
                                             <td>{{ $utility->updated_at }}</td>
                                             <td>
                                                 <a href="/admin/utility/{{ $utility->id }}/edit" class="btn btn-info"><i class="fa fa-edit"></i> Chỉnh sửa</a>

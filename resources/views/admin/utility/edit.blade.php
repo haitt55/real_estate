@@ -37,7 +37,7 @@
                         <div class="col-lg-12">
                             <div class="dataTable_wrapper">
 										{{ Form::model($utility, array('route' => array('admin.utility.update', $utility->id), 'method' => 'PUT')) }}
-										<input type="hidden" id="id" value="{{$position->id}}">											
+										<input type="hidden" id="id" value="{{$utility->id}}">											
 										<div class="form-group">
 									        {{ Form::label('project_id', 'Dự án') }}
 									        {{ Form::select('project_id', $projects, null, ['class' => 'form-control']) }}
@@ -87,7 +87,7 @@
     <script type="text/javascript">
 			
 				$('#project_id').change(function() {
-					var url = "/admin/position/checkProject";
+					var url = "/admin/utility/checkProject";
 					projectId = $(this).val();
 					id = $("#id").val();
                     $.ajax({
@@ -105,7 +105,7 @@
                             if(data.code == 1){
                             	if (confirm('Dự án này đã có vị trí. Bạn có muốn xóa vị trí cũ và thêm mới?')) {
                             		$.ajax({
-                                        url : "/admin/position/delete",
+                                        url : "/admin/utility/delete",
                                         type : 'Post',
                                         dataType : 'json',
                                         data: {projectId : projectId},
@@ -128,7 +128,7 @@
                                         }
                                     });
                             	} else {
-                            		window.location.href = '/admin/position/'+ data.positionId+'/edit';
+                            		window.location.href = '/admin/utility/'+ data.utilityId+'/edit';
                             	}
                             
                             }	

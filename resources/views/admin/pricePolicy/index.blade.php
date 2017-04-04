@@ -40,6 +40,7 @@
                                     <thead>
                                     <tr>
                                         <th>Tên Bảng giá và Chính sách</th>
+                                        <th>Tên dự án</th>
                                         <th>Chỉnh sửa lần cuối</th>
                                     </tr>
                                     </thead>
@@ -47,6 +48,7 @@
                                     @foreach ($pricePolicyList as $pricePolicy)
                                         <tr>
                                             <td><a href="/admin/pricePolicy/{{ $pricePolicy->id }}">{{ $pricePolicy->title }}</a></td>
+                                            <td>{{ $pricePolicy->project_name }}</td>
                                             <td>{{ $pricePolicy->updated_at }}</td>
                                             <td>
                                                 <a href="/admin/pricePolicy/{{ $pricePolicy->id }}/edit" class="btn btn-info"><i class="fa fa-edit"></i> Chỉnh sửa</a>

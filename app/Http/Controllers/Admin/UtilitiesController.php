@@ -9,6 +9,7 @@ use Redirect;
 use Validator;
 use App\Project;
 use App\Utilities;
+use Illuminate\Support\Facades\DB;
 
 class UtilitiesController extends Controller {
 	/**
@@ -17,7 +18,10 @@ class UtilitiesController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$utilityList = Utilities::all ();
+		$utilityList = DB::table('utilities')
+		->join('projects', 'utilities.project_id', '=', 'projects.id')
+		->select('utilities.id', 'utilities.title', 'utilities.project_id','utilities.updated_at', 'projects.project_name' )
+		->get();
 		return view ( 'admin.utility.index' )->with ( [
 				'utilityList' => $utilityList
 		] );
