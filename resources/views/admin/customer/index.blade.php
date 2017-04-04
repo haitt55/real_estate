@@ -77,9 +77,9 @@
                                             <td>{{ $customer->project ? $customer->project->project_name : '' }}</td>
                                             <td>
                                                 @if ($customer->is_new)
-                                                    <span class="label label-success">mới</span>
+                                                    <span class="label label-success" id="label-status-{{ $customer->id }}">mới</span>
                                                 @else
-                                                    <span class="label label-danger">đã liên hệ</span>
+                                                    <span class="label label-danger" id="label-status-{{ $customer->id }}">đã liên hệ</span>
                                                 @endif
                                             </td>
                                             <td>{{ $customer->created_at }}</td>
@@ -202,7 +202,31 @@
             });
 
             $('.change-status-button').click(function () {
-
+                var id = $(this).attr('id').substr(14, 1);
+                $.ajax({
+                    type: "POST",
+                    url: '{{ route('admin.customer.changeStatus') }}',
+                    data: {id: id, _token:'<?php echo csrf_token() ?>'},
+                    success: function( data ) {
+                        if (data == 'success') {
+                            if ($('#change-status-' + id).hasClass('btn-danger')) {
+                                $('#change-status-' + id).removeClass('btn-danger');
+                                $('#change-status-' + id).addClass('btn-success');
+                                $('#change-status-' + id).text('Mới');
+                                $('#label-status-' + id).removeClass('label-success');
+                                $('#label-status-' + id).addClass('label-danger');
+                                $('#label-status-' + id).text('Đã liên hệ');
+                            } else {
+                                $('#change-status-' + id).removeClass('btn-success');
+                                $('#change-status-' + id).addClass('btn-danger');
+                                $('#change-status-' + id).text('Đã liên hệ');
+                                $('#label-status-' + id).removeClass('label-danger');
+                                $('#label-status-' + id).addClass('label-success');
+                                $('#label-status-' + id).text('Mới');
+                            }
+                        }
+                    }
+                });
             });
         });
     </script>

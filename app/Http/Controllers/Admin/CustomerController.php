@@ -119,6 +119,18 @@ class CustomerController extends Controller
 
     public function changeStatus(Request $request)
     {
-
+        $id = $request->get('id');
+        $customer = Customer::where('id', $id)->get()->first();
+        if ($customer->is_new) {
+            $is_new = 0;
+        } else {
+            $is_new = 1;
+        }
+        $result = DB::table('customers')->where('id', $id)->update(['is_new' => $is_new]);
+        if ($result) {
+            echo 'success';
+        } else {
+            echo 'fail';
+        }
     }
 }
