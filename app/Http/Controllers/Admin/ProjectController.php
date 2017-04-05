@@ -151,7 +151,7 @@ class ProjectController extends Controller
                 $extention = $project_image_header->getClientOriginalExtension();
                 $filename = "{$name}.{$extention}";
                 Image::make($project_image_header->getRealPath())->save(public_path($path . '/' . $filename));
-                $data['project_image_header'] = $path . '/' . $filename;
+                $project->project_image_header = $path . '/' . $filename;
                 // delete old image
                 if ($oldImageHeader && file_exists(public_path($oldImageHeader))) {
                     unlink(public_path($oldImageHeader));
@@ -162,24 +162,33 @@ class ProjectController extends Controller
                 $extention = $project_image_ads->getClientOriginalExtension();
                 $filename = "{$name}.{$extention}";
                 Image::make($project_image_ads->getRealPath())->save(public_path($path . '/' . $filename));
-                $data['project_image_ads'] = $path . '/' . $filename;
+                    $project->project_image_ads = $path . '/' . $filename;
                 // delete old image
                 if ($oldImageAds && file_exists(public_path($oldImageAds))) {
                     unlink(public_path($oldImageAds));
                 }
             }
             if (isset($data['is_current'])) {
-                $data['is_current'] = 1;
+                $project->is_current = 1;
             } else {
-                $data['is_current'] = 0;
+                $project->is_current = 0;
             }
-            if ($data['is_current'] == 1) {
+            $project->is_current = 1;
+            $project->project_name = $data['project_name'];
+            $project->description = $data['description'];
+            $project->page_title = $data['page_title'];
+            $project->meta_keyword = $data['meta_keyword'];
+            $project->meta_description = $data['meta_description'];
+
+            $project->save();
+            if ($project->is_current == 1) {
                 $this->changeStatusOtherProject($project->id);
             }
-            $project->update($data);
+
             DB::commit();
             return redirect()->route('admin.project.index')->with('message','Success');
         } catch (\Exception $e) {
+            dd($e->getMessage());
             DB::rollback();
             return redirect()->back()->with($e->getMessage());
         }
