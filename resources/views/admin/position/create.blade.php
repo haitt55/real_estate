@@ -36,7 +36,7 @@
 						<div class="dataTable_wrapper">
 							{{ Form::open(array('url' => 'admin/position/store')) }}
 							<div class="form-group">{{ Form::label('project_id', 'Dự án') }}
-								{{ Form::select('project_id', $projects, null, ['class' =>
+								{{ Form::select('project_id', $projects,null, ['class' =>
 								'form-control']) }}</div>
 							<div class="form-group">{{ Form::label('title', 'Tiêu đề :') }}
 								{{ Form::text('title', Input::old('title'), array('class' =>

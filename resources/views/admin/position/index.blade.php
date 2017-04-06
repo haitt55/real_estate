@@ -47,7 +47,7 @@
                                     <tbody>
                                     @foreach ($positions as $position)
                                         <tr>
-                                            <td><a href="/admin/position/{{ $position->id }}">{{ $position->title }}</a></td>
+                                            <td><a href="/admin/position/{{ $position->slug }}">{{ $position->title }}</a></td>
                                             <td>{{ $position->project_name }}</td>
                                             <td>{{ $position->updated_at }}</td>
                                             <td>

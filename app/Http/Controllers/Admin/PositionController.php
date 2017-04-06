@@ -21,7 +21,7 @@ class PositionController extends Controller {
 // 		$positions = Position::all ();
 		$positions = DB::table('positions')
 		->join('projects', 'positions.project_id', '=', 'projects.id')
-		->select('positions.id', 'positions.title', 'positions.project_id','positions.updated_at', 'projects.project_name' )
+		->select('positions.id', 'positions.title', 'positions.project_id','positions.updated_at', 'projects.project_name','positions.slug' )
 		->get();
 		return view ( 'admin.position.index' )->with ( [ 
 				'positions' => $positions 
@@ -35,7 +35,7 @@ class PositionController extends Controller {
 	 */
 	public function create() {
 		//
-		$projects = Project::pluck('project_name', 'id');
+		$projects = Project::all()->sortByDesc('is_current')->pluck('project_name', 'id');
 		return view ( 'admin.position.create' )->with('projects', $projects);
 	}
 	
@@ -81,9 +81,9 @@ class PositionController extends Controller {
 	 * @param int $id        	
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show($id) {
+	public function show($slug) {
 		//
-		$position = Position::find($id);
+		$position = Position::where('slug', $slug)->firstOrFail();
 		
 		// show the view and pass the nerd to it
 		return view ( 'admin.position.show' )->with ( [

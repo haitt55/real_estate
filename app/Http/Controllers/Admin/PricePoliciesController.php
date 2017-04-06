@@ -34,7 +34,7 @@ class PricePoliciesController extends Controller {
 	 */
 	public function create() {
 		//
-		$projects = Project::pluck('project_name', 'id');
+		$projects = Project::all()->sortByDesc('is_current')->pluck('project_name', 'id');
 		return view ( 'admin.pricePolicy.create' )->with('projects', $projects);
 	}
 	

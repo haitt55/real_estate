@@ -9,9 +9,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Position extends Model
 {
+	use Sluggable;
     protected $table = 'positions';
     /**
      * The attributes that are mass assignable.
@@ -22,6 +24,14 @@ class Position extends Model
         'project_id', 'title', 'slug', 'content',
         'page_title', 'meta_keyword', 'meta_description'
     ];
+    public function sluggable()
+    {
+    	return [
+    			'slug' => [
+    					'source' => 'title'
+    			]
+    	];
+    }
 
     /**
      * Get the project that owns the position.
@@ -29,5 +39,9 @@ class Position extends Model
     public function project()
     {
         return $this->belongsTo('App\Project', 'project_id');
+    }
+    public function getRouteKeyName()
+    {
+    	return 'slug';
     }
 }

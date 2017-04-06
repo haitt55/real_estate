@@ -113,3 +113,4 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 });
 // Web
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home.index']);
+Route::get('/home/getCurrentProject', ['uses' => 'HomeController@getCurrentProject', 'as' => 'home.getCurrentProject']);
