@@ -66,32 +66,18 @@
                                     <tbody>
                                     @foreach ($images as $image)
                                         <tr>
-                                            <td data-email="{{$image->email}}"
-                                                data-full_name="{{$image->full_name}}"
-                                                data-phone_number="{{$image->phone_number}}"
-                                                data-message="{{$image->message}}"
-                                                data-created_at="{{$image->created_at}}"
+                                            <td data-title="{{$image->title}}"
+                                                data-image="{{$image->image}}"
                                                 data-toggle="modal" data-target="#modalCustomer" style="cursor: pointer">
-                                                <a href="javascript:void(0);">{{ $image->full_name }}</a>
+                                                <a href="javascript:void(0);">{{ $image->title }}</a>
                                             </td>
                                             <td>{{ $image->project ? $image->project->project_name : '' }}</td>
                                             <td>
-                                                @if ($image->is_new)
-                                                    <span class="label label-success" id="label-status-{{ $image->id }}">mới</span>
-                                                @else
-                                                    <span class="label label-danger" id="label-status-{{ $image->id }}">đã liên hệ</span>
-                                                @endif
+                                                {{ $image->image }}
                                             </td>
                                             <td>{{ $image->created_at }}</td>
                                             <td>
-                                                <a href="{{ route('admin.project.edit', $image->id) }}" class="btn btn-info"><i class="fa fa-edit"></i> Chỉnh sửa</a>
-                                                <button class="btn change-status-button @if($image->is_new) btn-danger @else btn-success @endif" id="change-status-{{ $image->id }}">
-                                                    @if ($image->is_new)
-                                                        Đã liên hệ
-                                                    @else
-                                                        Mới
-                                                    @endif
-                                                </button>
+                                                <a href="" class="btn btn-info"><i class="fa fa-edit"></i> Chỉnh sửa</a>
                                             </td>
                                         </tr>
                                     @endforeach

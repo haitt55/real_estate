@@ -27,7 +27,7 @@ class CustomerController extends Controller
         $chosenProject = '';
         $projectOptions = DB::table('projects')->orderBy('created_at', 'desc')->pluck('project_name', 'id')->toArray();
         if ($this->currentProject) {
-            $customers = Customer::all()->where('product_id', $this->currentProject->id)->sortByDesc('is_new');
+            $customers = Customer::all()->where('project_id', $this->currentProject->id)->sortByDesc('is_new');
             $chosenProject = $this->currentProject->id;
         } else {
             $chosenProject = '';
@@ -35,9 +35,9 @@ class CustomerController extends Controller
         }
         $data = $request->all();
         if (array_key_exists('project_id', $data)) {
-            if ($request->get('project_id') !== '') {
+            if ($request->get('project_id') != '') {
                 $chosenProject = $request->get('project_id');
-                $customers = Customer::all()->where('product_id', $request->get('project_id'))->sortByDesc('is_new');
+                $customers = Customer::all()->where('project_id', $request->get('project_id'))->sortByDesc('is_new');
             } else {
                 $chosenProject = '';
                 $customers = Customer::all()->sortByDesc('is_new');

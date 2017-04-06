@@ -54,7 +54,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
             'index' => 'admin.customer.index'
         ]]);
         Route::post('/customer/changeStatus',['uses' => 'CustomerController@changeStatus', 'as' => 'admin.customer.changeStatus']);
-        
+        Route::resource('image', 'ImageController', ['names' => [
+            'index' => 'admin.image.index'
+        ]]);
         Route::post('/position/store','PositionController@store');
         Route::post('/position/checkProject','PositionController@checkProject');
         Route::resource('ground', 'GroundController', ['names' => [
