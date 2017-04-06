@@ -45,6 +45,7 @@ class ProjectController extends Controller
             'project_name' => 'required|unique:projects',
             'project_image_header' => 'mimes:jpeg,jpg,gif,png',
             'project_image_ads' => 'mimes:jpeg,jpg,gif,png',
+            'project_image_ads1' => 'mimes:jpeg,jpg,gif,png',
         ]);
         if ($validator->fails()) {
             return redirect()->back()
@@ -57,6 +58,7 @@ class ProjectController extends Controller
             $path = config('custom.project_image_path');
             $project_image_header = $request->file('project_image_header');
             $project_image_ads = $request->file('project_image_ads');
+            $project_image_ads1 = $request->file('project_image_ads1');
             $project = New Project();
             if ($project_image_header) {
                 $name = time() . '-' . create_slug($project_image_header->getClientOriginalName());
@@ -71,6 +73,13 @@ class ProjectController extends Controller
                 $filename = "{$name}.{$extention}";
                 Image::make($project_image_ads->getRealPath())->save(public_path($path . '/' . $filename));
                 $project->project_image_ads = $path . '/' . $filename;
+            }
+            if ($project_image_ads1) {
+                $name = time(). '-' . create_slug($project_image_ads1->getClientOriginalName());
+                $extention = $project_image_ads1->getClientOriginalExtension();
+                $filename = "{$name}.{$extention}";
+                Image::make($project_image_ads1->getRealPath())->save(public_path($path . '/' . $filename));
+                $project->project_image_ads1 = $path . '/' . $filename;
             }
             $project->project_name = $data['project_name'];
             $project->description = $data['description'];
@@ -132,6 +141,7 @@ class ProjectController extends Controller
             'project_name' => 'required|unique:projects,project_name,' . $id,
             'project_image_header' => 'mimes:jpeg,jpg,gif,png',
             'project_image_ads' => 'mimes:jpeg,jpg,gif,png',
+            'project_image_ads1' => 'mimes:jpeg,jpg,gif,png',
         ]);
         if ($validator->fails()) {
             return redirect()->back()
@@ -146,6 +156,7 @@ class ProjectController extends Controller
             $oldImageAds = $project->project_image_ads;
             $project_image_header = $request->file('project_image_header');
             $project_image_ads = $request->file('project_image_ads');
+            $project_image_ads1 = $request->file('project_image_ads1');
             if ($project_image_header) {
                 $name = time() . '-' . create_slug($project_image_header->getClientOriginalName());
                 $extention = $project_image_header->getClientOriginalExtension();
@@ -168,18 +179,27 @@ class ProjectController extends Controller
                     unlink(public_path($oldImageAds));
                 }
             }
+            if ($project_image_ads1) {
+                $name = time(). '-' . create_slug($project_image_ads1->getClientOriginalName());
+                $extention = $project_image_ads1->getClientOriginalExtension();
+                $filename = "{$name}.{$extention}";
+                Image::make($project_image_ads1->getRealPath())->save(public_path($path . '/' . $filename));
+                $project->project_image_ads1 = $path . '/' . $filename;
+                // delete old image
+                if ($oldImageAds && file_exists(public_path($oldImageAds))) {
+                    unlink(public_path($oldImageAds));
+                }
+            }
             if (isset($data['is_current'])) {
                 $project->is_current = 1;
             } else {
                 $project->is_current = 0;
             }
-            $project->is_current = 1;
             $project->project_name = $data['project_name'];
             $project->description = $data['description'];
             $project->page_title = $data['page_title'];
             $project->meta_keyword = $data['meta_keyword'];
             $project->meta_description = $data['meta_description'];
-
             $project->save();
             if ($project->is_current == 1) {
                 $this->changeStatusOtherProject($project->id);

@@ -31,7 +31,7 @@
                                     <input type="text" name="project_name" id="project_name" class="form-control" value="{{ old('project_name', $project->project_name) }}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="content">Mô tả</label>
+                                    <label for="content">Bài viết trang chủ</label>
                                     <textarea name="description" id="description">{{ old('description', $project->description) }}</textarea>
                                 </div>
                                 <div class="form-group">
@@ -44,11 +44,20 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="image">Ảnh banner quảng cáo</label>
+                                    <label for="image">Ảnh banner quảng cáo 1</label>
                                     <input type="file" id="project_image_ads" name="project_image_ads" accept="image/*">
                                     <div class="row" style="margin-top: 10px;">
                                         <div class="display-image col-md-12">
                                             <img class="thumbnail" style="max-width: 200px;" id="project_image_ads_preview" src="{{ $project->project_image_ads ? asset($project->project_image_ads) : asset(config('custom.no_image')) }}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="image">Ảnh banner quảng cáo 2</label>
+                                    <input type="file" id="project_image_ads1" name="project_image_ads1" accept="image/*">
+                                    <div class="row" style="margin-top: 10px;">
+                                        <div class="display-image col-md-12">
+                                            <img class="thumbnail" style="max-width: 200px;" id="project_image_ads1_preview" src="{{ $project->project_image_ads1 ? asset($project->project_image_ads1) : asset(config('custom.no_image')) }}" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -101,6 +110,10 @@
 
             $("#project_image_ads").change(function(){
                 readURL(this, 'project_image_ads_preview');
+            });
+
+            $("#project_image_ads1").change(function(){
+                readURL(this, 'project_image_ads1_preview');
             });
         });
         function readURL(input, targetID) {
