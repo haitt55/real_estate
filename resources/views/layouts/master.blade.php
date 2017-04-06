@@ -81,7 +81,7 @@
                 <main id="main" class="site-main" role="main">
                     <article id="post-25" class="post-25 page type-page status-publish has-post-thumbnail hentry">
                         <header class="entry-header">
-                            <h1 class="entry-title">@yield('title-inpage')</h1>
+                            <h1 class="entry-title" id ="titleProject"></h1>
                         </header><!-- .entry-header -->
 
                         <div class="entry-content">
@@ -123,6 +123,27 @@
             jQuery('.fchat').toggle('slow');
         });
     });
+    $.ajax({
+        url : '/home/getCurrentProject',
+        type : 'Get',
+        dataType : 'json',
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+            if (token) {
+                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(data) {
+            if(data.code == 1){
+            	console.log(data.project.project_name);
+            	
+            	$("#titleProject").text(data.project.project_name) ;
+            }	
+        },
+        error: function(data) {
+//                window.location.href = '{{ URL::route('admin.project.index') }}';
+        }
+    });
 </script>
 
 </div>
@@ -134,7 +155,7 @@
 
     ga('create', 'UA-51454586-12', 'auto');
     ga('send', 'pageview');
-
+	
 </script>
 @yield('inline_scripts')
 </body>

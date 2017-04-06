@@ -57,7 +57,7 @@ class NewsController extends Controller {
 	 */
 	public function create() {
 		//
-		$projects = Project::pluck('project_name', 'id');
+		$projects = Project::all()->sortByDesc('is_current')->pluck('project_name', 'id');
 		return view ( 'admin.new.create' )->with('projects', $projects);
 	}
 	

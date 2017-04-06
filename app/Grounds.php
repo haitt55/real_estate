@@ -2,9 +2,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Grounds extends Model
 {
+	use Sluggable;
 	protected $table = 'grounds';
 	/**
 	 * The attributes that are mass assignable.
@@ -14,6 +16,13 @@ class Grounds extends Model
 	protected $fillable = [
 			'id' , 'project_id' , 'title' , 'slug' , 'content' , 'page_title' , 'meta_keyword' , 'meta_description' , 'created_at' , 'updated_at',
 	];
-	
+	public function sluggable()
+	{
+		return [
+				'slug' => [
+						'source' => 'title'
+				]
+		];
+	}
 	
 }
