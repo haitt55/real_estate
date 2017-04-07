@@ -73,7 +73,7 @@ class HomeController extends Controller
     			'pricePolicy' => $pricePolicy
     	] );
     }
-    public function new($slug)
+    public function newpost($slug)
     {
     	$news= News::where('slug', $slug)->firstOrFail();;
     	
@@ -82,7 +82,7 @@ class HomeController extends Controller
     			'news' => $news
     	] );
     }
-    public function news()
+    public function newlist()
     {
     	$news= $project = DB::table('news')
     	->join('projects', 'projects.id' ,'=','news.project_id')

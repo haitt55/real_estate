@@ -151,16 +151,16 @@
 				$(".menu-item-ground").find( "a" ).attr("href", "/home/ground/" + data.project.ground_slug);
 				$(".menu-item-utility").find( "a" ).attr("href", "/home/utility/" + data.project.utility_slug);
 				$(".menu-item-pricePolicy").find( "a" ).attr("href", "/home/pricePolicy/" + data.project.pricePolicy_slug);
-				$(".menu-item-new").find( "a" ).attr("href", "/home/news");
+				$(".menu-item-new").find( "a" ).attr("href", "/home/newlist");
 				
 				for (var i = 0; i < data.news.length; i++) 
         				{
         					html = '<div class="row">'
         	                	+ '<div class="col-xs-4 col-sm-4">'
-                        		+ '<a href="/home/new/' + data.news[i].slug +'" class="thumbnail" title="'+ data.news[i].title+'"><img width="150" height="150" src="wp-content/uploads/2017/03/img20170307095615894-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a>'
+                        		+ '<a href="/home/newpost/' + data.news[i].slug +'" class="thumbnail" title="'+ data.news[i].title+'"><img width="150" height="150" src="wp-content/uploads/2017/03/img20170307095615894-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a>'
                     			+ '</div>'
                     			+ '<div class="col-xs-8 col-sm-8">'
-                        		+ '<a href="/home/new/' +  data.news[i].slug +'"><b>'+ data.news[i].title+'</b></a>'
+                        		+ '<a href="/home/newpost/' +  data.news[i].slug +'"><b>'+ data.news[i].title+'</b></a>'
                     			+ '</div>'
                 				+ '</div>';
 							$("#new_posts").append(html);
