@@ -55,7 +55,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         ]]);
         Route::post('/customer/changeStatus',['uses' => 'CustomerController@changeStatus', 'as' => 'admin.customer.changeStatus']);
         Route::resource('image', 'ImageController', ['names' => [
-            'index' => 'admin.image.index'
+            'index' => 'admin.image.index',
+            'create' => 'admin.image.create',
+            'store' => 'admin.image.store',
+            'show' => 'admin.image.show',
+            'edit' => 'admin.image.edit',
+            'update' => 'admin.image.update',
+            'destroy' => 'admin.image.destroy'
         ]]);
         Route::post('/position/store','PositionController@store');
         Route::post('/position/checkProject','PositionController@checkProject');

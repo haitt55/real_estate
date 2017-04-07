@@ -154,6 +154,7 @@ class ProjectController extends Controller
             $path = config('custom.project_image_path');
             $oldImageHeader = $project->project_image_header;
             $oldImageAds = $project->project_image_ads;
+            $oldImageAds1 = $project->project_image_ads1;
             $project_image_header = $request->file('project_image_header');
             $project_image_ads = $request->file('project_image_ads');
             $project_image_ads1 = $request->file('project_image_ads1');
@@ -186,8 +187,8 @@ class ProjectController extends Controller
                 Image::make($project_image_ads1->getRealPath())->save(public_path($path . '/' . $filename));
                 $project->project_image_ads1 = $path . '/' . $filename;
                 // delete old image
-                if ($oldImageAds && file_exists(public_path($oldImageAds))) {
-                    unlink(public_path($oldImageAds));
+                if ($oldImageAds1 && file_exists(public_path($oldImageAds1))) {
+                    unlink(public_path($oldImageAds1));
                 }
             }
             if (isset($data['is_current'])) {

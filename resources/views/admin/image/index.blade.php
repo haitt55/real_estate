@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Khách hàng')
+@section('title', 'Kho ảnh')
 
 @section('css')
     @parent
@@ -56,10 +56,10 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-customers">
                                     <thead>
                                     <tr>
-                                        <th>Tên khách hàng</th>
-                                        <th>Tên dự án</th>
-                                        <th>Trạng thái</th>
-                                        <th>Gửi tới lúc</th>
+                                        <th>Tiêu đề ảnh</th>
+                                        <th>Ảnh</th>
+                                        <th>Dự án</th>
+                                        <th>Được thêm lúc</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -71,10 +71,10 @@
                                                 data-toggle="modal" data-target="#modalCustomer" style="cursor: pointer">
                                                 <a href="javascript:void(0);">{{ $image->title }}</a>
                                             </td>
-                                            <td>{{ $image->project ? $image->project->project_name : '' }}</td>
                                             <td>
                                                 {{ $image->image }}
                                             </td>
+                                            <td>{{ $image->project ? $image->project->project_name : '' }}</td>
                                             <td>{{ $image->created_at }}</td>
                                             <td>
                                                 <a href="" class="btn btn-info"><i class="fa fa-edit"></i> Chỉnh sửa</a>

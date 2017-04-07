@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Images;
 use App\Project;
 use DB;
+use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -26,7 +27,7 @@ class ImageController extends Controller
         $chosenProject = '';
         $projectOptions = DB::table('projects')->orderBy('created_at', 'desc')->pluck('project_name', 'id')->toArray();
         if ($this->currentProject) {
-            $images = Images::all()->where('project_id', $this->currentProject->id)->sortByDesc('is_new');
+            $images = Images::all()->where('project_id', $this->currentProject->id)->sortByDesc('created_at');
             $chosenProject = $this->currentProject->id;
         } else {
             $chosenProject = '';
@@ -36,7 +37,7 @@ class ImageController extends Controller
         if (array_key_exists('project_id', $data)) {
             if ($request->get('project_id') != '') {
                 $chosenProject = $request->get('project_id');
-                $images = Images::all()->where('project_id', $request->get('project_id'))->sortByDesc('is_new');
+                $images = Images::all()->where('project_id', $request->get('project_id'))->sortByDesc('created_at');
             } else {
                 $chosenProject = '';
                 $images = Images::all()->sortByDesc('created_at');
@@ -55,9 +56,14 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $project = Project::where('id', $request->get('project_id'))->get()->first();
+        $images = Images::all()->where('project_id', $request->get('project_id'))->sortByDesc('created_at');
+        return view('admin.image.create')->with([
+            'project' => $project,
+            'images' => $images
+        ]);
     }
 
     /**
@@ -68,7 +74,24 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $imageObj = new Images();
+            $image = $request->file('file');
+            $path = config('custom.project_image_path');
+            if ($image) {
+                $name = time() . '-' . create_slug($image->getClientOriginalName());
+                $extention = $image->getClientOriginalExtension();
+                $filename = "{$name}.{$extention}";
+                Image::make($image->getRealPath())->save(public_path($path . '/' . $filename));
+                $imageObj->image = $path . '/' . $filename;
+                $imageObj->title = $image->getClientOriginalName();
+            }
+            $imageObj->project_id = $request->get('project_id');
+            $imageObj->save();
+        } catch (\Exception $e) {
+            unlink(public_path($imageObj->image));
+            echo $e->getMessage();
+        }
     }
 
     /**
