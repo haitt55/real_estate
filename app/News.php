@@ -14,7 +14,7 @@ class News extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-			'id' , 'project_id' , 'title' , 'slug' , 'content' , 'published' , 'page_title' , 'meta_keyword' , 'meta_description' , 'created_at' , 'updated_at',
+			'id' , 'project_id' , 'image_header', 'title' , 'slug' , 'content' , 'published' , 'page_title' , 'meta_keyword' , 'meta_description' , 'created_at' , 'updated_at',
 	];
 	
 	public function sluggable()

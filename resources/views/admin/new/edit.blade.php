@@ -36,7 +36,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="dataTable_wrapper">
-										{{ Form::model($new, array('route' => array('admin.new.update', $new->id), 'method' => 'PUT')) }}										
+										{{ Form::model($new, array('route' => array('admin.new.update', $new->id), 'method' => 'PUT', 'enctype' => "multipart/form-data")) }}										
 										<div class="form-group">
 									        {{ Form::label('project_id', 'Dự án') }}
 									        {{ Form::select('project_id', $projects, null, ['class' => 'form-control']) }}
@@ -45,7 +45,15 @@
 									        {{ Form::label('title', 'Tiêu đề :') }}
 									        {{ Form::text('title', Input::old('title'), array('class' => 'form-control')) }}
 									    </div>
-
+                                        <div class="form-group">
+                                            <label for="image">Ảnh hiển thị trên header</label>
+                                            <input type="file" id="image_header" name="image_header" accept="image/*">
+                                            <div class="row" style="margin-top: 10px;">
+                                                <div class="display-image col-md-12">
+                                                    <img class="thumbnail" style="max-width: 200px;" id="image_header_preview" src="{{ $new->image_header ? asset($new->image_header) : asset(config('custom.no_image')) }}" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
 									    <div class="form-group">
 									        {{ Form::label('content', 'Nội dung : ') }}
 											{{ Form::textarea('content', Input::old('content'), array('class' => 'form-control')) }}									    
@@ -98,5 +106,22 @@
     	this.value = this.checked ? 1 : 0;
     	   // alert(this.value);
     	}).change();
+    $(function() {
+            $("#image_header").change(function(){
+                readURL(this, 'image_header_preview');
+            });
+        });
+        function readURL(input, targetID) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#' + targetID).attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
     @endsection 

@@ -10,6 +10,7 @@ use Validator;
 use App\Project;
 use App\News;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 
 class NewsController extends Controller {
 	protected $currentProject;
@@ -71,10 +72,11 @@ class NewsController extends Controller {
 		//
 		$rules = array(
 				'project_id' => 'required|numeric',
+				'image_header' => 'mimes:jpeg,jpg,gif,png',
 				'title' => 'required',
 				'content' => 'required'
 		);
-		$validator = Validator::make(Input::all(), $rules);
+		$validator = Validator::make($request->all(), $rules);
 		
 		if ($validator->fails()) {
 			return Redirect::to('admin/new/create')
@@ -84,6 +86,15 @@ class NewsController extends Controller {
 			// store
 			$new = new News();
 			$new->project_id  = Input::get ( 'project_id' );
+			$path = config('custom.new_image_path');
+            $image_header = $request->file('image_header');
+			if ($image_header) {
+                $name = time() . '-' . create_slug($image_header->getClientOriginalName());
+                $extention = $image_header->getClientOriginalExtension();
+                $filename = "{$name}.{$extention}";
+                Image::make($image_header->getRealPath())->save(public_path($path . '/' . $filename));
+                $new->image_header = $path . '/' . $filename;
+            }
 			$new->title = Input::get ( 'title' );
 			$new->slug = Input::get ( 'slug' );
 			$new->content = Input::get ( 'content' );
@@ -145,6 +156,7 @@ class NewsController extends Controller {
 		$rules = array(
 				'project_id' => 'required|numeric',
 				'title' => 'required',
+				'image_header' => 'mimes:jpeg,jpg,gif,png',
 				'content' => 'required'
 		);
 		$validator = Validator::make(Input::all(), $rules);
@@ -156,6 +168,21 @@ class NewsController extends Controller {
 		} else {
 			// store
 			$new = News::find($id);
+			$path = config('custom.new_image_path');
+            $oldImageHeader = $new->image_header;
+           
+            $image_header = $request->file('image_header');
+            if ($image_header) {
+                $name = time() . '-' . create_slug($image_header->getClientOriginalName());
+                $extention = $image_header->getClientOriginalExtension();
+                $filename = "{$name}.{$extention}";
+                Image::make($image_header->getRealPath())->save(public_path($path . '/' . $filename));
+                $new->image_header = $path . '/' . $filename;
+                // delete old image
+                if ($oldImageHeader && file_exists(public_path($oldImageHeader))) {
+                    unlink(public_path($oldImageHeader));
+                }
+            }
 			$new->project_id  = Input::get ( 'project_id' );
 			$new->title = Input::get ( 'title' );
 			$new->slug = Input::get ( 'slug' );
