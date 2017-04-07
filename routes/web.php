@@ -127,5 +127,5 @@ Route::get('/home/position/{slug}', ['uses' => 'HomeController@position', 'as' =
 Route::get('/home/ground/{slug}', 'HomeController@ground');
 Route::get('/home/utility/{slug}', 'HomeController@utility');
 Route::get('/home/pricePolicy/{slug}', 'HomeController@pricePolicy');
-Route::get('/home/new/{slug}', 'HomeController@new');
-Route::get('/home/news', 'HomeController@news');
+Route::get('/home/newpost/{slug}', 'HomeController@newpost');
+Route::get('/home/newlist', 'HomeController@newlist');
