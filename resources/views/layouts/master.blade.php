@@ -50,6 +50,11 @@
             background: none !important;
             padding: 0 !important;
         }
+		  .carousel-inner > .item > img,
+		  .carousel-inner > .item > a > img {
+		      width: 70%;
+		      margin: auto;
+		  }
     </style>
     <link rel='stylesheet' id='bootstrap-css'  href='../../wp-content/themes/ws247-ecohome/inc/bootstrap/css/bootstrap.min.css' type='text/css' media='all' />
     <link rel='stylesheet' id='theme-wp-style-css'  href='../../wp-content/themes/ws247-ecohome/style.css' type='text/css' media='all' />
@@ -84,13 +89,35 @@
 <div id="page" class="site">
     @include('layouts.partials.navbar')
 		    <div id="content" class="site-content container">
-		        <div class="w3-content w3-display-container">
-		  <img class="mySlides" id = "image_ads_01" style="width:100%; max-height: 500px; margin-bottom: 10px !important">
-		  <img class="mySlides" id = "image_ads_02" style="width:100% ; max-height: 500px;margin-bottom: 10px !important">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		    <!-- Indicators -->
+		    <ol class="carousel-indicators">
+		      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		      <li data-target="#myCarousel" data-slide-to="1"></li>
+		      
+		    </ol>
 		
-		  <button class="w3-button  w3-display-left" style="font-size: 40px;color: #fff !important;"onclick="plusDivs(-1)">&#10094;</button>
-		  <button class="w3-button  w3-display-right" style="font-size: 40px;color: #fff !important;"onclick="plusDivs(1)">&#10095;</button>
-		</div>
+		    <!-- Wrapper for slides -->
+		    <div class="carousel-inner" role="listbox">
+		      <div class="item active">
+		        <img id = "image_ads_01" style="width:100% ; max-height: 500px;margin-bottom: 10px !important"src="" alt="" width="660" height="345">
+		      </div>
+		
+		      <div class="item">
+		        <img id = "image_ads_02" style="width:100% ; max-height: 500px;margin-bottom: 10px !important"src="" alt="" width="660" height="345">
+		      </div>
+		    
+		
+		    <!-- Left and right controls -->
+		    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+		      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		      <span class="sr-only">Previous</span>
+		    </a>
+		    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+		      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		      <span class="sr-only">Next</span>
+		    </a>
+		  </div>
         <div class="row">
             <div id="primary" class="content-area col-sm-8 col-md-9">
                 <main id="main" class="site-main" role="main">
@@ -170,23 +197,7 @@
         error: function(data) {
         }
     });
-    var slideIndex = 1;
-    showDivs(slideIndex);
-
-    function plusDivs(n) {
-      showDivs(slideIndex += n);
-    }
-
-    function showDivs(n) {
-      var i;
-      var x = document.getElementsByClassName("mySlides");
-      if (n > x.length) {slideIndex = 1}    
-      if (n < 1) {slideIndex = x.length}
-      for (i = 0; i < x.length; i++) {
-         x[i].style.display = "none";  
-      }
-      x[slideIndex-1].style.display = "block";  
-    }
+    
 </script>
 
 </div>
