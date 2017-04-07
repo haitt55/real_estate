@@ -1,7 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
-<p style="text-align: center;"><strong>{{$ground->title}}</strong></p>
+<header class="entry-header">
+							<h1 class="entry-title">{{$ground->title}}</h1>
+						</header>
 {!!html_entity_decode($ground->content)!!}
 
 @endsection

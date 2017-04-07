@@ -76,10 +76,10 @@ class HomeController extends Controller
     public function newpost($slug)
     {
     	$news= News::where('slug', $slug)->firstOrFail();;
-    	
+    	$anotherNew = News::where('slug','!=', $slug)->get();
     	// show the view and pass the nerd to it
     	return view ( 'home.new' )->with ( [
-    			'news' => $news
+    			'news' => $news, 'anotherNew' => $anotherNew
     	] );
     }
     public function newlist()
