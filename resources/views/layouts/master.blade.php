@@ -51,15 +51,15 @@
             padding: 0 !important;
         }
     </style>
-    <link rel='stylesheet' id='bootstrap-css'  href='wp-content/themes/ws247-ecohome/inc/bootstrap/css/bootstrap.min.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='theme-wp-style-css'  href='wp-content/themes/ws247-ecohome/style.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='msl-main-css'  href='wp-content/plugins/master-slider/public/assets/css/masterslider.main.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='msl-custom-css'  href='wp-content/uploads/master-slider/custom.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='kc-general-css'  href='wp-content/plugins/kingcomposer/assets/frontend/css/kingcomposer.min.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='kc-animate-css'  href='wp-content/plugins/kingcomposer/assets/css/animate.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='kc-icon-1-css'  href='wp-content/plugins/kingcomposer/assets/css/icons.css' type='text/css' media='all' />
-    <script type='text/javascript' src='wp-includes/js/jquery/jquery.js'></script>
-    <script type='text/javascript' src='wp-includes/js/jquery/jquery-migrate.min.js'></script>
+    <link rel='stylesheet' id='bootstrap-css'  href='../../wp-content/themes/ws247-ecohome/inc/bootstrap/css/bootstrap.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='theme-wp-style-css'  href='../../wp-content/themes/ws247-ecohome/style.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='msl-main-css'  href='../../wp-content/plugins/master-slider/public/assets/css/masterslider.main.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='msl-custom-css'  href='../../wp-content/uploads/master-slider/custom.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='kc-general-css'  href='../../wp-content/plugins/kingcomposer/assets/frontend/css/kingcomposer.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='kc-animate-css'  href='../../wp-content/plugins/kingcomposer/assets/css/animate.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='kc-icon-1-css'  href='../../wp-content/plugins/kingcomposer/assets/css/icons.css' type='text/css' media='all' />
+    <script type='text/javascript' src='../../wp-includes/js/jquery/jquery.js'></script>
+    <script type='text/javascript' src='../../wp-includes/js/jquery/jquery-migrate.min.js'></script>
     <link rel='https://api.w.org/' href='index.php/wp-json/index.html' />
     <link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc0db0.php?rsd" />
     <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" />
@@ -67,15 +67,30 @@
     <link rel='shortlink' href='index.html' />
     <link rel="alternate" type="application/json+oembed" href="index.php/wp-json/oembed/1.0/embedd351.json?url=http%3A%2F%2Fduancocobay.net%2F" />
     <link rel="alternate" type="text/xml+oembed" href="index.php/wp-json/oembed/1.0/embedab43?url=http%3A%2F%2Fduancocobay.net%2F&amp;format=xml" />
-    <script type="text/javascript">var kc_script_data={ajax_url:"{{ url('/') }}/wp-admin/admin-ajax.php"}</script><script>var ms_grabbing_curosr = 'wp-content/plugins/master-slider/public/assets/css/common/grabbing.cur', ms_grab_curosr = 'wp-content/plugins/master-slider/public/assets/css/common/grab.cur';</script>
+    <script type="text/javascript">var kc_script_data={ajax_url:"{{ url('/') }}/wp-admin/admin-ajax.php"}</script><script>var ms_grabbing_curosr = '../../wp-content/plugins/master-slider/public/assets/css/common/grabbing.cur', ms_grab_curosr = 'wp-content/plugins/master-slider/public/assets/css/common/grab.cur';</script>
     <meta name="generator" content="MasterSlider 2.9.5 - Responsive Touch Image Slider | www.avt.li/msf" />
     <script type="text/javascript"></script><style type="text/css" id="kc-css-general">.kc-off-notice{display: inline-block !important;}.kc-container{max-width:1170px;}</style><style type="text/css" id="kc-css-render">@media only screen and (min-width:1000px) and (max-width:5000px){body.kc-css-system .kc-css-950286{width:100%;}}</style></head>
-
+	<script type='text/javascript' src='../../wp-content/themes/ws247-ecohome/inc/js/jquery-2.2.4.min.js'></script>
+	<script type='text/javascript' src='../../wp-content/themes/ws247-ecohome/inc/js/custom.js'></script>
+	<script type='text/javascript' src='../../wp-content/themes/ws247-ecohome/inc/bootstrap/js/bootstrap.min.js'></script>
+	<script type='text/javascript' src='../../wp-content/plugins/master-slider/public/assets/js/jquery.easing.min.js'></script>
+	<script type='text/javascript' src='../../wp-content/plugins/master-slider/public/assets/js/masterslider.min.js'></script>
+	<script type='text/javascript' src='../../wp-content/plugins/kingcomposer/assets/frontend/js/kingcomposer.min.js'></script>
+	<script type='text/javascript' src='../../wp-includes/js/wp-embed.min.js'></script>
+	<script type='text/javascript' src='../../wp-content/plugins/kingcomposer/includes/frontend/vendors/prettyPhoto/js/jquery.prettyPhoto.js'></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body class="home page-template page-template-page-template page-template-template-sidebar2 page-template-page-templatetemplate-sidebar2-php page page-id-25 kingcomposer kc-css-system _masterslider _ms_version_2.9.5">
 <div id="page" class="site">
     @include('layouts.partials.navbar')
-    <div id="content" class="site-content container">
-        @yield('home-slider')
+		    <div id="content" class="site-content container">
+		        <div class="w3-content w3-display-container">
+		  <img class="mySlides" id = "image_ads_01" style="width:100%; max-height: 500px; margin-bottom: 10px !important">
+		  <img class="mySlides" id = "image_ads_02" style="width:100% ; max-height: 500px;margin-bottom: 10px !important">
+		
+		  <button class="w3-button  w3-display-left" style="font-size: 40px;color: #fff !important;"onclick="plusDivs(-1)">&#10094;</button>
+		  <button class="w3-button  w3-display-right" style="font-size: 40px;color: #fff !important;"onclick="plusDivs(1)">&#10095;</button>
+		</div>
         <div class="row">
             <div id="primary" class="content-area col-sm-8 col-md-9">
                 <main id="main" class="site-main" role="main">
@@ -101,14 +116,7 @@
     @include('layouts.partials.footer')
 </div><!-- #page -->
 
-<script type='text/javascript' src='wp-content/themes/ws247-ecohome/inc/js/jquery-2.2.4.min.js'></script>
-<script type='text/javascript' src='wp-content/themes/ws247-ecohome/inc/js/custom.js'></script>
-<script type='text/javascript' src='wp-content/themes/ws247-ecohome/inc/bootstrap/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='wp-content/plugins/master-slider/public/assets/js/jquery.easing.min.js'></script>
-<script type='text/javascript' src='wp-content/plugins/master-slider/public/assets/js/masterslider.min.js'></script>
-<script type='text/javascript' src='wp-content/plugins/kingcomposer/assets/frontend/js/kingcomposer.min.js'></script>
-<script type='text/javascript' src='wp-includes/js/wp-embed.min.js'></script>
-<script type='text/javascript' src='wp-content/plugins/kingcomposer/includes/frontend/vendors/prettyPhoto/js/jquery.prettyPhoto.js'></script>
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -135,15 +143,50 @@
         },
         success: function(data) {
             if(data.code == 1){
-            	console.log(data.project.project_name);
             	
             	$("#titleProject").text(data.project.project_name) ;
+            	$("#image_header").attr("src", "../../" + data.project.project_image_header).css('max-height', '150px').css('width', '50%');
+//             	$(".entry-content").append(data.project.description);
+				$(".menu-item-position").find( "a" ).attr("href", "/home/position/" + data.project.position_slug);
+				$(".menu-item-ground").find( "a" ).attr("href", "/home/ground/" + data.project.ground_slug);
+				$(".menu-item-utility").find( "a" ).attr("href", "/home/utility/" + data.project.utility_slug);
+				$(".menu-item-pricePolicy").find( "a" ).attr("href", "/home/pricePolicy/" + data.project.pricePolicy_slug);
+				$(".menu-item-new").find( "a" ).attr("href", "/home/news");
+				
+				for (var i = 0; i < data.news.length; i++) 
+        				{
+        					html = '<div class="row">'
+        	                	+ '<div class="col-xs-4 col-sm-4">'
+                        		+ '<a href="/home/new/' + data.news[i].slug +'" class="thumbnail" title="'+ data.news[i].title+'"><img width="150" height="150" src="wp-content/uploads/2017/03/img20170307095615894-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a>'
+                    			+ '</div>'
+                    			+ '<div class="col-xs-8 col-sm-8">'
+                        		+ '<a href="/home/new/' +  data.news[i].slug +'"><b>'+ data.news[i].title+'</b></a>'
+                    			+ '</div>'
+                				+ '</div>';
+							$("#new_posts").append(html);
+        				}
             }	
         },
         error: function(data) {
-//                window.location.href = '{{ URL::route('admin.project.index') }}';
         }
     });
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+      showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      if (n > x.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = x.length}
+      for (i = 0; i < x.length; i++) {
+         x[i].style.display = "none";  
+      }
+      x[slideIndex-1].style.display = "block";  
+    }
 </script>
 
 </div>

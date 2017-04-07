@@ -1,17 +1,17 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    wellcome to co co bay
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<p style="text-align: center;"><strong>{{$project->page_title}}</strong></p>
+{!!html_entity_decode($project->description)!!}
+<input type = "hidden" id = "image_ads_val_01"value = "{{$project->project_image_ads}}"/>
+<input type = "hidden" id = "image_ads_val_02"value = "{{$project->project_image_ads1}}"/>
+<script type="text/javascript">
+$(document).ready(function () {
+	  //your code here
+	$("#image_ads_01").attr("src", $("#image_ads_val_01").val());
+	$("#image_ads_02").attr("src", $("#image_ads_val_02").val());
+	});
+    	
+    
+</script>
 @endsection

@@ -1,9 +1,9 @@
 /*
 Theme Name: ECOHOMES
 Theme URI: https://www.facebook.com/trung.240195
-Author: Trung Phạm
+Author: Trung Pháº¡m
 Author URI: https://www.facebook.com/trung.240195
-Description: Theme wordpress được xây dựng bởi Trung Phạm.
+Description: Theme wordpress Ä‘Æ°á»£c xĂ¢y dá»±ng bá»Ÿi Trung Pháº¡m.
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
@@ -83,7 +83,7 @@ img{
 .menu-main.navbar-default > div > ul ul > li:last-child{
     border-bottom:none;
 }
-/* CSS danh mục bài viết*/
+/* CSS danh má»¥c bĂ i viáº¿t*/
 header.page-header{
 	padding: 0;
 	margin-top: 0;
@@ -127,14 +127,14 @@ header.page-header .archive-description{
 	margin-top: 0;
 	line-height: 1.5;
 }
-/* CSS danh mục bài viết khóa học */
+/* CSS danh má»¥c bĂ i viáº¿t khĂ³a há»�c */
 .list-post .col-sm-4.col-md-3 .col-sm-12 > a.thumbnail{
 	margin-bottom: 10px;
 }
 .list-post .col-sm-4.col-md-3 .col-sm-12 > a > h2{
 	margin-bottom: 0;
 }
-/* CSS bài viết */
+/* CSS bĂ i viáº¿t */
 header.entry-header h1.entry-title{
 	margin-top: 0;
 	font-size: 20px;
@@ -246,7 +246,7 @@ blockquote.right {
 .page-y-kien > .col-sm-12 > .row > .col-md-3{
 	padding-right: 0;
 }
-/* CSS bài viết khóa học */
+/* CSS bĂ i viáº¿t khĂ³a há»�c */
 .entry-header > .col-sm-4{
 	padding-right: 0;
 }
@@ -257,7 +257,7 @@ p.gia{
 	color: #F44336;
     font-weight: bold;
 }
-/* CSS thư viện ảnh */
+/* CSS thÆ° viá»‡n áº£nh */
 .gallery-item {
 	display: inline-block;
 	margin: 0 0 10px;
@@ -298,7 +298,7 @@ p.gia{
 	padding: 0;
 	margin-bottom: 0;
 }
-/* CSS bình luận và bài viết liên quan */
+/* CSS bĂ¬nh luáº­n vĂ  bĂ i viáº¿t liĂªn quan */
 .post-lien-quan a{
 	text-decoration: none;
 }
@@ -380,7 +380,7 @@ p.gia{
 }
 .container .widget li {
     list-style-type: none;
-    background: url(../../../../2.bp.blogspot.com/-KcNjaC-rbiE/VzwetAkkuAI/AAAAAAAAAdU/p8gQzKRaJuo6EpdkZV2j2ELoHmLkfmMjQCLcB/s1600/icon_footer.png) no-repeat 0 13px;
+    background: url("https://2.bp.blogspot.com/-KcNjaC-rbiE/VzwetAkkuAI/AAAAAAAAAdU/p8gQzKRaJuo6EpdkZV2j2ELoHmLkfmMjQCLcB/s1600/icon_footer.png") no-repeat 0 13px;
     padding-left: 28px !important;
 	padding:10px 0px;
 	font-weight:bold;
@@ -434,7 +434,7 @@ footer#colophon .widget-footer .widget_nav_menu ul li a:before{
     content: "\e250";
     margin-right: 5px;
 }
-/* CSS hỗ trợ trực tuyến */
+/* CSS há»— trá»£ trá»±c tuyáº¿n */
 #cfacebook{
 	position:fixed;
 	bottom:0;
@@ -601,7 +601,7 @@ table tr.wpProQuiz_mextrixTr td{
 	}
 }
 @media screen and (max-width: 991px) {
-	/* CSS bài viết liên quan */
+	/* CSS bĂ i viáº¿t liĂªn quan */
 	.post-lien-quan .col-xs-6:nth-child(2n+1){
 		clear: both;
 	}
@@ -615,15 +615,15 @@ table tr.wpProQuiz_mextrixTr td{
 	.widget_new_posts .row .col-xs-4 img{
 		height: 110px;
 	}
-	/* CSS bài viết khóa học */
+	/* CSS bĂ i viáº¿t khĂ³a há»�c */
 	article.khoahoc .col-xs-8.col-sm-8 .col-sm-4.share, article.khoahoc .col-xs-8.col-sm-8 .col-sm-4.text-left{
 		margin-bottom: 10px;
 	}
-	/* CSS bài viết liên quan */
+	/* CSS bĂ i viáº¿t liĂªn quan */
 	.post-lien-quan img{
 		height: 250px;
 	}
-	/* CSS thư viện ảnh */
+	/* CSS thÆ° viá»‡n áº£nh */
 	.gallery-item {
 		width: 33.33% !important;
 	}
@@ -637,11 +637,11 @@ table tr.wpProQuiz_mextrixTr td{
 	.widget_new_posts .row .col-xs-4 img{
 		height: 90px;
 	}
-	/* CSS bài viết liên quan */
+	/* CSS bĂ i viáº¿t liĂªn quan */
 	.post-lien-quan img{
 		height: 130px;
 	}
-	/* CSS thư viện ảnh */
+	/* CSS thÆ° viá»‡n áº£nh */
 	.gallery-item {
 		width: 50% !important;
 	}

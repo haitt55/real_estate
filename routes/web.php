@@ -114,5 +114,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     });
 });
 // Web
-Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home.index']);
+Route::get('/home', ['uses' => 'HomeController@index', 'as' => 'home.index']);
 Route::get('/home/getCurrentProject', ['uses' => 'HomeController@getCurrentProject', 'as' => 'home.getCurrentProject']);
+
+Route::get('/home/position/{slug}', ['uses' => 'HomeController@position', 'as' => 'position']);
+Route::get('/home/ground/{slug}', 'HomeController@ground');
+Route::get('/home/utility/{slug}', 'HomeController@utility');
+Route::get('/home/pricePolicy/{slug}', 'HomeController@pricePolicy');
+Route::get('/home/new/{slug}', 'HomeController@new');
+Route::get('/home/news', 'HomeController@news');
