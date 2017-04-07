@@ -28,6 +28,9 @@
             <li>
                 <a href="{{ route('admin.image.index') }}"><i class="fa fa-image fa-fw"></i> Kho ảnh</a>
             </li>
+            <li>
+                <a href="{{ route('admin.appSettings.general') }}"><i class="fa fa-wrench fa-fw"></i> Thông tin chung</a>
+            </li>
         </ul>
     </div>
     <!-- /.sidebar-collapse -->
