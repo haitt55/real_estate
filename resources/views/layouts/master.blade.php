@@ -132,7 +132,7 @@
         });
     });
     $.ajax({
-        url : '/home/getCurrentProject',
+        url : '{{ route('home.getCurrentProject') }}',
         type : 'Get',
         dataType : 'json',
         beforeSend: function (xhr) {
@@ -147,20 +147,20 @@
             	$("#titleProject").text(data.project.project_name) ;
             	$("#image_header").attr("src", "../../" + data.project.project_image_header).css('max-height', '150px').css('width', '50%');
 //             	$(".entry-content").append(data.project.description);
-				$(".menu-item-position").find( "a" ).attr("href", "/home/position/" + data.project.position_slug);
-				$(".menu-item-ground").find( "a" ).attr("href", "/home/ground/" + data.project.ground_slug);
-				$(".menu-item-utility").find( "a" ).attr("href", "/home/utility/" + data.project.utility_slug);
-				$(".menu-item-pricePolicy").find( "a" ).attr("href", "/home/pricePolicy/" + data.project.pricePolicy_slug);
-				$(".menu-item-new").find( "a" ).attr("href", "/home/newlist");
+				$(".menu-item-position").find( "a" ).attr("href", "/position/" + data.project.position_slug);
+				$(".menu-item-ground").find( "a" ).attr("href", "/ground/" + data.project.ground_slug);
+				$(".menu-item-utility").find( "a" ).attr("href", "/utility/" + data.project.utility_slug);
+				$(".menu-item-pricePolicy").find( "a" ).attr("href", "/pricePolicy/" + data.project.pricePolicy_slug);
+				$(".menu-item-new").find( "a" ).attr("href", "/newlist");
 				
 				for (var i = 0; i < data.news.length; i++) 
         				{
         					html = '<div class="row">'
         	                	+ '<div class="col-xs-4 col-sm-4">'
-                        		+ '<a href="/home/newpost/' + data.news[i].slug +'" class="thumbnail" title="'+ data.news[i].title+'"><img width="150" height="150" src="wp-content/uploads/2017/03/img20170307095615894-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a>'
+                        		+ '<a href="/newpost/' + data.news[i].slug +'" class="thumbnail" title="'+ data.news[i].title+'"><img width="150" height="150" src="{{ asset('wp-content/uploads/2017/03/img20170307095615894-150x150.jpg') }}" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a>'
                     			+ '</div>'
                     			+ '<div class="col-xs-8 col-sm-8">'
-                        		+ '<a href="/home/newpost/' +  data.news[i].slug +'"><b>'+ data.news[i].title+'</b></a>'
+                        		+ '<a href="/newpost/' +  data.news[i].slug +'"><b>'+ data.news[i].title+'</b></a>'
                     			+ '</div>'
                 				+ '</div>';
 							$("#new_posts").append(html);

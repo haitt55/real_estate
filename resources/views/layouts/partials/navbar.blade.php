@@ -2,13 +2,13 @@
     <div class="row">
         <div class="site-branding">
             <div class="logo">
-                <a href="/home">
+                <a href="{{ route('home.index') }}">
                     <img id="image_header"  class="center-block img-responsive">
                 </a>
             </div>
         </div><!-- .site-branding -->
         <nav class="navbar navbar-default menu-main navbar-static-top visible-lg" role="navigation">
-            <div id="main-menu-desktop" class="menu-main-menu-container"><ul id="menu-main-menu" class="nav navbar-nav"><li id="menu-item-5" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-5"><a href="/home">Trang chủ</a></li>
+            <div id="main-menu-desktop" class="menu-main-menu-container"><ul id="menu-main-menu" class="nav navbar-nav"><li id="menu-item-5" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-5"><a href="{{ route('home.index') }}">Trang chủ</a></li>
                     <li id="menu-item-position" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-position"><a href="">Vị trí</a></li>
                     <li id="menu-item-ground" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-ground"><a href="">Mặt bằng</a></li>
                     <li id="menu-item-utility" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-utility"><a href="">Tiện ích</a></li>
