@@ -15,27 +15,27 @@
 
 <!-- This site is optimized with the Yoast SEO plugin v4.4 - https://yoast.com/wordpress/plugins/seo/ -->
 <meta name="description"
-	content="Hỗ trợ lãi suất 0%/18 tháng cho khoản vay tối đa 60% GTCH Cocobay Ocean – Spa Resort, Cơ hội bốc thăm trúng thưởng cực lớn , cực đã : 1 Oto Honda City , 1 SH Vietnam , 2 Vespa , 3 Honda Lead và 7 Chiếc iPhones 7 Apple" />
+	content="@yield('description')" />
 <meta name="robots" content="noodp" />
 <link rel="canonical" href="index.html" />
 <meta property="og:locale" content="vi_VN" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="@yield('page_title')" />
 <meta property="og:description"
-	content="Hỗ trợ lãi suất 0%/18 tháng cho khoản vay tối đa 60% GTCH Cocobay Ocean – Spa Resort, Cơ hội bốc thăm trúng thưởng cực lớn , cực đã : 1 Oto Honda City , 1 SH Vietnam , 2 Vespa , 3 Honda Lead và 7 Chiếc iPhones 7 Apple" />
+	content="@yield('description')" />
 <meta property="og:url" content="index.html" />
 <meta property="og:site_name"
-	content="Cocobay Đà Nẵng 300tr/căn - Đầu tư sinh lời 12%/ năm" />
+	content="@yield('title')" />
 <meta property="og:image"
-	content="wp-content/uploads/2017/02/vi-tri-cocobay-ocean-spa-resort2.png" />
+	content="@yield('images')" />
 <meta property="og:image:width" content="1024" />
 <meta property="og:image:height" content="512" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:description"
-	content="Hỗ trợ lãi suất 0%/18 tháng cho khoản vay tối đa 60% GTCH Cocobay Ocean – Spa Resort, Cơ hội bốc thăm trúng thưởng cực lớn , cực đã : 1 Oto Honda City , 1 SH Vietnam , 2 Vespa , 3 Honda Lead và 7 Chiếc iPhones 7 Apple" />
-<meta name="twitter:title" content="@yield('twitter_title')" />
+	content="@yield('description')" />
+<meta name="twitter:title" content="@yield('title')" />
 <meta name="twitter:image"
-	content="wp-content/uploads/2017/02/vi-tri-cocobay-ocean-spa-resort2.png" />
+	content="@yield('images')" />
 <script type='application/ld+json'>{"@context":"http:\/\/schema.org","@type":"WebSite","@id":"#website","url":"http:\/\/duancocobay.net\/","name":"Cocobay \u0110\u00e0 N\u1eb5ng 300tr\/c\u0103n - \u0110\u1ea7u t\u01b0 sinh l\u1eddi 12%\/ n\u0103m","potentialAction":{"@type":"SearchAction","target":"http:\/\/duancocobay.net\/?s={search_term_string}","query-input":"required name=search_term_string"}}</script>
 <!-- / Yoast SEO plugin. -->
 
@@ -272,12 +272,27 @@ img.wp-smiley, img.emoji {
             	
             	$("#image_header").attr("src", "../../" + data.project.project_image_header).css('max-height', '150px').css('width', '50%');
 //             	$(".entry-content").append(data.project.description);
-				$(".menu-item-position").find( "a" ).attr("href", "/position/" + data.project.position_slug);
-				$(".menu-item-ground").find( "a" ).attr("href", "/ground/" + data.project.ground_slug);
-				$(".menu-item-utility").find( "a" ).attr("href", "/utility/" + data.project.utility_slug);
-				$(".menu-item-pricePolicy").find( "a" ).attr("href", "/pricePolicy/" + data.project.pricePolicy_slug);
+				if(data.project.position_slug != null){
+					$(".menu-item-position").find( "a" ).attr("href", "/position/" + data.project.position_slug);
+				} else {
+					$(".menu-item-position").find( "a" ).attr("href", "/position/default");	
+				}
+				if(data.project.ground_slug != null){
+					$(".menu-item-ground").find( "a" ).attr("href", "/ground/" + data.project.ground_slug);
+				} else {
+					$(".menu-item-ground").find( "a" ).attr("href", "/ground/default");	
+					}
+				if(data.project.utility_slug != null){
+					$(".menu-item-utility").find( "a" ).attr("href", "/utility/" + data.project.utility_slug);
+				} else {
+					$(".menu-item-utility").find( "a" ).attr("href", "/utility/default");	
+					}
+				if(data.project.pricePolicy_slug != null){
+					$(".menu-item-pricePolicy").find( "a" ).attr("href", "/pricePolicy/" + data.project.pricePolicy_slug);
+				} else {
+					$(".menu-item-pricePolicy").find( "a" ).attr("href", "/pricePolicy/default");	
+					}
 				$(".menu-item-new").find( "a" ).attr("href", "/newlist");
-				
 				for (var i = 0; i < data.news.length; i++) 
         				{
         					html = '<div class="row">'
@@ -293,8 +308,8 @@ img.wp-smiley, img.emoji {
 
 				for(var i = 0; i < 4; i++)
 				{
-					console.log(data.appSetting[i].key);
-					$("#info").append(data.appSetting[i].key + ': ' +data.appSetting[i].value + '<br>');
+					var info = '<span style="color: #ffffff;font-weight: bold;padding-left: 28px !important;padding: 10px 0px;">'+data.appSetting[i].key + ': ' +data.appSetting[i].value + '</span><br>';
+					$("#info").append(info);
 					}
             }	
         },

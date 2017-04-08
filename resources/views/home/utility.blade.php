@@ -1,6 +1,16 @@
 @extends('layouts.master')
+@section('title')
+    {{$utility->title}}
+@stop
 
+@section('description')
+    {{$utility->meta_description}}
+@stop
 @section('content')
+@if($utility->id == null)
+	
+	<span style="color: #4c5fcb;font-weight: bold;padding-left: 28px !important;padding: 10px 0px;">Không có bài viết về vị trí</span>
+@else 
 <header class="entry-header">
 	<h1 class="entry-title">{{$utility->title}}</h1>
 </header>
@@ -10,4 +20,5 @@
 	$(".sidebar").hide();
 	});
 </script>
+@endif
 @endsection

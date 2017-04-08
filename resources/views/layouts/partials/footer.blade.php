@@ -2,7 +2,8 @@
     <div class="container">
         <div class="row widget-footer">
             <div class="col-sm-6 footer-1">
-                <section id="text-3" class="widget widget_text"><h3 class="widget-title">CAM KẾT BÁN HÀNG</h3>			<div class="textwidget"><ul>
+                <section id="text-3" class="widget widget_text"><h3 class="widget-title">CAM KẾT BÁN HÀNG</h3>			<div class="textwidget">
+                <ul>
                             <li ><span style="color: #ffffff;">Cung cấp thông tin nhanh chóng  &amp; chính xác nhất từ chủ đầu tư</span></li>
                             <li><span style="color: #ffffff;">Hỗ Trợ Quý khách lựa chọn căn hộ vị trí đẹp nhất</span></li>
                             <li><span style="color: #ffffff;">Hỗ trợ tư vấn trực tiếp chuyên sâu</span></li>

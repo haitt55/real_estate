@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('title')
+    Tin Tức
+@stop
 
 @section('content')
 <style type="text/css">

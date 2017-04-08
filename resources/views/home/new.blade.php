@@ -1,5 +1,11 @@
 @extends('layouts.master')
+@section('title')
+    {{$new->title}}
+@stop
 
+@section('description')
+    {{$new->meta_description}}
+@stop
 @section('content')
 <header class="entry-header">
 	<h1 class="entry-title">{{$news->title}}</h1>

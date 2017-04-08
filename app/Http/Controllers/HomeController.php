@@ -40,8 +40,11 @@ class HomeController extends Controller
     }
     public function position($slug)
     {
+    	if($slug == 'default'){
+    		$position = new Position();
+    	}else {
     	$position = Position::where('slug', $slug)->firstOrFail();
-    	
+    	}
     	// show the view and pass the nerd to it
     	return view ( 'home.position' )->with ( [
     			'position' => $position
@@ -49,8 +52,11 @@ class HomeController extends Controller
     }
     public function ground($slug)
     {
+    	if($slug == 'default'){
+    		$ground= new Grounds();
+    	}else {
     	$ground= Grounds::where('slug', $slug)->firstOrFail();
-    	
+    	}
     	// show the view and pass the nerd to it
     	return view ( 'home.ground' )->with ( [
     			'ground' => $ground
@@ -58,8 +64,11 @@ class HomeController extends Controller
     }
     public function utility($slug)
     {
+    	if($slug == 'default'){
+    		$utility= new Utilities();
+    	}else {
     	$utility= Utilities::where('slug', $slug)->firstOrFail();
-    	
+    	}
     	// show the view and pass the nerd to it
     	return view ( 'home.utility' )->with ( [
     			'utility' => $utility
@@ -67,8 +76,11 @@ class HomeController extends Controller
     }
     public function pricePolicy($slug)
     {
+    	if($slug == 'default'){
+    		$pricePolicy= new PricesPolicies();
+    	}else {
     	$pricePolicy= PricesPolicies::where('slug', $slug)->firstOrFail();
-    	
+    	}
     	// show the view and pass the nerd to it
     	return view ( 'home.pricePolicy' )->with ( [
     			'pricePolicy' => $pricePolicy
