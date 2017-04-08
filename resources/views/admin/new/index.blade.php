@@ -68,6 +68,7 @@
                                         <th>Tên Tin Tức</th>
                                         <th>Trạng thái</th>
                                         <th>Chỉnh sửa lần cuối</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -123,7 +124,7 @@
                 responsive: true,
                 "order": [[ 1, "desc" ]],
                 "aoColumns": [
-                    null, null,
+                    null, null, null,
                     { bSortable: false }
                 ]
             });

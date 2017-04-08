@@ -42,6 +42,7 @@
                                         <th>Tên Vị trí</th>
                                         <th>Tên dự án</th>
                                         <th>Chỉnh sửa lần cuối</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -90,7 +91,7 @@
                 responsive: true,
                 "order": [[ 1, "desc" ]],
                 "aoColumns": [
-                    null, null,
+                    null, null, null,
                     { bSortable: false }
                 ]
             });
