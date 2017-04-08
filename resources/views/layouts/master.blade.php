@@ -225,6 +225,12 @@ img.wp-smiley, img.emoji {
                 				+ '</div>';
 							$("#new_posts").append(html);
         				}
+
+				for(var i = 0; i < 4; i++)
+				{
+					console.log(data.appSetting[i].key);
+					$("#info").append(data.appSetting[i].key + ': ' +data.appSetting[i].value + '<br>');
+					}
             }	
         },
         error: function(data) {

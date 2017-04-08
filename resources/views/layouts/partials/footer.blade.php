@@ -13,18 +13,14 @@
                         </ul></div>
                 </section>									</div>
             <div class="col-sm-6 footer-2">
-                <section id="text-4" class="widget widget_text"><h3 class="widget-title">LIÊN HỆ PHÒNG BÁN HÀNG</h3>			<div class="textwidget"><li><span style="color: #ffffff;">THÔNG TIN LIÊN HỆ<br>
-Phòng kinh doanh phát triển dự án Cocobay Đà Nẵng<br>
-Hotline 1 : 0941 757 333 (Hà nội)<br>
-Hotine 2 : 0979 98 1313 (TP. Hồ Chí Minh)<br>
-Địa chỉ : VĂN PHÒNG HÀ NỘI<br>
-614 Đường Lạc Long Quân, phường Nhật Tân Quận Tây Hồ, Hà Nội,
-<br>VĂN PHÒNG HỒ CHÍ MINH<br>
-Tòa nhà Pearl Plaza, 561 Điện Biên Phủ, Phường 25, Quận Bình Thạnh, Hồ Chí Minh<br>
-E-mail: phamgialong0@gmail.com<br>
-Website: http://duancocobay.net<br>
-Liên hệ trực tiếp Chủ đầu tư<br></div>
-                </section>									</div>
+                <section id="text-4" class="widget widget_text"><h3 class="widget-title">LIÊN HỆ PHÒNG BÁN HÀNG</h3>			
+                <div class="textwidget" id ="info">
+                <li><span style="color: #ffffff;">THÔNG TIN LIÊN HỆ<br>
+                
+
+				</div>
+                </section>									
+                </div>
             <!--<div class="col-sm-3 footer-3">
                                 </div>
             <div class="col-sm-3 footer-4">

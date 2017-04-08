@@ -11,6 +11,7 @@ use App\Grounds;
 use App\Utilities;
 use App\PricesPolicies;
 use App\News;
+use App\AppSetting;
 
 class HomeController extends Controller
 {
@@ -114,9 +115,9 @@ class HomeController extends Controller
     		->orderBy('created_at', 'desc')
     		->limit(3)
     		->get();
-    		
+    		$appSetting = AppSetting::all();
     			if($project!= null){
-    				return response()->json(['code' => 1, 'project' => $project, 'news' => $news
+    				return response()->json(['code' => 1, 'project' => $project, 'news' => $news, 'appSetting' => $appSetting
     				]);
     			}
     	} catch (Exception $ex) {
