@@ -37,7 +37,7 @@ img{
     font-family: 'Roboto';
     font-weight: 700;
     font-size: 25px;
-    color: #357D02;
+    color: #9b59b6;
     text-transform: uppercase;
 }
 #home-slider{
@@ -45,8 +45,8 @@ img{
 }
 /* CSS menu main */
 .menu-main.navbar-default {
-    background-color: #357D02;
-    border-color: #357D02;
+    background-color: #9b59b6;
+    border-color: #9b59b6;
     margin-bottom: 0;
 }
 .menu-main.navbar-default button{
@@ -94,7 +94,7 @@ header.page-header{
 header.page-header > h1.page-title{
 	background: #ffffff;
     padding: 0 5px;
-    color: #357D02;
+    color: #9b59b6;
     font-size: 20px;
     font-weight: bold;
     text-transform: uppercase;
@@ -139,7 +139,7 @@ header.entry-header h1.entry-title{
 	margin-top: 0;
 	font-size: 20px;
 	font-weight: bold;
-	color: #357D02;
+	color: #9b59b6;
 }
 header.entry-header > h1.entry-title:before{
 	font-family: 'Glyphicons Halflings';
@@ -183,7 +183,7 @@ header.entry-header > h1.entry-title:before{
 .title-noi-dung > span{
 	background: #ffffff;
 	padding: 0 5px;
-	color: #357D02;
+	color: #9b59b6;
 	font-size: 18px;
 	font-weight: bold;
 	text-transform: uppercase;
@@ -316,7 +316,7 @@ p.gia{
 /* CSS sidebar */
 .sidebar .widget-title{
 	font-size: 20px;
-    background: #357D02;
+    background: #9b59b6;
     color: #fff;
     font-weight: bold;
     padding: 5px 10px;
@@ -387,7 +387,7 @@ p.gia{
 }
 
 footer#colophon{
-	background: #357D02;
+	background: #9b59b6;
 	padding: 20px 0;
 }
 footer#colophon .widget-footer{
@@ -487,9 +487,9 @@ ul.wpProQuiz_questionList.ui-sortable, ul.wpProQuiz_questionList{
 	overflow:auto;
 }
 .wpProQuiz_button, .wpProQuiz_button:hover {
-    background: #357D02 !important;
-    border: 1px solid #357D02 !important;
-    box-shadow: 1px 1px 1px #357D02 !important;
+    background: #9b59b6 !important;
+    border: 1px solid #9b59b6 !important;
+    box-shadow: 1px 1px 1px #9b59b6 !important;
 }
 ul.wpProQuiz_questionList[data-type="matrix_sort_answer"] .wpProQuiz_questionListItem{
 	width: 20%;

@@ -48,7 +48,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-4"><label for="name">Mô tả</label></div>
-                                        <div class="col-md-8" style="border: groove"><p class="form-control-static">{!! $project->description !!}</p></div>
+                                        <div class="col-md-8" style="overflow-y: scroll">{!! $project->description !!}</div>
                                     </div>
                                 </div>
                             </form>
@@ -56,6 +56,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
+                            <a href="{{ route('admin.project.edit', $project->id) }}" class="btn btn-info"><i class="fa fa-edit"></i> Chỉnh sửa</a>
                             <button style="@if($project->is_current)pointer-events:none; opacity: 0.6; @endif" class="btn btn-danger" id="btn-delete" data-link="{{ route('admin.project.destroy', $project->id) }}"><i class="fa fa-remove"></i> Xóa dự án</button>
                         </div>
                     </div>
