@@ -12,6 +12,7 @@ use App\Utilities;
 use App\PricesPolicies;
 use App\News;
 use App\AppSetting;
+use App\Customer;
 
 class HomeController extends Controller
 {
@@ -20,6 +21,7 @@ class HomeController extends Controller
      *
      * @return void
      */
+	public $cookie;
     public function __construct()
     {
 //        $this->middleware('auth');
@@ -133,6 +135,28 @@ class HomeController extends Controller
     				]);
     			}
     	} catch (Exception $ex) {
+    		event(new ExceptionOccurred($ex));
+    		
+    		return response()->json([
+    				'error' => [
+    						'message' => $ex->getMessage(),
+    				]
+    		]);
+    	}
+    }
+    public function addCustomer(Request $request){
+    	try{
+    	$customer = new Customer();
+    	$customer->full_name  = $request->input('full_name');
+    	$customer->email = $request->input('email');
+    	$customer->phone_number = $request->input('phone_number');
+    	$customer->message = $request->input('message');
+    	$customer->project_id = $request->input('project_id');
+    	
+    	
+    	$customer->save ();
+    	return response()-> json(['code' => 1]);
+    	}catch (Exception $ex) {
     		event(new ExceptionOccurred($ex));
     		
     		return response()->json([

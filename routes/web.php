@@ -51,7 +51,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         ]]);
         
         Route::resource('customer', 'CustomerController', ['names' => [
-            'index' => 'admin.customer.index'
+            'index' => 'admin.customer.index',
+        	'store' => 'admin.customer.store'
+        		
         ]]);
         Route::post('/customer/changeStatus',['uses' => 'CustomerController@changeStatus', 'as' => 'admin.customer.changeStatus']);
         Route::resource('image', 'ImageController', ['names' => [
@@ -131,3 +133,4 @@ Route::get('/utility/{slug}', ['uses' => 'HomeController@utility', 'as' => 'util
 Route::get('/pricePolicy/{slug}', ['uses' => 'HomeController@pricePolicy', 'as' => 'pricePolicy.index']);
 Route::get('/newpost/{slug}', ['uses' => 'HomeController@newpost', 'as' => 'newpost.index']);
 Route::get('/newlist', ['uses' => 'HomeController@newlist', 'as' => 'newlist.index']);
+Route::post('/addCustomer', ['uses' => 'HomeController@addCustomer', 'as' => 'addCustomer']);

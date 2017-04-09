@@ -143,6 +143,7 @@ img.wp-smiley, img.emoji {
 <script type='text/javascript'
 	src='../../wp-content/plugins/kingcomposer/includes/frontend/vendors/prettyPhoto/js/jquery.prettyPhoto.js'></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body
 	class="home page-template page-template-page-template page-template-template-sidebar2 page-template-page-templatetemplate-sidebar2-php page page-id-25 kingcomposer kc-css-system _masterslider _ms_version_2.9.5">
@@ -159,8 +160,10 @@ img.wp-smiley, img.emoji {
 						<!-- .entry-header -->
 
 						<div class="entry-content">@yield('content')</div>
+						
 						<!-- .entry-content -->
 					</article>
+					
 					<!-- #post-## --> </main>
 					<!-- #main -->
 				</div>
@@ -316,6 +319,7 @@ img.wp-smiley, img.emoji {
         error: function(data) {
         }
     });
+    
     
 </script>
 
