@@ -57,36 +57,36 @@
 	<div class="modal" id="myModal" role="dialog" style="display: none">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
-				<div class="modal-header">
+				<div class="modal-header" style="border-bottom: 0px">
 					<button type="button" id="headerCloseButton" class="close"
 						data-dismiss="modal">&times;</button>
-					<h4 class="modal-title" style="text-align: center; line-height: 3.428571;">THÔNG TIN KHÁCH HÀNG</h4>
+					<h1 class="modal-title" style="text-align: center; line-height: 1.428571;">LIÊN HỆ</h1>
+					<h2 class="modal-title" style="text-align: center; line-height: 1.428571;">Đăng kí nhận thông tin dự án.</h2>
 				</div>
 				<div class="modal-body">
 					<form >
 							<div class="form-group" style="margin-left: 20%">
-							<label>Họ và tên: </label> <input type="text" name="full_name"
-								id="full_name" class="form-control" style="width: 70%;" />
+							 <input type="text" name="full_name"
+								id="full_name" class="form-control" style="width: 70%;" placeholder="Họ tên"/>
 						</div>
-						<input id ="project_id" name="project_id" type="hidden" value = "{{$project->id}}">
+						<input id ="project_id" name="project_id" type="hidden" value = "{{$project->id}}" >
 						<div class="form-group" style="margin-left: 20%">
-							<label>Email: </label> <input type="email" name="email"
-								id="email" class="form-control" style="width: 70%;"/>
-						</div>
-						<div class="form-group" style="margin-left: 20%">
-							<label>Số điện thoại: </label> <input type="number"
-								name="phone_number" id="phone_number" class="form-control" style="width: 70%;"/>
+							<input type="email" name="email"
+								id="email" class="form-control" style="width: 70%;" placeholder="Email"/>
 						</div>
 						<div class="form-group" style="margin-left: 20%">
-							<label>Tin Nhắn: </label>
+							<input type="number"
+								name="phone_number" id="phone_number" class="form-control" style="width: 70%;" placeholder="Số điện thoại"/>
+						</div>
+						<div class="form-group" style="margin-left: 20%">
 							<textarea type="text" name="message" id="message"
-								class="form-control" style="width: 70%;"></textarea>
+								class="form-control" style="width: 70%;" placeholder="Tin nhắn"></textarea>
 						</div>
 						
 					</form>	
 				</div>
-				<div class="modal-footer">
-					<button type="button" style="margin-right: 40% ;background-color: #337ab7 !important"id="sendButton" class="btn btn-default"><span style="color: #ffffff;font-weight: bold;">Gửi thông tin</span></button>
+				<div class="modal-footer" style="border-top: 0px">
+					<button type="button" style="margin-right: 24% ;background-color: #337ab7 !important;width: 56%;height: 50px;" id="sendButton" class="btn btn-default"><span style="color: #ffffff;font-weight: bold;">Gửi thông tin</span></button>
 <!-- 					<button type="button"  id="closeButton" class="btn btn-default" -->
 <!-- 						data-dismiss="modal">Đóng</button> -->
 				</div>
