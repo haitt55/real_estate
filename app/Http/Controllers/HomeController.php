@@ -25,6 +25,8 @@ class HomeController extends Controller
     public function __construct()
     {
 //        $this->middleware('auth');
+        $this->currentProject = DB::table('projects')->where('is_current', '=', 1)
+            ->first();
     }
 
     /**
@@ -49,7 +51,8 @@ class HomeController extends Controller
     	}
     	// show the view and pass the nerd to it
     	return view ( 'home.position' )->with ( [
-    			'position' => $position
+    			'position' => $position,
+                'project' => $this->currentProject
     	] );
     }
     public function ground($slug)
@@ -61,7 +64,8 @@ class HomeController extends Controller
     	}
     	// show the view and pass the nerd to it
     	return view ( 'home.ground' )->with ( [
-    			'ground' => $ground
+    			'ground' => $ground,
+            'project' => $this->currentProject
     	] );
     }
     public function utility($slug)
@@ -73,7 +77,8 @@ class HomeController extends Controller
     	}
     	// show the view and pass the nerd to it
     	return view ( 'home.utility' )->with ( [
-    			'utility' => $utility
+    			'utility' => $utility,
+            'project' => $this->currentProject
     	] );
     }
     public function pricePolicy($slug)
@@ -85,7 +90,8 @@ class HomeController extends Controller
     	}
     	// show the view and pass the nerd to it
     	return view ( 'home.pricePolicy' )->with ( [
-    			'pricePolicy' => $pricePolicy
+    			'pricePolicy' => $pricePolicy,
+            'project' => $this->currentProject
     	] );
     }
     public function newpost($slug)
@@ -94,7 +100,8 @@ class HomeController extends Controller
     	$anotherNew = News::where('slug','!=', $slug)->get();
     	// show the view and pass the nerd to it
     	return view ( 'home.new' )->with ( [
-    			'news' => $news, 'anotherNew' => $anotherNew
+    			'news' => $news, 'anotherNew' => $anotherNew,
+            'project' => $this->currentProject
     	] );
     }
     public function newlist()
@@ -107,7 +114,8 @@ class HomeController extends Controller
     	
     	// show the view and pass the nerd to it
     	return view ( 'home.news' )->with ( [
-    			'news' => $news
+    			'news' => $news,
+            'project' => $this->currentProject
     	] );
     }
     public function getCurrentProject()
