@@ -60,33 +60,33 @@
 				<div class="modal-header">
 					<button type="button" id="headerCloseButton" class="close"
 						data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Thông tin khách hàng</h4>
+					<h4 class="modal-title" style="text-align: center; line-height: 3.428571;">THÔNG TIN KHÁCH HÀNG</h4>
 				</div>
 				<div class="modal-body">
 					<form >
-							<div class="form-group">
+							<div class="form-group" style="margin-left: 20%">
 							<label>Họ và tên: </label> <input type="text" name="full_name"
-								id="full_name" class="form-control" />
+								id="full_name" class="form-control" style="width: 70%;" />
 						</div>
 						<input id ="project_id" name="project_id" type="hidden" value = "{{$project->id}}">
-						<div class="form-group">
+						<div class="form-group" style="margin-left: 20%">
 							<label>Email: </label> <input type="email" name="email"
-								id="email" class="form-control" />
+								id="email" class="form-control" style="width: 70%;"/>
 						</div>
-						<div class="form-group">
+						<div class="form-group" style="margin-left: 20%">
 							<label>Số điện thoại: </label> <input type="number"
-								name="phone_number" id="phone_number" class="form-control" />
+								name="phone_number" id="phone_number" class="form-control" style="width: 70%;"/>
 						</div>
-						<div class="form-group">
+						<div class="form-group" style="margin-left: 20%">
 							<label>Tin Nhắn: </label>
 							<textarea type="text" name="message" id="message"
-								class="form-control"></textarea>
+								class="form-control" style="width: 70%;"></textarea>
 						</div>
 						
 					</form>	
 				</div>
 				<div class="modal-footer">
-					<button type="button" style="margin-right: 40% ;background-color: blue !important"id="sendButton" class="btn btn-default"><span style="color: #ffffff;font-weight: bold;">Gửi thông tin</span></button>
+					<button type="button" style="margin-right: 40% ;background-color: #337ab7 !important"id="sendButton" class="btn btn-default"><span style="color: #ffffff;font-weight: bold;">Gửi thông tin</span></button>
 <!-- 					<button type="button"  id="closeButton" class="btn btn-default" -->
 <!-- 						data-dismiss="modal">Đóng</button> -->
 				</div>

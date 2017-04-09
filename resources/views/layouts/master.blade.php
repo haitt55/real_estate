@@ -312,7 +312,7 @@ img.wp-smiley, img.emoji {
 
 				for(var i = 0; i < 4; i++)
 				{
-					var info = '<span style="color: #ffffff;font-weight: bold;padding-left: 28px !important;padding: 10px 0px;">'+data.appSetting[i].key + ': ' +data.appSetting[i].value + '</span><br>';
+					var info = '<li><span style="color: #ffffff;font-weight: bold;padding-left: 28px !important;padding: 10px 0px;">'+data.appSetting[i].key + ': ' +data.appSetting[i].value + '</span></li>';
 					$("#info").append(info);
 					}
             }	

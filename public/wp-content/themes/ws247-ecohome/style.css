@@ -54,7 +54,7 @@ img{
 }
 .menu-main.navbar-default ul li{
 	list-style: none;
-	border-right:1px #307002 solid;
+	border-right:1px #8e44ad solid;
 }
 .menu-main.navbar-default ul li a{
 	color: #fff;
@@ -64,7 +64,7 @@ img{
 	color: #333;
 }
 .menu-main.navbar-default ul li a:hover, .menu-main.navbar-default ul li a:focus{
-	background: #307002;
+	background: #8e44ad;
 	color: #fff;
 	text-decoration: none;
 }
@@ -401,7 +401,7 @@ footer#colophon .widget-footer .widget-title{
 	line-height: 1.4;
 	margin: 0 0 20px 0;
 	text-transform: uppercase;
-	color: #09F457;
+	color: #ffffff;
 	border-bottom: dotted 1px #A6B7B6;
 	padding-bottom: 9px;
 }
@@ -668,7 +668,7 @@ table tr.wpProQuiz_mextrixTr td{
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #a9a9a9;
+    background-color: white;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
@@ -695,7 +695,7 @@ table tr.wpProQuiz_mextrixTr td{
 }
 .modal-header {
     padding: 2px 16px;
-    background-color: #9b59b6;
+    background-color: #337ab7;
     color: white;
 }
 
@@ -703,7 +703,6 @@ table tr.wpProQuiz_mextrixTr td{
 
 .modal-footer {
     padding: 2px 16px;
-    background-color: #9b59b6;
     color: white;
 }
 @-webkit-keyframes slideIn {
