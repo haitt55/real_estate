@@ -19,7 +19,7 @@ class Project extends Model
      * @var array
      */
     protected $fillable = [
-        'project_name', 'project_image_header', 'project_image_ads', 'project_image_ads1', 'is_current',
+        'project_name', 'project_image_logo', 'project_image_header', 'project_image_ads', 'project_image_ads1', 'is_current',
         'page_title', 'meta_keyword', 'meta_description'
     ];
 

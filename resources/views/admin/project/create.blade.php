@@ -30,8 +30,13 @@
                                     <input type="text" name="project_name" id="project_name" class="form-control" value="{{ old('project_name') }}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="content">Bài viết trang chủ</label>
-                                    <textarea name="description" id="description">{{ old('description') }}</textarea>
+                                    <label for="image">Ảnh logo của dự án</label>
+                                    <input type="file" id="project_image_logo" name="project_image_logo" accept="image/*">
+                                    <div class="row" style="margin-top: 10px;">
+                                        <div class="display-image col-md-12">
+                                            <img class="thumbnail" style="max-width: 200px;" id="project_image_logo_preview" src="" alt="">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="image">Ảnh hiển thị trên header</label>
@@ -59,6 +64,10 @@
                                             <img class="thumbnail" style="max-width: 200px;" id="project_image_ads1_preview" src="" alt="">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="content">Nội dung trang chủ</label>
+                                    <textarea name="description" id="description">{{ old('description') }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="page_title">Page Title</label>
@@ -102,6 +111,10 @@
         $(function() {
             $("#project_image_header").change(function(){
                 readURL(this, 'project_image_header_preview');
+            });
+
+            $("#project_image_logo").change(function(){
+                readURL(this, 'project_image_logo_preview');
             });
 
             $("#project_image_ads").change(function(){

@@ -43,6 +43,7 @@ class ProjectController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'project_name' => 'required|unique:projects',
+            'project_image_logo' => 'mimes:jpeg,jpg,gif,png',
             'project_image_header' => 'mimes:jpeg,jpg,gif,png',
             'project_image_ads' => 'mimes:jpeg,jpg,gif,png',
             'project_image_ads1' => 'mimes:jpeg,jpg,gif,png',
@@ -56,10 +57,18 @@ class ProjectController extends Controller
         try {
             $data = $request->all();
             $path = config('custom.project_image_path');
+            $project_image_logo = $request->file('project_image_logo');
             $project_image_header = $request->file('project_image_header');
             $project_image_ads = $request->file('project_image_ads');
             $project_image_ads1 = $request->file('project_image_ads1');
             $project = New Project();
+            if ($project_image_logo) {
+                $name = time() . '-' . create_slug($project_image_logo->getClientOriginalName());
+                $extention = $project_image_logo->getClientOriginalExtension();
+                $filename = "{$name}.{$extention}";
+                Image::make($project_image_logo->getRealPath())->save(public_path($path . '/' . $filename));
+                $project->project_image_logo = $path . '/' . $filename;
+            }
             if ($project_image_header) {
                 $name = time() . '-' . create_slug($project_image_header->getClientOriginalName());
                 $extention = $project_image_header->getClientOriginalExtension();
@@ -139,6 +148,7 @@ class ProjectController extends Controller
         $project = Project::find($id);
         $validator = Validator::make($request->all(), [
             'project_name' => 'required|unique:projects,project_name,' . $id,
+            'project_image_logo' => 'mimes:jpeg,jpg,gif,png',
             'project_image_header' => 'mimes:jpeg,jpg,gif,png',
             'project_image_ads' => 'mimes:jpeg,jpg,gif,png',
             'project_image_ads1' => 'mimes:jpeg,jpg,gif,png',
@@ -152,12 +162,25 @@ class ProjectController extends Controller
         try {
             $data = $request->all();
             $path = config('custom.project_image_path');
+            $oldImageLogo = $project->project_image_logo;
             $oldImageHeader = $project->project_image_header;
             $oldImageAds = $project->project_image_ads;
             $oldImageAds1 = $project->project_image_ads1;
             $project_image_header = $request->file('project_image_header');
+            $project_image_logo = $request->file('project_image_logo');
             $project_image_ads = $request->file('project_image_ads');
             $project_image_ads1 = $request->file('project_image_ads1');
+            if ($project_image_logo) {
+                $name = time() . '-' . create_slug($project_image_logo->getClientOriginalName());
+                $extention = $project_image_logo->getClientOriginalExtension();
+                $filename = "{$name}.{$extention}";
+                Image::make($project_image_logo->getRealPath())->save(public_path($path . '/' . $filename));
+                $project->project_image_logo = $path . '/' . $filename;
+                // delete old image
+                if ($oldImageLogo && file_exists(public_path($oldImageLogo))) {
+                    unlink(public_path($oldImageLogo));
+                }
+            }
             if ($project_image_header) {
                 $name = time() . '-' . create_slug($project_image_header->getClientOriginalName());
                 $extention = $project_image_header->getClientOriginalExtension();

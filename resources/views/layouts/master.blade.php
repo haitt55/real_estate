@@ -11,6 +11,7 @@
 <meta name="google-site-verification"
 	content="jzB_fesPNks9YFANriYbR6Z1PQcrvhZe5ZBT11Z3HDs" />
 <link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="icon" href="{{$project->project_image_logo}}">
 <title>@yield('title')</title>
 
 <!-- This site is optimized with the Yoast SEO plugin v4.4 - https://yoast.com/wordpress/plugins/seo/ -->

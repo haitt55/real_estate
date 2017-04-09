@@ -34,6 +34,13 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
+                                        <div class="col-md-4"><label for="name">Ảnh logo</label></div>
+                                        <div class="col-md-8"><p class="form-control-static"><img src="{{ $project->project_image_logo ? asset($project->project_image_logo) : asset(config('custom.no_image')) }}" style="max-width: 200px;" alt=""></p></div>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
                                         <div class="col-md-4"><label for="name">Ảnh header</label></div>
                                         <div class="col-md-8"><p class="form-control-static"><img src="{{ $project->project_image_header ? asset($project->project_image_header) : asset(config('custom.no_image')) }}" style="max-width: 200px;" alt=""></p></div>
 
@@ -47,7 +54,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-md-4"><label for="name">Mô tả</label></div>
+                                        <div class="col-md-4"><label for="name">Nội dung trang chủ</label></div>
                                         <div class="col-md-8" style="overflow-y: scroll">{!! $project->description !!}</div>
                                     </div>
                                 </div>
