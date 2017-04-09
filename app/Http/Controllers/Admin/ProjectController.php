@@ -9,6 +9,7 @@ use DB;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Images;
 
 class ProjectController extends Controller
 {
@@ -133,7 +134,8 @@ class ProjectController extends Controller
     public function edit($id)
     {
         $project = Project::find($id);
-        return view('admin.project.edit')->with(['project' => $project]);
+        $images = Images::all()->where('project_id', $id)->sortByDesc('created_at');
+        return view('admin.project.edit')->with(['project' => $project, 'images' => $images]);
     }
 
     /**

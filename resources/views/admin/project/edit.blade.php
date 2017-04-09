@@ -1,7 +1,15 @@
 @extends('admin.layouts.master')
 
 @section('title', 'chỉnh sửa dự án')
+@section('css')
+    @parent
 
+    <!-- DataTables CSS -->
+    <link href="/templates/admin/sbadmin2/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/templates/admin/sbadmin2/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+@endsection
 @section('content')
     <div class="row">
         <div class="col-lg-12">
@@ -12,6 +20,7 @@
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 text-right">
+            <a href="{{ route('admin.image.create') }}?project_id={{ $project->id }}" class="btn btn-info"><i class="fa fa-list"></i> Kho ảnh</a>
             <a href="{{ route('admin.project.index') }}" class="btn btn-success"><i class="fa fa-list"></i> Danh sách dự án</a>
         </div>
     </div>
@@ -67,7 +76,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="content">Nội dung trang chủ</label>
+                                    <label style="width: 100%" for="content">Nội dung trang chủ &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-info pull-right" data-toggle="modal" data-target="#modalCustomer"><i class="fa fa-list"></i> Kho ảnh</a></label>
                                     <textarea name="description" id="description">{{ old('description', $project->description) }}</textarea>
                                 </div>
                                 <div class="form-group">
@@ -104,14 +113,110 @@
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
+
+    <div class="modal fade" id="modalCustomer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">Kho ảnh dự án</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="dataTable_wrapper">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-customers">
+                                    <thead>
+                                    <tr>
+                                        <th>Tiêu đề ảnh</th>
+                                        <th>Ảnh</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach ($images as $image)
+                                        <tr>
+                                            <td>
+                                                {{ $image->title }}
+                                            </td>
+                                            <td>
+                                                <img class="thumbnail" style="max-width: 200px; max-height: 200px;" id="project_image_header_preview" src="{{ $image->image ? asset($image->image) : asset(config('custom.no_image')) }}" alt="">
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-info btn-copy" data-clipboard-text={{ asset($image->image) }}><i class="fa fa-copy"></i> Copy link ảnh</button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 @endsection
 
 @section('inline_scripts')
     <script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>
+    <script src="/templates/admin/sbadmin2/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="/templates/admin/sbadmin2/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+    <script src="{{asset('js/clipboard.js/dist/clipboard.js')}}"></script>
     <script>
         CKEDITOR.replace( 'description' );
     </script>
     <script>
+        var clipboard = new Clipboard('.btn-copy', {
+            text: function(trigger) {
+                return trigger.getAttribute('data-clipboard-text');
+            }
+        });
+
+        $('button').tooltip({
+            trigger: 'click',
+            placement: 'bottom'
+        });
+
+        function setTooltip(btn, message) {
+            $(btn).tooltip('hide')
+                .attr('data-original-title', message)
+                .tooltip('show');
+        }
+
+        function hideTooltip(btn) {
+            setTimeout(function () {
+                $(btn).tooltip('hide');
+            }, 1000);
+        }
+
+        clipboard.on('success', function(e) {
+            setTooltip(e.trigger, 'Copied!');
+            hideTooltip(e.trigger);
+        });
+
+        clipboard.on('error', function(e) {
+            setTooltip(e.trigger, 'Failed!');
+            hideTooltip(e.trigger);
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#dataTables-customers").DataTable({
+                responsive: true,
+                "order": [[ 2, "asc" ]],
+                "aoColumns": [
+                    null, null,
+                    { bSortable: false }
+                ]
+            });
+        });
         $(function() {
 
             $("#project_image_header").change(function(){
