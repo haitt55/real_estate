@@ -124,13 +124,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     });
 });
 // Web
-Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home.index']);
+Route::get('/project/{id}', ['uses' => 'HomeController@index', 'as' => 'home.index']);
 Route::get('/getCurrentProject', ['uses' => 'HomeController@getCurrentProject', 'as' => 'home.getCurrentProject']);
-
-Route::get('/position/{slug}', ['uses' => 'HomeController@position', 'as' => 'position.index']);
-Route::get('/ground/{slug}', ['uses' => 'HomeController@ground', 'as' => 'ground.index']);
-Route::get('/utility/{slug}', ['uses' => 'HomeController@utility', 'as' => 'utility.index']);
-Route::get('/pricePolicy/{slug}', ['uses' => 'HomeController@pricePolicy', 'as' => 'pricePolicy.index']);
+Route::get('/getMainProject', ['uses' => 'HomeController@getMainProject', 'as' => 'home.getMainProject']);
+Route::get('/{id}/position/{slug}', ['uses' => 'HomeController@position', 'as' => 'position.index']);
+Route::get('/{id}/ground/{slug}', ['uses' => 'HomeController@ground', 'as' => 'ground.index']);
+Route::get('/{id}/utility/{slug}', ['uses' => 'HomeController@utility', 'as' => 'utility.index']);
+Route::get('/{id}/pricePolicy/{slug}', ['uses' => 'HomeController@pricePolicy', 'as' => 'pricePolicy.index']);
 Route::get('/newpost/{slug}', ['uses' => 'HomeController@newpost', 'as' => 'newpost.index']);
 Route::get('/newlist', ['uses' => 'HomeController@newlist', 'as' => 'newlist.index']);
+Route::get('/', ['uses' => 'HomeController@mainIndex', 'as' => 'mainProject.index']);
 Route::post('/addCustomer', ['uses' => 'HomeController@addCustomer', 'as' => 'addCustomer']);

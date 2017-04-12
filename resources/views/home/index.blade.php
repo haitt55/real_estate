@@ -17,7 +17,7 @@
 		<div class="item active">
 			<img id="image_ads_01"
 				style="width: 100%; max-height: 500px; margin-bottom: 30px !important"
-				src="{{$project->project_image_ads}}" alt="" width="660"
+				src="../{{$project->project_image_ads}}" alt="" width="660"
 				height="345">
 		</div>
 		@endif @if($project->project_image_ads1 != null)
@@ -25,14 +25,14 @@
 		<div class="item">
 			<img id="image_ads_02"
 				style="width: 100%; max-height: 500px; margin-bottom: 30px !important"
-				src="{{$project->project_image_ads1}}" alt="" width="660"
+				src="../{{$project->project_image_ads1}}" alt="" width="660"
 				height="345">
 		</div>
 		@else
 		<div class="item active">
 			<img id="image_ads_02"
 				style="width: 100%; max-height: 500px; margin-bottom: 30px !important"
-				src="{{$project->project_image_ads1}}" alt="" width="660"
+				src="../{{$project->project_image_ads1}}" alt="" width="660"
 				height="345">
 		</div>
 		@endif @endif
@@ -54,6 +54,7 @@
 		<strong>{{$project->page_title}}</strong>
 	</p>
 	{!!html_entity_decode($project->description)!!}
+	
 	<div class="modal" id="myModal" role="dialog" style="display: none">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
@@ -95,6 +96,57 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	var nav = '<li id="menu-item-position" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-position"><a href="">Vị trí</a></li>'
+    +'<li id="menu-item-ground" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-ground"><a href="">Mặt bằng</a></li>'
+    +'<li id="menu-item-utility" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-utility"><a href="">Tiện ích</a></li>'
+    +'<li id="menu-item-pricePolicy" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-pricePolicy"><a href="">Giá bán &#8211; Chính Sách</a></li>';
+    		$(".menu-main-menu-container").css("max-width", "1550px !important");
+			$("#menu-main-menu").append(nav);
+    var BASEURL = window.location.pathname;
+	var id = BASEURL.split("/project/")[1];
+    $.ajax({
+        url : '{{ route('home.getCurrentProject') }}',
+        type : 'Get',
+        dataType : 'json',
+        data: {id: id},
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+            if (token) {
+                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(data) {
+            if(data.code == 1){
+            	
+            	$("#image_header").attr("src", "../../" + data.project.project_image_header).css('max-height', '150px').css('width', '50%');
+//             	$(".entry-content").append(data.project.description);
+				if(data.project.position_slug != null){
+					$(".menu-item-position").find( "a" ).attr("href", "/"+id+"/position/" + data.project.position_slug);
+				} else {
+					$(".menu-item-position").find( "a" ).attr("href", "/"+id+"/position/default");	
+				}
+				if(data.project.ground_slug != null){
+					$(".menu-item-ground").find( "a" ).attr("href", "/"+id+"/ground/" + data.project.ground_slug);
+				} else {
+					$(".menu-item-ground").find( "a" ).attr("href", "/"+id+"/ground/default");	
+					}
+				if(data.project.utility_slug != null){
+					$(".menu-item-utility").find( "a" ).attr("href", "/"+id+"/utility/" + data.project.utility_slug);
+				} else {
+					$(".menu-item-utility").find( "a" ).attr("href", "/"+id+"/utility/default");	
+					}
+				if(data.project.pricePolicy_slug != null){
+					$(".menu-item-pricePolicy").find( "a" ).attr("href", "/"+id+"/pricePolicy/" + data.project.pricePolicy_slug);
+				} else {
+					$(".menu-item-pricePolicy").find( "a" ).attr("href", "/"+id+"/pricePolicy/default");	
+					}
+				$(".menu-item-new").find( "a" ).attr("href", "/"+id+"/newlist");
+				
+            }	
+        },
+        error: function(data) {
+        }
+    });
 			function openCustomerbox() {
 			    setTimeout( function() {$('#myModal').css('display', 'block') }, 10000);
 			}

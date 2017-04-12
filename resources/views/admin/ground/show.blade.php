@@ -43,14 +43,14 @@
 								    </div>
 								    <div class="form-group">
                                     <div class="row">
-                                        <div class="col-md-4"><label for="name">Slug</label></div>
+                                        <div class="col-md-2"><label for="name">Slug</label></div>
                                         <div class="col-md-8"><p class="form-control-static">{{ $ground->slug }}</p></div>
                                     </div>
                                 	</div>
 								    <div class="form-group">
                                     <div class="row">
-                                        <div class="col-md-4"><label for="name">Nội dung</label></div>
-                                        <div class="col-md-8"><p class="form-control-static">{!! $ground->content!!}</p></div>
+                                        <div class="col-md-2"><label for="name">Nội dung</label></div>
+                                        <div class="col-md-8" style="overflow-y: scroll">{!!html_entity_decode( $ground->content)!!}</div>
                                     </div>
                                 	</div>
 								    <div class="row">

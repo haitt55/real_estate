@@ -11,6 +11,7 @@
 <meta name="google-site-verification"
 	content="jzB_fesPNks9YFANriYbR6Z1PQcrvhZe5ZBT11Z3HDs" />
 <link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="icon" href="{{$project->project_image_logo}}">
 <title>@yield('title')</title>
 
 <!-- This site is optimized with the Yoast SEO plugin v4.4 - https://yoast.com/wordpress/plugins/seo/ -->
@@ -260,10 +261,13 @@ img.wp-smiley, img.emoji {
 //            jQuery('.fchat').toggle('slow');
 //        });
 //    });
+	var BASEURL = window.location.pathname;
+	var id = BASEURL.split("/project/")[1];
     $.ajax({
-        url : '{{ route('home.getMainProject') }}',
+        url : '{{ route('home.getCurrentProject') }}',
         type : 'Get',
         dataType : 'json',
+        data: {id: id},
         beforeSend: function (xhr) {
             var token = $('meta[name="csrf_token"]').attr('content');
             if (token) {
@@ -273,26 +277,41 @@ img.wp-smiley, img.emoji {
         success: function(data) {
             if(data.code == 1){
             	
-            	$("#image_header").attr("src", "../../" + data.mainProject.project_image_logo).css('max-height', '150px').css('width', '50%');
-				
-				$(".menu-item-new").find( "a" ).attr("href", "/newlist");
-				for(var i = 0; i < data.project.length; i++){
- 					var sale_project = '<li id="menu-item-position" class="menu-item"><a href="/project/'+data.project[i].id+'">'+data.project[i].project_name+'</a></li>'
-					$(".dropdown-content").append(sale_project);
-					}
-				
-				for (var i = 0; i < data.news.length; i++) 
-				{
-					html = '<div class="row">'
-	                	+ '<div class="col-xs-4 col-sm-4">'
-                		+ '<a href="/newpost/' + data.news[i].slug +'" class="thumbnail" title="'+ data.news[i].title+'"><img width="150" height="150" src="'+data.news[i].image_header+'" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a>'
-            			+ '</div>'
-            			+ '<div class="col-xs-8 col-sm-8">'
-                		+ '<a href="/newpost/' +  data.news[i].slug +'"><b>'+ data.news[i].title+'</b></a>'
-            			+ '</div>'
-        				+ '</div>';
-					$("#new_posts").append(html);
+            	$("#image_header").attr("src", "../../" + data.project.project_image_header).css('max-height', '150px').css('width', '50%');
+//             	$(".entry-content").append(data.project.description);
+				if(data.project.position_slug != null){
+					$(".menu-item-position").find( "a" ).attr("href", "/"+id+"/position/" + data.project.position_slug);
+				} else {
+					$(".menu-item-position").find( "a" ).attr("href", "/"+id+"/position/default");	
 				}
+				if(data.project.ground_slug != null){
+					$(".menu-item-ground").find( "a" ).attr("href", "/"+id+"/ground/" + data.project.ground_slug);
+				} else {
+					$(".menu-item-ground").find( "a" ).attr("href", "/"+id+"/ground/default");	
+					}
+				if(data.project.utility_slug != null){
+					$(".menu-item-utility").find( "a" ).attr("href", "/"+id+"/utility/" + data.project.utility_slug);
+				} else {
+					$(".menu-item-utility").find( "a" ).attr("href", "/"+id+"/utility/default");	
+					}
+				if(data.project.pricePolicy_slug != null){
+					$(".menu-item-pricePolicy").find( "a" ).attr("href", "/"+id+"/pricePolicy/" + data.project.pricePolicy_slug);
+				} else {
+					$(".menu-item-pricePolicy").find( "a" ).attr("href", "/"+id+"/pricePolicy/default");	
+					}
+				$(".menu-item-new").find( "a" ).attr("href", "/"+id+"/newlist");
+				for (var i = 0; i < data.news.length; i++) 
+        				{
+        					html = '<div class="row">'
+        	                	+ '<div class="col-xs-4 col-sm-4">'
+                        		+ '<a href="/'+id+'/newpost/' + data.news[i].slug +'" class="thumbnail" title="'+ data.news[i].title+'"><img width="150" height="150" src="'+data.news[i].image_header+'" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a>'
+                    			+ '</div>'
+                    			+ '<div class="col-xs-8 col-sm-8">'
+                        		+ '<a href="/'+id+'/newpost/' +  data.news[i].slug +'"><b>'+ data.news[i].title+'</b></a>'
+                    			+ '</div>'
+                				+ '</div>';
+							$("#new_posts").append(html);
+        				}
 
 				for(var i = 0; i < 4; i++)
 				{
@@ -307,6 +326,8 @@ img.wp-smiley, img.emoji {
     
     
 </script>
+
+	</div>
 	<script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

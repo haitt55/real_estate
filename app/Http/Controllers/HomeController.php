@@ -34,20 +34,27 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function mainIndex(){
+    	$mainProject = DB::table('main_projects')->get()->first();
+    	$projects =DB::table('projects')->where('main_project_id', $mainProject->id)->get();
+    	return view('home.mainIndex')->with(['mainProject'=> $mainProject, 'projects'=>$projects]);
+    }
+    
+    
+    public function index($id)
     {
-    	$project = DB::table('projects')->where('is_current', '=', 1)
+    	$project = DB::table('projects')->where('id', '=', $id)
     	->first();
     	
     	return view('home.index')->with ( [
     			'project' => $project]);
     }
-    public function position($slug)
+    public function position($id, $slug)
     {
     	if($slug == 'default'){
     		$position = new Position();
     	}else {
-    	$position = Position::where('slug', $slug)->firstOrFail();
+    		$position = Position::where('slug', $slug)->where('project_id', $id)->firstOrFail();
     	}
     	// show the view and pass the nerd to it
     	return view ( 'home.position' )->with ( [
@@ -55,12 +62,12 @@ class HomeController extends Controller
                 'project' => $this->currentProject
     	] );
     }
-    public function ground($slug)
+    public function ground($id, $slug)
     {
     	if($slug == 'default'){
     		$ground= new Grounds();
     	}else {
-    	$ground= Grounds::where('slug', $slug)->firstOrFail();
+    		$ground= Grounds::where('slug', $slug)->where('project_id', $id)->firstOrFail();
     	}
     	// show the view and pass the nerd to it
     	return view ( 'home.ground' )->with ( [
@@ -68,12 +75,12 @@ class HomeController extends Controller
             'project' => $this->currentProject
     	] );
     }
-    public function utility($slug)
+    public function utility($id, $slug)
     {
     	if($slug == 'default'){
     		$utility= new Utilities();
     	}else {
-    	$utility= Utilities::where('slug', $slug)->firstOrFail();
+    		$utility= Utilities::where('slug', $slug)->where('project_id', $id)->firstOrFail();
     	}
     	// show the view and pass the nerd to it
     	return view ( 'home.utility' )->with ( [
@@ -81,12 +88,12 @@ class HomeController extends Controller
             'project' => $this->currentProject
     	] );
     }
-    public function pricePolicy($slug)
+    public function pricePolicy($id, $slug)
     {
     	if($slug == 'default'){
     		$pricePolicy= new PricesPolicies();
     	}else {
-    	$pricePolicy= PricesPolicies::where('slug', $slug)->firstOrFail();
+    		$pricePolicy= PricesPolicies::where('slug', $slug)->where('project_id', $id)->firstOrFail();
     	}
     	// show the view and pass the nerd to it
     	return view ( 'home.pricePolicy' )->with ( [
@@ -107,9 +114,9 @@ class HomeController extends Controller
     public function newlist()
     {
     	$news= $project = DB::table('news')
-    	->join('projects', 'projects.id' ,'=','news.project_id')
+    	->join('main_projects', 'main_projects.id' ,'=','news.project_id')
     	->where('news.published', 1 )
-    	->where('projects.is_current' , 1)
+    	->where('main_projects.is_current' , 1)
     	->get();;
     	
     	// show the view and pass the nerd to it
@@ -118,7 +125,7 @@ class HomeController extends Controller
             'project' => $this->currentProject
     	] );
     }
-    public function getCurrentProject()
+    public function getCurrentProject(Request $request)
     {
     	try {
     		
@@ -129,11 +136,12 @@ class HomeController extends Controller
     		->leftjoin('prices_policies', 'prices_policies.project_id', '=', 'projects.id')
     		->select('projects.id as projectId', 'projects.project_name', 'projects.project_image_header', 'positions.slug as position_slug', 'grounds.slug as ground_slug', 'utilities.slug as utility_slug', 'prices_policies.slug as pricePolicy_slug')
     		->where('is_current', '=', 1)
+    		->where('projects.id','=',$request->input('id'))
     		->get()
     		->first();
     		
     		$news = DB::table('news')
-    		->where('project_id','=' , $project->projectId,'and', 'published = 1')
+    		->where('project_id','=' , $request->input('id'),'and', 'published = 1')
     		->orderBy('created_at', 'desc')
     		->limit(3)
     		->get();
@@ -152,7 +160,8 @@ class HomeController extends Controller
     		]);
     	}
     }
-    public function addCustomer(Request $request){
+    
+    public function addCustomer( Request $request){
     	try{
     	$customer = new Customer();
     	$customer->full_name  = $request->input('full_name');
@@ -174,4 +183,36 @@ class HomeController extends Controller
     		]);
     	}
     }
+    
+    public function getMainProject()
+    {
+    	try {
+    		
+    		$main_project = DB::table('main_projects')
+    		->where('is_current', '=', 1)
+    		->get()
+    		->first();
+    		$id  = $main_project->id;
+    		$project = DB::table('projects')->where('main_project_id', $main_project->id)->get();
+    		$news = DB::table('news')
+    		->where('project_id','=' , $id,'and', 'published = 1')
+    		->orderBy('created_at', 'desc')
+    		->limit(3)
+    		->get();
+    		$appSetting = AppSetting::all();
+    		if($project!= null){
+    			return response()->json(['code' => 1, 'mainProject' => $main_project, 'project' => $project, 'news' => $news, 'appSetting' => $appSetting
+    			]);
+    		}
+    	} catch (Exception $ex) {
+    		event(new ExceptionOccurred($ex));
+    		
+    		return response()->json([
+    				'error' => [
+    						'message' => $ex->getMessage(),
+    				]
+    		]);
+    	}
+    }
+    
 }

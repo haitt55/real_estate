@@ -37,7 +37,7 @@ img{
     font-family: 'Roboto';
     font-weight: 700;
     font-size: 25px;
-    color: #9b59b6;
+    color: #86E2D5;
     text-transform: uppercase;
 }
 #home-slider{
@@ -45,8 +45,8 @@ img{
 }
 /* CSS menu main */
 .menu-main.navbar-default {
-    background-color: #9b59b6;
-    border-color: #9b59b6;
+    background-color: #86E2D5;
+    border-color: #86E2D5;
     margin-bottom: 0;
 }
 .menu-main.navbar-default button{
@@ -54,7 +54,7 @@ img{
 }
 .menu-main.navbar-default ul li{
 	list-style: none;
-	border-right:1px #8e44ad solid;
+	border-right:1px #65C6BB solid;
 }
 .menu-main.navbar-default ul li a{
 	color: #fff;
@@ -64,7 +64,7 @@ img{
 	color: #333;
 }
 .menu-main.navbar-default ul li a:hover, .menu-main.navbar-default ul li a:focus{
-	background: #8e44ad;
+	background: #65C6BB;
 	color: #fff;
 	text-decoration: none;
 }
@@ -94,7 +94,7 @@ header.page-header{
 header.page-header > h1.page-title{
 	background: #ffffff;
     padding: 0 5px;
-    color: #9b59b6;
+    color: #86E2D5;
     font-size: 20px;
     font-weight: bold;
     text-transform: uppercase;
@@ -139,7 +139,7 @@ header.entry-header h1.entry-title{
 	margin-top: 0;
 	font-size: 20px;
 	font-weight: bold;
-	color: #9b59b6;
+	color: #86E2D5;
 }
 header.entry-header > h1.entry-title:before{
 	font-family: 'Glyphicons Halflings';
@@ -183,7 +183,7 @@ header.entry-header > h1.entry-title:before{
 .title-noi-dung > span{
 	background: #ffffff;
 	padding: 0 5px;
-	color: #9b59b6;
+	color: #86E2D5;
 	font-size: 18px;
 	font-weight: bold;
 	text-transform: uppercase;
@@ -316,7 +316,7 @@ p.gia{
 /* CSS sidebar */
 .sidebar .widget-title{
 	font-size: 20px;
-    background: #9b59b6;
+    background: #86E2D5;
     color: #fff;
     font-weight: bold;
     padding: 5px 10px;
@@ -387,7 +387,7 @@ p.gia{
 }
 
 footer#colophon{
-	background: #9b59b6;
+	background: #86E2D5;
 	padding: 20px 0;
 }
 footer#colophon .widget-footer{
@@ -487,9 +487,9 @@ ul.wpProQuiz_questionList.ui-sortable, ul.wpProQuiz_questionList{
 	overflow:auto;
 }
 .wpProQuiz_button, .wpProQuiz_button:hover {
-    background: #9b59b6 !important;
-    border: 1px solid #9b59b6 !important;
-    box-shadow: 1px 1px 1px #9b59b6 !important;
+    background: #86E2D5 !important;
+    border: 1px solid #86E2D5 !important;
+    box-shadow: 1px 1px 1px #86E2D5 !important;
 }
 ul.wpProQuiz_questionList[data-type="matrix_sort_answer"] .wpProQuiz_questionListItem{
 	width: 20%;
@@ -506,8 +506,8 @@ table tr.wpProQuiz_mextrixTr td{
 @media screen and (min-width: 1200px) {
 	/* CSS menu main desktop */
 	.menu-main > div{
-		max-width: 1170px;
-		margin: 0 auto;
+		max-width: 90%;
+		margin-left: 10.5%;
 	}
 	.menu-main ul > li.menu-item-has-children{
 		position: relative;
@@ -580,7 +580,7 @@ table tr.wpProQuiz_mextrixTr td{
 	    padding: 5px 15px 5px 25px;
 	}
 	.menu-main.navbar-default > div > ul > li > a{
-		border-bottom: 1px solid #e84747;
+		border-bottom: 1px solid 65C6BB ;
 	}
 	.menu-main.navbar-default > div > ul > li:last-child > a{
 		border-bottom:none;
@@ -722,4 +722,40 @@ table tr.wpProQuiz_mextrixTr td{
 @keyframes fadeIn {
     from {opacity: 0} 
     to {opacity: 1}
+}
+
+
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown-content {
+    display: none;
+    position: fixed;
+    background-color: #86e2d5 ;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: #86e2d5 ;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+.dropdown-content li {
+    background-color: #86e2d5;
+    width: 250px;
+}
+.dropdown-content a:hover {
+    background-color: #65C6BB;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
