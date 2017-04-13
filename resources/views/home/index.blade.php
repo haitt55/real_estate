@@ -48,7 +48,7 @@
 		</a>
 	</div>
 	<header class="entry-header">
-		<h1 class="entry-title">{{$project->project_name}}</h1>
+		<h1 class="entry-title" id="projectName">{{$project->project_name}}</h1>
 	</header>
 	<p style="text-align: center;">
 		<strong>{{$project->page_title}}</strong>
@@ -140,7 +140,9 @@
 				} else {
 					$(".menu-item-pricePolicy").find( "a" ).attr("href", "/"+id+"/pricePolicy/default");	
 					}
-				$(".menu-item-new").find( "a" ).attr("href", "/"+id+"/newlist");
+				$(".menu-item-new").find( "a" ).hide();
+				$(".menu-item-tiendo").find( "a" ).hide();
+				$("#menu-item-sale").find('a').text(data.project.project_name);
 				
             }	
         },

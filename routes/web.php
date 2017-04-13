@@ -134,4 +134,8 @@ Route::get('/{id}/pricePolicy/{slug}', ['uses' => 'HomeController@pricePolicy', 
 Route::get('/newpost/{slug}', ['uses' => 'HomeController@newpost', 'as' => 'newpost.index']);
 Route::get('/newlist', ['uses' => 'HomeController@newlist', 'as' => 'newlist.index']);
 Route::get('/', ['uses' => 'HomeController@mainIndex', 'as' => 'mainProject.index']);
+
+Route::get('/progress', ['uses' => 'HomeController@progress', 'as' => 'progress.index']);
+Route::get('/contact', ['uses' => 'HomeController@contact', 'as' => 'contact.index']);
+Route::post('/store', ['uses' => 'HomeController@store', 'as' => 'store.index']);
 Route::post('/addCustomer', ['uses' => 'HomeController@addCustomer', 'as' => 'addCustomer']);

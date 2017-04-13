@@ -13,6 +13,7 @@ use App\PricesPolicies;
 use App\News;
 use App\AppSetting;
 use App\Customer;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -213,6 +214,31 @@ class HomeController extends Controller
     				]
     		]);
     	}
+    }
+    public function progress(){
+    	
+    	$progress = DB::table('progress')->get()->first();
+    	return view('home.progress')->with ( [
+    			'progress' => $progress
+    	] );
+    }
+    public function contact(){
+    	
+    	return view('home.contact');
+    }
+    public function store(Request $request){
+	    	$main_project = DB::table('main_projects')
+	    	->where('is_current', '=', 1)
+	    	->get()
+	    	->first();
+    		$customer = new Customer();
+    		$customer->full_name  = $request->input('full_name');
+    		$customer->email = $request->input('email');
+    		$customer->phone_number = $request->input('phone_number');
+    		$customer->message = $request->input('message');
+    		$customer->project_id = $main_project->id;
+    		$customer->save ();
+    	return Redirect::to('/');
     }
     
 }

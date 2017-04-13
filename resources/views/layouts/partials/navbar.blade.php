@@ -9,22 +9,19 @@
 					<li class="logo"><a href="{{ route('mainProject.index') }}"> <img
 							id="image_header" class="center-block img-responsive">
 					</a></li>
-					<li id="menu-item-5"
-						class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-5">
-						<a href="{{ route('mainProject.index') }}">Trang chủ</a>
-					</li>
-					<li id="menu-item-position" class="dropdown"><a>Sản phẩm
+					
+					<li id="menu-item-sale" class="dropdown"><a>Sản phẩm
 							đang bán</a>
 						<ul class="dropdown-content">
 
 						</ul></li>
 
 					<li id="menu-item-tiendo"
-						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-pricePolicy"><a
-						href="">Tiến độ</a></li>
+						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-tiendo"><a
+						href="{{ route('progress.index') }}">Tiến độ</a></li>
 					<li id="menu-item-contact"
-						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-pricePolicy"><a
-						href="">Liên hệ</a></li>
+						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-contact"><a
+						href="{{ route('contact.index') }}">Liên hệ</a></li>
 					<li id="menu-item-new"
 						class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-new"><a
 						href="">Tin tức</a></li>
@@ -48,19 +45,17 @@
 						class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-5">
 						<a href="{{ route('mainProject.index') }}">Trang chủ</a>
 					</li>
-					<li id="menu-item-position" class="dropdown"><a href="">Sản phẩm
+					<li id="menu-item-sale" class="dropdown"><a href="">Sản phẩm
 							đang bán</a>
 						<ul class="dropdown-content">
-							<li id="menu-item-position" class="menu-item"><a href="">Vị trí</a></li>
-							<li id="menu-item-position" class="menu-item"><a href="">Vị trí</a></li>
-							<li id="menu-item-position" class="menu-item"><a href="">Vị trí</a></li>
+							
 						</ul></li>
 
 					<li id="menu-item-tiendo"
-						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-pricePolicy"><a
+						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-tiendo"><a
 						href="">Tiến độ</a></li>
 					<li id="menu-item-contact"
-						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-pricePolicy"><a
+						class="menu-item menu-item-type-post_type menu-item-object-page menu-item-contact"><a
 						href="">Liên hệ</a></li>
 					<li id="menu-item-new"
 						class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-new"><a

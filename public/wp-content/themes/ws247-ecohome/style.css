@@ -54,7 +54,6 @@ img{
 }
 .menu-main.navbar-default ul li{
 	list-style: none;
-	border-right:1px #65C6BB solid;
 }
 .menu-main.navbar-default ul li a{
 	color: #fff;
