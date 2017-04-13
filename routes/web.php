@@ -30,6 +30,15 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     Route::get('/home', 'HomeController@index');
     Route::group(['middleware' => 'auth.admin'], function () {
         Route::get('/', ['uses' => 'HomeController@index', 'as' => 'admin.home.index']);
+        Route::resource('main_project', 'MainProjectController', ['names' => [
+            'index' => 'admin.main_project.index',
+            'create' => 'admin.main_project.create',
+            'store' => 'admin.main_project.store',
+            'show' => 'admin.main_project.show',
+            'edit' => 'admin.main_project.edit',
+            'update' => 'admin.main_project.update',
+            'destroy' => 'admin.main_project.destroy'
+        ]]);
         Route::resource('project', 'ProjectController', ['names' => [
             'index' => 'admin.project.index',
             'create' => 'admin.project.create',

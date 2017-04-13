@@ -5,7 +5,10 @@
                 <a href="{{ route('admin.home.index') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
             <li>
-                <a href="{{ route('admin.project.index') }}"><i class="fa fa-file-o fa-fw"></i> Dự án</a>
+                <a href="{{ route('admin.main_project.index') }}"><i class="fa fa-file-o fa-fw"></i> Dự án</a>
+            </li>
+            <li>
+                <a href="{{ route('admin.project.index') }}"><i class="fa fa-file-o fa-fw"></i> Sản phẩm đang bán</a>
             </li>
             <li>
                 <a href="{{ route('admin.position.index') }}"><i class="fa fa-map-marker fa-fw"></i> Vị trí dự án</a>
