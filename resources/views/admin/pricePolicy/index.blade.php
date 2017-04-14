@@ -15,14 +15,14 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dự án - Bảng giá và Chính sách</h1>
+            <h1 class="page-header">sản phẩm - Bảng giá và Chính sách</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 text-right">
-            <a href="/admin/pricePolicy/create" class="btn btn-success"><i class="fa fa-plus-circle"></i> Thêm Bảng giá và Chính sách cho dự án</a>
+            <a href="/admin/pricePolicy/create" class="btn btn-success"><i class="fa fa-plus-circle"></i> Thêm Bảng giá và Chính sách cho sản phẩm</a>
         </div>
     </div>
     <br />
@@ -40,7 +40,7 @@
                                     <thead>
                                     <tr>
                                         <th>Tên Bảng giá và Chính sách</th>
-                                        <th>Tên dự án</th>
+                                        <th>Tên sản phẩm</th>
                                         <th>Chỉnh sửa lần cuối</th>
                                         <th></th>
                                     </tr>

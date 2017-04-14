@@ -22,7 +22,7 @@
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 text-right">
-            <a href="/admin/position/create" class="btn btn-success"><i class="fa fa-plus-circle"></i> Tạo vị trí cho dự án</a>
+            <a href="{{ route('admin.position.index') }}" class="btn btn-success"><i class="fa fa-list"></i> Danh sách vị trí</a>
         </div>
     </div>
     <br />
@@ -61,7 +61,7 @@
 										</div>
 										<div class="form-group">
 									        {{ Form::label('meta_description', 'Mô tả Meta') }}
-											{{ Form::textarea('meta_description', Input::old('meta_description'), array('class' => 'form-control')) }}									    
+											{{ Form::text('meta_description', Input::old('meta_description'), array('class' => 'form-control')) }}
 										</div>
 									    {{ Form::submit('Update the Position!', array('class' => 'btn btn-primary')) }}
 									
@@ -82,7 +82,6 @@
     <script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>
     <script>
     CKEDITOR.replace( 'content' );
-    CKEDITOR.replace( 'meta_description' );
     </script>
 <script type="text/javascript">
 			

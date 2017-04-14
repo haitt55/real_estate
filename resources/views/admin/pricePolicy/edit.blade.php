@@ -15,14 +15,14 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dự án - Bảng giá và Chính sách</h1>
+            <h1 class="page-header">sản phẩm - Bảng giá và Chính sách</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 text-right">
-            <a href="/admin/pricePolicy/create" class="btn btn-success"><i class="fa fa-plus-circle"></i> Tạo Bảng giá và Chính sách cho dự án</a>
+            <a href="{{ route('admin.pricePolicy.index') }}" class="btn btn-success"><i class="fa fa-list"></i> Danh sách Bảng giá và Chính sách</a>
         </div>
     </div>
     <br />
@@ -37,10 +37,10 @@
                         <div class="col-lg-12">
                             <div class="dataTable_wrapper">
 										{{ Form::model($pricePolicy, array('route' => array('admin.pricePolicy.update', $pricePolicy->id), 'method' => 'PUT')) }}		
-										<input type="hidden" id="id" value="{{$position->id}}">						
+										<input type="hidden" id="id" value="{{$pricePolicy->id}}">
 																		
 										<div class="form-group">
-									        {{ Form::label('project_id', 'Dự án') }}
+									        {{ Form::label('project_id', 'sản phẩm') }}
 									        {{ Form::select('project_id', $projects, null, ['class' => 'form-control']) }}
 									    </div>
 									    <div class="form-group">
@@ -62,7 +62,7 @@
 										</div>
 										<div class="form-group">
 									        {{ Form::label('meta_description', 'Mô tả Meta') }}
-											{{ Form::textarea('meta_description', Input::old('meta_description'), array('class' => 'form-control')) }}									    
+											{{ Form::text('meta_description', Input::old('meta_description'), array('class' => 'form-control')) }}
 										</div>
 									    {{ Form::submit('Update the pricePolicy!', array('class' => 'btn btn-primary')) }}
 									
@@ -83,7 +83,6 @@
     <script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>
     <script>
     CKEDITOR.replace( 'content' );
-    CKEDITOR.replace( 'meta_description' );
     </script>
     <script type="text/javascript">
 			
@@ -104,7 +103,7 @@
                         },
                         success: function(data) {
                             if(data.code == 1){
-                            	if (confirm('Dự án này đã có vị trí. Bạn có muốn xóa vị trí cũ và thêm mới?')) {
+                            	if (confirm('sản phẩm này đã có vị trí. Bạn có muốn xóa vị trí cũ và thêm mới?')) {
                             		$.ajax({
                                         url : "/admin/position/delete",
                                         type : 'Post',

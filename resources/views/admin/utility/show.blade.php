@@ -15,14 +15,14 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dự án - Tiện ích</h1>
+            <h1 class="page-header">sản phẩm - Tiện ích</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 text-right">
-            <a href="/admin/utility/create" class="btn btn-success"><i class="fa fa-plus-circle"></i> Tạo Tiện ích cho dự án</a>
+            <a href="{{ route('admin.utility.index') }}" class="btn btn-success"><i class="fa fa-list"></i> Danh sách Tiện ích</a>
         </div>
     </div>
     <br />
@@ -36,9 +36,9 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="dataTable_wrapper">
-                            	<h1>Showing {{$utility->title }}</h1>
+                            	<h1>{{$utility->title }}</h1>
 
-								    <div class="jumbotron text-center">
+								    <div class="text-center">
 								        <h2>{{ $utility->name }}</h2>
 								    </div>
 								    <div class="form-group">

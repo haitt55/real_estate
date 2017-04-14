@@ -15,14 +15,14 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dự án - Bảng giá và Chính sách</h1>
+            <h1 class="page-header">sản phẩm - Bảng giá và Chính sách</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 text-right">
-            <a href="/admin/pricePolicy/create" class="btn btn-success"><i class="fa fa-plus-circle"></i> Tạo Bảng giá và Chính sách cho dự án</a>
+            <a href="{{ route('admin.pricePolicy.index') }}" class="btn btn-success"><i class="fa fa-list"></i> Danh sách Bảng giá và Chính sách</a>
         </div>
     </div>
     <br />
@@ -36,9 +36,9 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="dataTable_wrapper">
-                            	<h1>Showing {{$pricePolicy->title }}</h1>
+                            	<h1>{{$pricePolicy->title }}</h1>
 
-								    <div class="jumbotron text-center">
+								    <div class="text-center">
 								        <h2>{{ $pricePolicy->name }}</h2>
 								    </div>
 								    <div class="form-group">

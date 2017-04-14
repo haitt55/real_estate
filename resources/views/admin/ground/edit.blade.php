@@ -15,14 +15,14 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dự án - Mặt bằng</h1>
+            <h1 class="page-header">sản phẩm - Mặt bằng</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 text-right">
-            <a href="/admin/ground/create" class="btn btn-success"><i class="fa fa-plus-circle"></i> Tạo Mặt bằng cho dự án</a>
+            <a href="{{ route('admin.ground.index') }}" class="btn btn-success"><i class="fa fa-list"></i> Danh sách mặt bằng</a>
         </div>
     </div>
     <br />
@@ -39,7 +39,7 @@
 										{{ Form::model($ground, array('route' => array('admin.ground.update', $ground->id), 'method' => 'PUT')) }}				
 										<input type="hidden" id="id" value="{{$ground->id}}">						
 										<div class="form-group">
-									        {{ Form::label('project_id', 'Dự án') }}
+									        {{ Form::label('project_id', 'sản phẩm') }}
 									        {{ Form::select('project_id', $projects, null, ['class' => 'form-control']) }}
 									    </div>
 									    <div class="form-group">
@@ -61,7 +61,7 @@
 										</div>
 										<div class="form-group">
 									        {{ Form::label('meta_description', 'Mô tả Meta') }}
-											{{ Form::textarea('meta_description', Input::old('meta_description'), array('class' => 'form-control')) }}									    
+											{{ Form::text('meta_description', Input::old('meta_description'), array('class' => 'form-control')) }}
 										</div>
 									    {{ Form::submit('Update the ground!', array('class' => 'btn btn-primary')) }}
 									
@@ -83,7 +83,6 @@
     <script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>
     <script>
     CKEDITOR.replace( 'content' );
-    CKEDITOR.replace( 'meta_description' );
     </script>
     <script type="text/javascript">
 			
@@ -104,7 +103,7 @@
                         },
                         success: function(data) {
                             if(data.code == 1){
-                            	if (confirm('Dự án này đã có vị trí. Bạn có muốn xóa vị trí cũ và thêm mới?')) {
+                            	if (confirm('sản phẩm này đã có vị trí. Bạn có muốn xóa vị trí cũ và thêm mới?')) {
                             		$.ajax({
                                         url : "/admin/position/delete",
                                         type : 'Post',

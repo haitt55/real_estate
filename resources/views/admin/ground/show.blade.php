@@ -15,14 +15,14 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dự án - Mặt bằng</h1>
+            <h1 class="page-header">sản phẩm - Mặt bằng</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 text-right">
-            <a href="/admin/ground/create" class="btn btn-success"><i class="fa fa-plus-circle"></i> Tạo Mặt bằng cho dự án</a>
+            <a href="{{ route('admin.ground.index') }}" class="btn btn-success"><i class="fa fa-list"></i> Danh sách mặt bằng</a>
         </div>
     </div>
     <br />
@@ -30,15 +30,15 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Xem Mặt bằng :{{$ground->title }}
+                    Mặt bằng :{{$ground->title }}
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="dataTable_wrapper">
-                            	<h1>Showing {{$ground->title }}</h1>
+                            	<h1>{{$ground->title }}</h1>
 
-								    <div class="jumbotron text-center">
+								    <div class="text-center">
 								        <h2>{{ $ground->name }}</h2>
 								    </div>
 								    <div class="form-group">

@@ -15,14 +15,14 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dự án - vị trí</h1>
+            <h1 class="page-header">sản phẩm - vị trí</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 text-right">
-            <a href="/admin/position/create" class="btn btn-success"><i class="fa fa-plus-circle"></i> Thêm vị trí cho dự án</a>
+            <a href="/admin/position/create" class="btn btn-success"><i class="fa fa-plus-circle"></i> Thêm vị trí cho sản phẩm</a>
         </div>
     </div>
     <br />
@@ -40,7 +40,7 @@
                                     <thead>
                                     <tr>
                                         <th>Tên Vị trí</th>
-                                        <th>Tên dự án</th>
+                                        <th>Tên sản phẩm</th>
                                         <th>Chỉnh sửa lần cuối</th>
                                         <th></th>
                                     </tr>

@@ -15,14 +15,14 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dự án - Mặt bằng</h1>
+            <h1 class="page-header">sản phẩm - Mặt bằng</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 text-right">
-            <a href="/admin/ground/create" class="btn btn-success"><i class="fa fa-plus-circle"></i> Thêm Mặt bằng cho dự án</a>
+            <a href="/admin/ground/create" class="btn btn-success"><i class="fa fa-plus-circle"></i> Thêm Mặt bằng cho sản phẩm</a>
         </div>
     </div>
     <br />
@@ -39,8 +39,8 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-groundList">
                                     <thead>
                                     <tr>
-                                        <th>Tên dự án</th>
-                                        <th>Tên dự án</th>
+                                        <th>Tên mặt bằng</th>
+                                        <th>Tên sản phẩm</th>
                                         <th>Chỉnh sửa lần cuối</th>
                                         <th></th>
                                     </tr>
