@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Dự án')
+@section('title', 'Sản phẩm')
 
 @section('css')
     @parent
@@ -20,14 +20,14 @@
     @endif
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dự án</h1>
+            <h1 class="page-header">Sản phẩm</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 text-right">
-            <a href="{{ route('admin.project.create') }}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Thêm dự án</a>
+            <a href="{{ route('admin.project.create') }}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Thêm Sản phẩm</a>
         </div>
     </div>
     <br />
@@ -35,7 +35,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Project List
+                    Product List
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -44,8 +44,8 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-projects">
                                     <thead>
                                     <tr>
-                                        <th>Tên dự án</th>
-                                        <th>Trạng thái</th>
+                                        <th>Tên Sản phẩm</th>
+                                        <th>Dự án</th>
                                         <th>Chỉnh sửa lần cuối</th>
                                         <th></th>
                                     </tr>
@@ -54,13 +54,14 @@
                                     @foreach ($projects as $project)
                                         <tr>
                                             <td><a href="{{ route('admin.project.show', $project->id) }}">{{ $project->project_name }}</a></td>
-                                            <td>
-                                                @if ($project->is_current)
-                                                    <span class="label label-success">Dự án đang chạy</span>
-                                                @else
-                                                    <span class="label label-danger">Dự án cũ</span>
-                                                @endif
-                                            </td>
+                                            {{--<td>--}}
+                                                {{--@if ($project->is_current)--}}
+                                                    {{--<span class="label label-success">Sản phẩm đang chạy</span>--}}
+                                                {{--@else--}}
+                                                    {{--<span class="label label-danger">Sản phẩm cũ</span>--}}
+                                                {{--@endif--}}
+                                            {{--</td>--}}
+                                            <td>{{ $project->main_project->project_name }}</td>
                                             <td>{{ $project->updated_at }}</td>
                                             <td>
                                                 <a href="{{ route('admin.project.edit', $project->id) }}" class="btn btn-info"><i class="fa fa-edit"></i> Chỉnh sửa</a>

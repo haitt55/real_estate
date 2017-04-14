@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Position;
 use App\Project;
+use App\MainProject;
 use DB;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
@@ -31,7 +32,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.project.create');
+        $mainProjects = MainProject::all()->sortByDesc('is_current')->pluck('project_name', 'id');
+        return view('admin.project.create')->with('mainProjects', $mainProjects);
     }
 
     /**
@@ -98,6 +100,7 @@ class ProjectController extends Controller
             } else {
                 $project->is_current = 0;
             }
+            $project->main_project_id = $data['main_project_id'];
             $project->page_title = $data['page_title'];
             $project->meta_keyword = $data['meta_keyword'];
             $project->meta_description = $data['meta_description'];
@@ -135,7 +138,12 @@ class ProjectController extends Controller
     {
         $project = Project::find($id);
         $images = Images::all()->where('project_id', $id)->sortByDesc('created_at');
-        return view('admin.project.edit')->with(['project' => $project, 'images' => $images]);
+        $mainProjects = MainProject::all()->sortByDesc('is_current')->pluck('project_name', 'id');
+        return view('admin.project.edit')->with([
+            'project' => $project,
+            'images' => $images,
+            'mainProjects' => $mainProjects
+            ]);
     }
 
     /**
@@ -221,6 +229,7 @@ class ProjectController extends Controller
             } else {
                 $project->is_current = 0;
             }
+            $project->main_project_id = $data['main_project_id'];
             $project->project_name = $data['project_name'];
             $project->description = $data['description'];
             $project->page_title = $data['page_title'];

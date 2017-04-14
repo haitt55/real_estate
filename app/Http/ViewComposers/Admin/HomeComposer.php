@@ -2,6 +2,7 @@
 
 namespace App\Http\ViewComposers\Admin;
 
+use App\MainProject;
 use App\Customer;
 use App\Position;
 use App\Project;
@@ -27,6 +28,7 @@ class HomeComposer
      */
     public function compose(View $view)
     {
+        $view->with('countMainProjects', MainProject::all()->count());
         $view->with('countProjects', Project::all()->count());
         $view->with('countPositions', Position::all()->count());
         $view->with('countCustomers', Customer::all()->count());

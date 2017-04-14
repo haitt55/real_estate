@@ -13,14 +13,13 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Chỉnh sửa dự án</h1>
+            <h1 class="page-header">Chỉnh sửa sản phẩm</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 text-right">
-            <a href="{{ route('admin.image.create') }}?project_id={{ $project->id }}" class="btn btn-info"><i class="fa fa-list"></i> Kho ảnh</a>
             <a href="{{ route('admin.project.index') }}" class="btn btn-success"><i class="fa fa-list"></i> Danh sách dự án</a>
         </div>
     </div>
@@ -36,27 +35,12 @@
                                 {!! csrf_field() !!}
                                 {!! method_field('put') !!}
                                 <div class="form-group">
-                                    <label for="title">Tên dự án <span class="required">(*)</span></label>
+                                    <label for="project_name">Tên sản phẩm <span class="required">(*)</span></label>
                                     <input type="text" name="project_name" id="project_name" class="form-control" value="{{ old('project_name', $project->project_name) }}">
                                 </div>
-                                <div class="form-group">
-                                    <label for="image">Ảnh logo của dự án</label>
-                                    <input type="file" id="project_image_logo" name="project_image_logo" accept="image/*">
-                                    <div class="row" style="margin-top: 10px;">
-                                        <div class="display-image col-md-12">
-                                            <img class="thumbnail" style="max-width: 200px;" id="project_image_logo_preview" src="{{ $project->project_image_logo ? asset($project->project_image_logo) : asset(config('custom.no_image')) }}" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="image">Ảnh hiển thị trên header</label>
-                                    <input type="file" id="project_image_header" name="project_image_header" accept="image/*">
-                                    <div class="row" style="margin-top: 10px;">
-                                        <div class="display-image col-md-12">
-                                            <img class="thumbnail" style="max-width: 200px;" id="project_image_header_preview" src="{{ $project->project_image_header ? asset($project->project_image_header) : asset(config('custom.no_image')) }}" alt="">
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="form-group">{{ Form::label('main_project_id', 'Dự án') }}
+                                    {{ Form::select('main_project_id', $mainProjects, $project->main_project_id, ['class' =>
+                                    'form-control']) }}</div>
                                 <div class="form-group">
                                     <label for="image">Ảnh banner quảng cáo 1</label>
                                     <input type="file" id="project_image_ads" name="project_image_ads" accept="image/*">
@@ -76,7 +60,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label style="width: 100%" for="content">Nội dung trang chủ &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-info pull-right" data-toggle="modal" data-target="#modalCustomer"><i class="fa fa-list"></i> Kho ảnh</a></label>
+                                    <label style="width: 100%" for="content">Nội dung </label>
                                     <textarea name="description" id="description">{{ old('description', $project->description) }}</textarea>
                                 </div>
                                 <div class="form-group">
@@ -91,16 +75,11 @@
                                     <label for="meta_description">Meta Description</label>
                                     <input type="text" name="meta_description" id="meta_description" class="form-control" value="{{ old('meta_description', $project->meta_description) }}">
                                 </div>
-                                <div class="form-group">
-                                    <div class="checkbox">
-                                        <label><input type="checkbox" name="is_current" id="is_current" value="1"{{ old('is_current', $project->is_current) ? ' checked="checked"' : '' }}> Đặt là dự án đang chạy</label>
-                                    </div>
-                                </div>
                                 <div class="form-group row">
                                     <div class="col-md-1"><button type="submit" class="btn btn-primary">Lưu</button></div>
                                     <div class="col-md-1">
                                         <button style="@if($project->is_current)pointer-events:none; opacity: 0.6; @endif"
-                                                class="btn btn-danger" id="btn-delete" data-link="{{ route('admin.project.destroy', $project->id) }}"><i class="fa fa-remove"></i> Xóa dự án</button></div>
+                                                class="btn btn-danger" id="btn-delete" data-link="{{ route('admin.project.destroy', $project->id) }}"><i class="fa fa-remove"></i> Xóa sản phẩm</button></div>
                                 </div>
                             </form>
                         </div>

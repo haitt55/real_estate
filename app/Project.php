@@ -19,9 +19,15 @@ class Project extends Model
      * @var array
      */
     protected $fillable = [
-        'project_name', 'project_image_logo', 'project_image_header', 'project_image_ads', 'project_image_ads1', 'is_current',
+        'main_project_id', 'project_name', 'project_image_logo', 'project_image_header', 'project_image_ads', 'project_image_ads1', 'is_current',
+        'description',
         'page_title', 'meta_keyword', 'meta_description'
     ];
+
+    public function main_project()
+    {
+        return $this->belongsTo('App\MainProject', 'main_project_id');
+    }
 
     /**
     * Get the position record associated with the user.

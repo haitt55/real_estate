@@ -8,19 +8,25 @@
                 <a href="{{ route('admin.main_project.index') }}"><i class="fa fa-file-o fa-fw"></i> Dự án</a>
             </li>
             <li>
-                <a href="{{ route('admin.project.index') }}"><i class="fa fa-file-o fa-fw"></i> Sản phẩm đang bán</a>
-            </li>
-            <li>
-                <a href="{{ route('admin.position.index') }}"><i class="fa fa-map-marker fa-fw"></i> Vị trí dự án</a>
-            </li>
-            <li>
-                <a href="{{ route('admin.ground.index') }}"><i class="fa fa-tree fa-fw"></i> Mặt bằng dự án</a>
-            </li>
-            <li>
-                <a href="{{ route('admin.utility.index') }}"><i class="fa fa-wrench fa-fw"></i> Tiện ích dự án</a>
-            </li>
-            <li>
-                <a href="{{ route('admin.pricePolicy.index') }}"><i class="fa fa-usd fa-fw"></i> Bảng giá và Chính sách dự án</a>
+                <a href="#"><i class="fa fa-qrcode fa-fw"></i> Sản phẩm<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse in" aria-expanded="true">
+                    <li>
+                        <a href="{{ route('admin.project.index') }}"><i class="fa fa-file-o fa-fw"></i> Sản phẩm đang bán</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.position.index') }}"><i class="fa fa-map-marker fa-fw"></i> Vị trí</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.ground.index') }}"><i class="fa fa-tree fa-fw"></i> Mặt bằng</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.utility.index') }}"><i class="fa fa-wrench fa-fw"></i> Tiện ích</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.pricePolicy.index') }}"><i class="fa fa-usd fa-fw"></i> Bảng giá và Chính sách</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
             </li>
             <li>
                 <a href="{{ route('admin.new.index') }}"><i class="fa fa-newspaper-o fa-fw"></i>Tin tức dự án</a>

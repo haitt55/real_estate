@@ -5,14 +5,14 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dự án {{ $project->project_name }}</h1>
+            <h1 class="page-header">Sản phẩm {{ $project->project_name }}</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 text-right">
-            <a href="{{ route('admin.project.index') }}" class="btn btn-success"><i class="fa fa-list"></i> List</a>
+            <a href="{{ route('admin.project.index') }}" class="btn btn-success"><i class="fa fa-list"></i> Danh sách sản phẩm</a>
         </div>
     </div>
     <br />
@@ -28,15 +28,14 @@
                             <form role="form">
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-md-4"><label for="name">Tên dự án</label></div>
+                                        <div class="col-md-4"><label for="name">Tên sản phẩm</label></div>
                                         <div class="col-md-8"><p class="form-control-static">{{ $project->project_name }}</p></div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-md-4"><label for="name">Ảnh logo</label></div>
-                                        <div class="col-md-8"><p class="form-control-static"><img src="{{ $project->project_image_logo ? asset($project->project_image_logo) : asset(config('custom.no_image')) }}" style="max-width: 200px;" alt=""></p></div>
-
+                                        <div class="col-md-4"><label for="name">Dự án</label></div>
+                                        <div class="col-md-8"><p class="form-control-static">{{ $project->main_project->project_name }}</p></div>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -48,8 +47,14 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-md-4"><label for="name">Ảnh quảng cáo</label></div>
+                                        <div class="col-md-4"><label for="name">Ảnh quảng cáo 1</label></div>
                                         <div class="col-md-8"><p class="form-control-static"><img src="{{ $project->project_image_ads ? asset($project->project_image_ads) : asset(config('custom.no_image'))}}" style="max-width: 200px;" alt=""></p></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4"><label for="name">Ảnh quảng cáo 2</label></div>
+                                        <div class="col-md-8"><p class="form-control-static"><img src="{{ $project->project_image_ads1 ? asset($project->project_image_ads1) : asset(config('custom.no_image'))}}" style="max-width: 200px;" alt=""></p></div>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -64,7 +69,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <a href="{{ route('admin.project.edit', $project->id) }}" class="btn btn-info"><i class="fa fa-edit"></i> Chỉnh sửa</a>
-                            <button style="@if($project->is_current)pointer-events:none; opacity: 0.6; @endif" class="btn btn-danger" id="btn-delete" data-link="{{ route('admin.project.destroy', $project->id) }}"><i class="fa fa-remove"></i> Xóa dự án</button>
+                            <button style="@if($project->is_current)pointer-events:none; opacity: 0.6; @endif" class="btn btn-danger" id="btn-delete" data-link="{{ route('admin.project.destroy', $project->id) }}"><i class="fa fa-remove"></i> Xóa sản phẩm</button>
                         </div>
                     </div>
                 </div>
