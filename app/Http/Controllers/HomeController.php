@@ -44,7 +44,17 @@ class HomeController extends Controller
     
     public function index($id)
     {
-    	$project = DB::table('projects')->where('id', '=', $id)
+    	$project = DB::table('projects')
+    	->leftjoin('positions', 'positions.project_id', '=', 'projects.id')
+    	->leftjoin('grounds', 'grounds.project_id', '=', 'projects.id')
+    	->leftjoin('utilities', 'utilities.project_id', '=', 'projects.id')
+    	->leftjoin('prices_policies', 'prices_policies.project_id', '=', 'projects.id')
+    	->select('projects.id as projectId', 'projects.project_name','projects.description','projects.project_image_ads',
+    			'projects.project_image_ads1','projects.page_title','projects.meta_keyword','projects.meta_description',
+    			'projects.project_image_header', 'positions.slug as position_slug', 'grounds.slug as ground_slug', 'utilities.slug as utility_slug', 'prices_policies.slug as pricePolicy_slug')
+    	->where('is_current', '=', 1)
+    	->where('projects.id','=',$id)
+    	->get()
     	->first();
     	
     	return view('home.index')->with ( [
@@ -57,10 +67,20 @@ class HomeController extends Controller
     	}else {
     		$position = Position::where('slug', $slug)->where('project_id', $id)->firstOrFail();
     	}
+    	$project = DB::table('projects')
+    	->leftjoin('positions', 'positions.project_id', '=', 'projects.id')
+    	->leftjoin('grounds', 'grounds.project_id', '=', 'projects.id')
+    	->leftjoin('utilities', 'utilities.project_id', '=', 'projects.id')
+    	->leftjoin('prices_policies', 'prices_policies.project_id', '=', 'projects.id')
+    	->select('projects.id as projectId', 'positions.slug as position_slug', 'grounds.slug as ground_slug', 'utilities.slug as utility_slug', 'prices_policies.slug as pricePolicy_slug')
+    			->where('is_current', '=', 1)
+    			->where('projects.id','=',$id)
+    			->get()
+    			->first();
     	// show the view and pass the nerd to it
     	return view ( 'home.position' )->with ( [
     			'position' => $position,
-                'project' => $this->currentProject
+                'project' => $project
     	] );
     }
     public function ground($id, $slug)
@@ -70,10 +90,20 @@ class HomeController extends Controller
     	}else {
     		$ground= Grounds::where('slug', $slug)->where('project_id', $id)->firstOrFail();
     	}
+    	$project = DB::table('projects')
+    	->leftjoin('positions', 'positions.project_id', '=', 'projects.id')
+    	->leftjoin('grounds', 'grounds.project_id', '=', 'projects.id')
+    	->leftjoin('utilities', 'utilities.project_id', '=', 'projects.id')
+    	->leftjoin('prices_policies', 'prices_policies.project_id', '=', 'projects.id')
+    	->select('projects.id as projectId', 'projects.project_name','positions.slug as position_slug', 'grounds.slug as ground_slug', 'utilities.slug as utility_slug', 'prices_policies.slug as pricePolicy_slug')
+    			->where('is_current', '=', 1)
+    			->where('projects.id','=',$id)
+    			->get()
+    			->first();
     	// show the view and pass the nerd to it
     	return view ( 'home.ground' )->with ( [
     			'ground' => $ground,
-            'project' => $this->currentProject
+            'project' => $project
     	] );
     }
     public function utility($id, $slug)
@@ -83,10 +113,19 @@ class HomeController extends Controller
     	}else {
     		$utility= Utilities::where('slug', $slug)->where('project_id', $id)->firstOrFail();
     	}
+    	$project = DB::table('projects')
+    	->leftjoin('positions', 'positions.project_id', '=', 'projects.id')
+    	->leftjoin('grounds', 'grounds.project_id', '=', 'projects.id')
+    	->leftjoin('utilities', 'utilities.project_id', '=', 'projects.id')
+    	->leftjoin('prices_policies', 'prices_policies.project_id', '=', 'projects.id')
+    	->select('projects.id as projectId', 'projects.project_name','positions.slug as position_slug', 'grounds.slug as ground_slug', 'utilities.slug as utility_slug', 'prices_policies.slug as pricePolicy_slug')
+    			->where('projects.id','=',$id)
+    			->get()
+    			->first();
     	// show the view and pass the nerd to it
     	return view ( 'home.utility' )->with ( [
     			'utility' => $utility,
-            'project' => $this->currentProject
+            'project' => $project
     	] );
     }
     public function pricePolicy($id, $slug)
@@ -96,10 +135,20 @@ class HomeController extends Controller
     	}else {
     		$pricePolicy= PricesPolicies::where('slug', $slug)->where('project_id', $id)->firstOrFail();
     	}
+    	$project = DB::table('projects')
+    	->leftjoin('positions', 'positions.project_id', '=', 'projects.id')
+    	->leftjoin('grounds', 'grounds.project_id', '=', 'projects.id')
+    	->leftjoin('utilities', 'utilities.project_id', '=', 'projects.id')
+    	->leftjoin('prices_policies', 'prices_policies.project_id', '=', 'projects.id')
+    	->select('projects.id as projectId', 'projects.project_name','positions.slug as position_slug', 'grounds.slug as ground_slug', 'utilities.slug as utility_slug', 'prices_policies.slug as pricePolicy_slug')
+    			->where('is_current', '=', 1)
+    			->where('projects.id','=',$id)
+    			->get()
+    			->first();
     	// show the view and pass the nerd to it
     	return view ( 'home.pricePolicy' )->with ( [
     			'pricePolicy' => $pricePolicy,
-            'project' => $this->currentProject
+            'project' => $project
     	] );
     }
     public function newpost($slug)
@@ -141,14 +190,9 @@ class HomeController extends Controller
     		->get()
     		->first();
     		
-    		$news = DB::table('news')
-    		->where('project_id','=' , $request->input('id'),'and', 'published = 1')
-    		->orderBy('created_at', 'desc')
-    		->limit(3)
-    		->get();
-    		$appSetting = AppSetting::all();
+    		
     			if($project!= null){
-    				return response()->json(['code' => 1, 'project' => $project, 'news' => $news, 'appSetting' => $appSetting
+    				return response()->json(['code' => 1, 'project' => $project
     				]);
     			}
     	} catch (Exception $ex) {

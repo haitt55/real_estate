@@ -2,6 +2,70 @@
 @stop @section('description') {{$project->meta_description}} @stop
 @section('images') {{$project->project_image_header}} @stop
 @section('content')
+<script type="text/javascript">
+	var nav = '<li id="menu-item-position" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-position"><a href="">Vị trí</a></li>'
+    +'<li id="menu-item-ground" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-ground"><a href="">Mặt bằng</a></li>'
+    +'<li id="menu-item-utility" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-utility"><a href="">Tiện ích</a></li>'
+    +'<li id="menu-item-pricePolicy" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-pricePolicy"><a href="">Giá bán &#8211; Chính Sách</a></li>';
+    		$(".menu-main-menu-container").css("max-width", "1550px !important");
+			
+			$(".menu-item-new").find( "a" ).hide();
+			$(".menu-item-tiendo").find( "a" ).hide();
+			$("#menu-item-sale").find( "a" ).text('{{$project->project_name}}');
+			$("#menu-item-sale").after(nav);
+			
+    var BASEURL = window.location.pathname;
+	var id = BASEURL.split("/project/")[1];
+    
+    if('{{$project->position_slug}}' != ''){
+		$(".menu-item-position").find( "a" ).attr("href", "/"+id+"/position/" + '{{$project->position_slug}}');
+	} else {
+		$(".menu-item-position").find( "a" ).attr("href", "/"+id+"/position/default");	
+	}
+	if('{{$project->ground_slug}}' != ''){
+		$(".menu-item-ground").find( "a" ).attr("href", "/"+id+"/ground/" + '{{$project->ground_slug}}');
+	} else {
+		$(".menu-item-ground").find( "a" ).attr("href", "/"+id+"/ground/default");	
+		}
+	if('{{$project->utility_slug}}' != ''){
+		$(".menu-item-utility").find( "a" ).attr("href", "/"+id+"/utility/" + '{{$project->utility_slug}}');
+	} else {
+		$(".menu-item-utility").find( "a" ).attr("href", "/"+id+"/utility/default");	
+		}
+	if('{{$project->pricePolicy_slug}}' != ''){
+		$(".menu-item-pricePolicy").find( "a" ).attr("href", "/"+id+"/pricePolicy/" + '{{$project->pricePolicy_slug}}');
+	} else {
+		$(".menu-item-pricePolicy").find( "a" ).attr("href", "/"+id+"/pricePolicy/default");	
+		}
+	
+			function openCustomerbox() {
+			    setTimeout( function() {$('#myModal').css('display', 'block') }, 10000);
+			}
+			$(document).ready(function() {
+				var isshow = localStorage.getItem('isshow');
+			    if (isshow== null) {
+			        localStorage.setItem('isshow', 1);
+					
+			        // Show popup here
+			        openCustomerbox();
+			    }
+				
+			    
+			});
+			$("#headerCloseButton").click(function (){
+						$("#myModal").css('display', 'none');
+			    });
+			$("#closeButton").click(function (){
+				$("#myModal").css('display', 'none');
+			});
+			$("#sendButton").click(function (){
+				var full_name =$("#full_name").val();
+				var email =$("#email").val();
+				var phone_number =$("#phone_number").val();
+				var message =$("#message").val();
+				var project_id = $("#project_id").val();});
+				
+</script>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 	<!-- Indicators -->
 	<ol class="carousel-indicators">
@@ -70,7 +134,7 @@
 							 <input type="text" name="full_name"
 								id="full_name" class="form-control" style="width: 70%;" placeholder="Họ tên"/>
 						</div>
-						<input id ="project_id" name="project_id" type="hidden" value = "{{$project->id}}" >
+						<input id ="project_id" name="project_id" type="hidden" value = "{{$project->projectId}}" >
 						<div class="form-group" style="margin-left: 20%">
 							<input type="email" name="email"
 								id="email" class="form-control" style="width: 70%;" placeholder="Email"/>
@@ -95,103 +159,5 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-	var nav = '<li id="menu-item-position" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-position"><a href="">Vị trí</a></li>'
-    +'<li id="menu-item-ground" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-ground"><a href="">Mặt bằng</a></li>'
-    +'<li id="menu-item-utility" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-utility"><a href="">Tiện ích</a></li>'
-    +'<li id="menu-item-pricePolicy" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-pricePolicy"><a href="">Giá bán &#8211; Chính Sách</a></li>';
-    		$(".menu-main-menu-container").css("max-width", "1550px !important");
-			$("#menu-main-menu").append(nav);
-    var BASEURL = window.location.pathname;
-	var id = BASEURL.split("/project/")[1];
-    $.ajax({
-        url : '{{ route('home.getCurrentProject') }}',
-        type : 'Get',
-        dataType : 'json',
-        data: {id: id},
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-            if (token) {
-                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
-        success: function(data) {
-            if(data.code == 1){
-            	
-            	$("#image_header").attr("src", "../../" + data.project.project_image_header).css('max-height', '150px').css('width', '50%');
-//             	$(".entry-content").append(data.project.description);
-				if(data.project.position_slug != null){
-					$(".menu-item-position").find( "a" ).attr("href", "/"+id+"/position/" + data.project.position_slug);
-				} else {
-					$(".menu-item-position").find( "a" ).attr("href", "/"+id+"/position/default");	
-				}
-				if(data.project.ground_slug != null){
-					$(".menu-item-ground").find( "a" ).attr("href", "/"+id+"/ground/" + data.project.ground_slug);
-				} else {
-					$(".menu-item-ground").find( "a" ).attr("href", "/"+id+"/ground/default");	
-					}
-				if(data.project.utility_slug != null){
-					$(".menu-item-utility").find( "a" ).attr("href", "/"+id+"/utility/" + data.project.utility_slug);
-				} else {
-					$(".menu-item-utility").find( "a" ).attr("href", "/"+id+"/utility/default");	
-					}
-				if(data.project.pricePolicy_slug != null){
-					$(".menu-item-pricePolicy").find( "a" ).attr("href", "/"+id+"/pricePolicy/" + data.project.pricePolicy_slug);
-				} else {
-					$(".menu-item-pricePolicy").find( "a" ).attr("href", "/"+id+"/pricePolicy/default");	
-					}
-				$(".menu-item-new").find( "a" ).hide();
-				$(".menu-item-tiendo").find( "a" ).hide();
-				$("#menu-item-sale").find('a').text(data.project.project_name);
-				
-            }	
-        },
-        error: function(data) {
-        }
-    });
-			function openCustomerbox() {
-			    setTimeout( function() {$('#myModal').css('display', 'block') }, 10000);
-			}
-			$(document).ready(function() {
-				var isshow = localStorage.getItem('isshow');
-			    if (isshow== null) {
-			        localStorage.setItem('isshow', 1);
-					
-			        // Show popup here
-			        openCustomerbox();
-			    }
-				
-			    
-			});
-			$("#headerCloseButton").click(function (){
-						$("#myModal").css('display', 'none');
-			    });
-			$("#closeButton").click(function (){
-				$("#myModal").css('display', 'none');
-			});
-			$("#sendButton").click(function (){
-				var full_name =$("#full_name").val();
-				var email =$("#email").val();
-				var phone_number =$("#phone_number").val();
-				var message =$("#message").val();
-				var project_id = $("#project_id").val();
-				$.ajax({
-                    url : '{{ route("addCustomer") }}',
-                    type : 'Post',
-//                     beforeSend: function (xhr) {
-//                         var token = $('meta[name="csrf_token"]').attr('content');
-//                         if (token) {
-//                             return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-//                         }
-//                     },
-                    dataType: 'json',
-                    data: {full_name : full_name, email: email, phone_number : phone_number, message: message, project_id : project_id, _token: '<?php echo csrf_token() ?>'},
-                    success: function(data) {
-                        if(data.code == 1){
-                        	$("#myModal").css('display', 'none');
-                            }
-                    }
-                });
-			});
-</script>
+	
 	@endsection

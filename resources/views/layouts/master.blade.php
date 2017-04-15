@@ -149,6 +149,58 @@ img.wp-smiley, img.emoji {
 	class="home page-template page-template-page-template page-template-template-sidebar2 page-template-page-templatetemplate-sidebar2-php page page-id-25 kingcomposer kc-css-system _masterslider _ms_version_2.9.5">
 	<div id="page" class="site">
 		@include('layouts.partials.navbar')
+		<script type="text/javascript">
+//    jQuery(document).ready(function () {
+//        jQuery(".chat_fb").click(function() {
+//            jQuery('.fchat').toggle('slow');
+//        });
+//    });
+    $.ajax({
+        url : '{{ route('home.getMainProject') }}',
+        type : 'Get',
+        dataType : 'json',
+        beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
+            if (token) {
+                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+        },
+        success: function(data) {
+            if(data.code == 1){
+            	
+            	$("#image_header").attr("src", "../../" + data.mainProject.project_image_logo).css('max-height', '150px').css('width', '50%');
+				
+				$(".menu-item-new").find( "a" ).attr("href", "/newlist");
+				for(var i = 0; i < data.project.length; i++){
+ 					var sale_project = '<li id="menu-item-position" class="menu-item"><a href="/project/'+data.project[i].id+'">'+data.project[i].project_name+'</a></li>'
+					$(".dropdown-content").append(sale_project);
+					}
+				
+				for (var i = 0; i < data.news.length; i++) 
+				{
+					html = '<div class="row">'
+	                	+ '<div class="col-xs-4 col-sm-4">'
+                		+ '<a href="/newpost/' + data.news[i].slug +'" class="thumbnail" title="'+ data.news[i].title+'"><img width="150" height="150" src="'+data.news[i].image_header+'" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a>'
+            			+ '</div>'
+            			+ '<div class="col-xs-8 col-sm-8">'
+                		+ '<a href="/newpost/' +  data.news[i].slug +'"><b>'+ data.news[i].title+'</b></a>'
+            			+ '</div>'
+        				+ '</div>';
+					$("#new_posts").append(html);
+				}
+
+				for(var i = 0; i < 4; i++)
+				{
+					var info = '<li><span style="color: #ffffff;font-weight: bold;padding-left: 28px !important;padding: 10px 0px;">'+data.appSetting[i].key + ': ' +data.appSetting[i].value + '</span></li>';
+					$("#info").append(info);
+					}
+            }	
+        },
+        error: function(data) {
+        }
+    });
+    
+</script>
 		<div id="content" class="site-content container">
 
 			<div class="row">
@@ -254,59 +306,7 @@ img.wp-smiley, img.emoji {
 		<input type="hidden" id="tchat" value="0"/>
 	</div>
 
-	<script type="text/javascript">
-//    jQuery(document).ready(function () {
-//        jQuery(".chat_fb").click(function() {
-//            jQuery('.fchat').toggle('slow');
-//        });
-//    });
-    $.ajax({
-        url : '{{ route('home.getMainProject') }}',
-        type : 'Get',
-        dataType : 'json',
-        beforeSend: function (xhr) {
-            var token = $('meta[name="csrf_token"]').attr('content');
-            if (token) {
-                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-            }
-        },
-        success: function(data) {
-            if(data.code == 1){
-            	
-            	$("#image_header").attr("src", "../../" + data.mainProject.project_image_logo).css('max-height', '150px').css('width', '50%');
-				
-				$(".menu-item-new").find( "a" ).attr("href", "/newlist");
-				for(var i = 0; i < data.project.length; i++){
- 					var sale_project = '<li id="menu-item-position" class="menu-item"><a href="/project/'+data.project[i].id+'">'+data.project[i].project_name+'</a></li>'
-					$(".dropdown-content").append(sale_project);
-					}
-				
-				for (var i = 0; i < data.news.length; i++) 
-				{
-					html = '<div class="row">'
-	                	+ '<div class="col-xs-4 col-sm-4">'
-                		+ '<a href="/newpost/' + data.news[i].slug +'" class="thumbnail" title="'+ data.news[i].title+'"><img width="150" height="150" src="'+data.news[i].image_header+'" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a>'
-            			+ '</div>'
-            			+ '<div class="col-xs-8 col-sm-8">'
-                		+ '<a href="/newpost/' +  data.news[i].slug +'"><b>'+ data.news[i].title+'</b></a>'
-            			+ '</div>'
-        				+ '</div>';
-					$("#new_posts").append(html);
-				}
-
-				for(var i = 0; i < 4; i++)
-				{
-					var info = '<li><span style="color: #ffffff;font-weight: bold;padding-left: 28px !important;padding: 10px 0px;">'+data.appSetting[i].key + ': ' +data.appSetting[i].value + '</span></li>';
-					$("#info").append(info);
-					}
-            }	
-        },
-        error: function(data) {
-        }
-    });
-    
-    
-</script>
+	
 	<script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
