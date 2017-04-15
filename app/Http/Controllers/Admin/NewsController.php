@@ -8,6 +8,7 @@ use Input;
 use Redirect;
 use Validator;
 use App\Project;
+use App\MainProject;
 use App\News;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
@@ -16,7 +17,7 @@ class NewsController extends Controller {
 	protected $currentProject;
 	function __construct()
 	{
-		$this->currentProject = Project::where('is_current', 1)->get()->first();
+		$this->currentProject = MainProject::where('is_current', 1)->get()->first();
 	}
 	/**
 	 * Display a listing of the resource.
@@ -25,7 +26,7 @@ class NewsController extends Controller {
 	 */
 	public function index(Request $request) {
 		$chosenProject = '';
-		$projectOptions = DB::table('projects')->orderBy('created_at', 'desc')->pluck('project_name', 'id')->toArray();
+		$projectOptions = DB::table('main_projects')->orderBy('created_at', 'desc')->pluck('project_name', 'id')->toArray();
 		if ($this->currentProject) {
 			$newList= News::all()->where('project_id', $this->currentProject->id)->sortByDesc('published');
 			$chosenProject = $this->currentProject->id;
@@ -35,12 +36,12 @@ class NewsController extends Controller {
 		}
 		$data = $request->all();
 		if (array_key_exists('project_id', $data)) {
-			if ($request->get('project_id') !== '') {
+			if ($request->get('project_id') != '') {
 				$chosenProject = $request->get('project_id');
 				$newList= News::all()->where('project_id', $request->get('project_id'))->sortByDesc('published');
 			} else {
 				$chosenProject = '';
-				$newList= Customer::all()->sortByDesc('published');
+				$newList= News::all()->sortByDesc('published');
 			}
 		}
 		return view('admin.new.index')->with([
@@ -58,7 +59,7 @@ class NewsController extends Controller {
 	 */
 	public function create() {
 		//
-		$projects = Project::all()->sortByDesc('is_current')->pluck('project_name', 'id');
+		$projects = MainProject::all()->sortByDesc('is_current')->pluck('project_name', 'id');
 		return view ( 'admin.new.create' )->with('projects', $projects);
 	}
 	
@@ -138,7 +139,7 @@ class NewsController extends Controller {
 	public function edit($id) {
 		//
 		$new = News::find($id);
-		$projects = Project::pluck('project_name', 'id');
+		$projects = MainProject::pluck('project_name', 'id');
 		// show the view and pass the nerd to it
 		return view ( 'admin.new.edit' )->with ( [
 				'new' => $new, 'projects'=> $projects] );

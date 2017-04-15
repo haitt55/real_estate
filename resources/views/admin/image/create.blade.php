@@ -108,6 +108,15 @@
 @endsection
 @section('inline_scripts')
     <script>
+        Dropzone.options.filedrop = {
+            init: function () {
+                this.on("complete", function (file) {
+                    if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+                        alert('upload xong het');
+                    }
+                });
+            }
+        };
         var clipboard = new Clipboard('.btn-info', {
             text: function(trigger) {
                 return trigger.getAttribute('data-clipboard-text');

@@ -28,7 +28,7 @@
     <br />
     <div class="row">
         <div class="col-md-12">
-            <form class="form-inline" action="{{ route('admin.customer.index') }}" method="GET">
+            <form class="form-inline" action="{{ route('admin.image.index') }}" method="GET">
                 <div class="form-group">
                     <label for="project_id">Lọc theo dự án:</label>
                     <select class="form-control" name="project_id" id="project_id">

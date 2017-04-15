@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Customer;
-use App\Project;
+use App\MainProject;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
@@ -14,7 +14,7 @@ class CustomerController extends Controller
 
     function __construct()
     {
-        $this->currentProject = Project::where('is_current', 1)->get()->first();
+        $this->currentProject = MainProject::where('is_current', 1)->get()->first();
     }
 
     /**
@@ -25,7 +25,7 @@ class CustomerController extends Controller
     public function index(Request $request)
     {
         $chosenProject = '';
-        $projectOptions = DB::table('projects')->orderBy('created_at', 'desc')->pluck('project_name', 'id')->toArray();
+        $projectOptions = DB::table('main_projects')->orderBy('created_at', 'desc')->pluck('project_name', 'id')->toArray();
         if ($this->currentProject) {
             $customers = Customer::all()->where('project_id', $this->currentProject->id)->sortByDesc('is_new');
             $chosenProject = $this->currentProject->id;

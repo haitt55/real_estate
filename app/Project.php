@@ -40,13 +40,13 @@ class Project extends Model
     /**
      * Get the customer record associated with the user.
      */
-    public function customers()
-    {
-        return $this->hasMany('App\Position', 'project_id', 'id');
-    }
-
-    public function images()
-    {
-        return $this->hasMany('App\Images', 'project_id', 'id');
-    }
+//    public function customers()
+//    {
+//        return $this->hasMany('App\Customer', 'project_id', 'id');
+//    }
+//
+//    public function images()
+//    {
+//        return $this->hasMany('App\Images', 'project_id', 'id');
+//    }
 }
