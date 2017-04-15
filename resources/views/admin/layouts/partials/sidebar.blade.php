@@ -29,7 +29,10 @@
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="{{ route('admin.new.index') }}"><i class="fa fa-newspaper-o fa-fw"></i>Tin tức dự án</a>
+                <a href="{{ route('admin.progress.index') }}"><i class="fa fa-space-shuttle fa-fw"></i>Tiến độ</a>
+            </li>
+            <li>
+                <a href="{{ route('admin.new.index') }}"><i class="fa fa-newspaper-o fa-fw"></i>Tin tức</a>
             </li>
             <li>
                 <a href="{{ route('admin.customer.index') }}"><i class="fa fa-user fa-fw"></i> Khách hàng</a>

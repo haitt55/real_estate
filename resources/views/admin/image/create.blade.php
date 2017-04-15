@@ -2,7 +2,7 @@
 
 @section('title', 'thêm dự án mới')
 
-@section('css')
+@section ('css')
     @parent
 
     <!-- DataTables CSS -->

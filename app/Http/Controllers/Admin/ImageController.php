@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Images;
-use App\Project;
+use App\MainProject;
 use DB;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
@@ -15,7 +15,7 @@ class ImageController extends Controller
 
     function __construct()
     {
-        $this->currentProject = Project::where('is_current', 1)->get()->first();
+        $this->currentProject = MainProject::where('is_current', 1)->get()->first();
     }
     /**
      * Display a listing of the resource.
@@ -25,7 +25,7 @@ class ImageController extends Controller
     public function index(Request $request)
     {
         $chosenProject = '';
-        $projectOptions = DB::table('projects')->orderBy('created_at', 'desc')->pluck('project_name', 'id')->toArray();
+        $projectOptions = DB::table('main_projects')->orderBy('created_at', 'desc')->pluck('project_name', 'id')->toArray();
         if ($this->currentProject) {
             $images = Images::all()->where('project_id', $this->currentProject->id)->sortByDesc('created_at');
             $chosenProject = $this->currentProject->id;
@@ -58,7 +58,7 @@ class ImageController extends Controller
      */
     public function create(Request $request)
     {
-        $project = Project::where('id', $request->get('project_id'))->get()->first();
+        $project = MainProject::where('id', $request->get('project_id'))->get()->first();
         $images = Images::all()->where('project_id', $request->get('project_id'))->sortByDesc('created_at');
         return view('admin.image.create')->with([
             'project' => $project,

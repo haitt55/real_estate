@@ -39,6 +39,18 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
             'update' => 'admin.main_project.update',
             'destroy' => 'admin.main_project.destroy'
         ]]);
+        Route::resource('progress', 'ProgressController', ['names' => [
+            'index' => 'admin.progress.index',
+            'store' => 'admin.progress.store',
+            'checkProject' => 'admin.progress.checkProject',
+            'create' => 'admin.progress.create',
+            'show' => 'admin.progress.show',
+            'edit' => 'admin.progress.edit',
+            'update' => 'admin.progress.update',
+            'destroy' => 'admin.progress.destroy'
+        ]]);
+        Route::post('/progress/store','ProgressController@store');
+        Route::post('/progress/checkProject','ProgressController@checkProject');
         Route::resource('project', 'ProjectController', ['names' => [
             'index' => 'admin.project.index',
             'create' => 'admin.project.create',
