@@ -7,7 +7,7 @@
 			<div id="main-menu-desktop" class="menu-main-menu-container">
 				<ul id="menu-main-menu" class="nav navbar-nav">
 					<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ route('mainProject.index') }}" style="padding: 13px 24px;"> <img
-							id="image_header" class="center-block img-responsive">
+							id="image_header" class="center-block img-responsive" src="{{ url('/').'/'.$mainProject->project_image_logo }}" style="max-width: 100px; max-height: 50px;">
 					</a></li>
 					
 					<li id="menu-item-sale" class="dropdown"><a>Sản phẩm

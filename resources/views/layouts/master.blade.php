@@ -148,7 +148,7 @@ img.wp-smiley, img.emoji {
 <body
 	class="home page-template page-template-page-template page-template-template-sidebar2 page-template-page-templatetemplate-sidebar2-php page page-id-25 kingcomposer kc-css-system _masterslider _ms_version_2.9.5">
 	<div id="page" class="site">
-		@include('layouts.partials.navbar')
+		@include('layouts.partials.navbar', array('mainProject', $mainProject))
 		<script type="text/javascript">
 //    jQuery(document).ready(function () {
 //        jQuery(".chat_fb").click(function() {
@@ -168,7 +168,7 @@ img.wp-smiley, img.emoji {
         success: function(data) {
             if(data.code == 1){
             	
-            	$("#image_header").attr("src", "../../" + data.mainProject.project_image_logo).css('max-height', '150px').css('width', '50%');
+//            	$("#image_header").attr("src", "../../" + data.mainProject.project_image_logo).css('max-height', '150px').css('width', '50%');
 				
 				$(".menu-item-new").find( "a" ).attr("href", "/newlist");
 				for(var i = 0; i < data.project.length; i++){
@@ -180,7 +180,7 @@ img.wp-smiley, img.emoji {
 				{
 					html = '<div class="row">'
 	                	+ '<div class="col-xs-4 col-sm-4">'
-                		+ '<a href="/newpost/' + data.news[i].slug +'" class="thumbnail" title="'+ data.news[i].title+'"><img width="150" height="150" src="'+data.news[i].image_header+'" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a>'
+                		+ '<a href="/newpost/' + data.news[i].slug +'" class="thumbnail" title="'+ data.news[i].title+'"><img width="150" height="150" src="{{url('/')}}/'+data.news[i].image_header+'" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" /></a>'
             			+ '</div>'
             			+ '<div class="col-xs-8 col-sm-8">'
                 		+ '<a href="/newpost/' +  data.news[i].slug +'"><b>'+ data.news[i].title+'</b></a>'
@@ -189,11 +189,11 @@ img.wp-smiley, img.emoji {
 					$("#new_posts").append(html);
 				}
 
-				for(var i = 0; i < 4; i++)
-				{
-					var info = '<li><span style="color: #ffffff;font-weight: bold;padding-left: 28px !important;padding: 10px 0px;">'+data.appSetting[i].key + ': ' +data.appSetting[i].value + '</span></li>';
-					$("#info").append(info);
-					}
+//				for(var i = 0; i < 4; i++)
+//				{
+//					var info = '<span style="color: #ffffff;font-weight: bold;padding-left: 28px !important;padding: 10px 0px;">'+data.appSetting[i].key + ': ' +data.appSetting[i].value + '</span><br>';
+//					$("#info").append(info);
+//					}
             }	
         },
         error: function(data) {
@@ -228,7 +228,7 @@ img.wp-smiley, img.emoji {
 
 		</div>
 		<!-- #content -->
-		@include('layouts.partials.footer')
+		@include('layouts.partials.footer', array('appSetting' => $appSetting))
 	</div>
 	<!-- #page -->
 
@@ -300,8 +300,8 @@ img.wp-smiley, img.emoji {
 	<div id="cfacebook">
 		<a href="javascript:;" class="chat_fb" onclick="javascript:fchat();"><i class="fa fa-comments"></i> Hỗ trợ trực tuyến</a>
 		<div id="fchat" class="fchat"  style="display: none;">
-			<div class="fb-page" data-tabs="messages" data-href="https://www.facebook.com/lanchicorset" data-width="250" data-height="400" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"></div>
-			<div class="chat-single"><a target="_blank" href="https://www.facebook.com/lanchicorset"><i class="fa fa-facebook-square"></i> Fanpage Lanchi.com</a></div>
+			<div class="fb-page" data-tabs="messages" data-href="https://www.facebook.com/trangnt.kieuanh" data-width="250" data-height="400" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"></div>
+			<div class="chat-single"><a target="_blank" href="https://www.facebook.com/trangnt.kieuanh"><i class="fa fa-facebook-square"></i> Fanpage {{ $mainProject->project_name }}</a></div>
 		</div>
 		<input type="hidden" id="tchat" value="0"/>
 	</div>

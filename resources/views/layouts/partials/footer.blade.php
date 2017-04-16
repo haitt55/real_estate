@@ -10,14 +10,17 @@
                             <li><span style="color: #ffffff;">Xem căn hộ mẫu trực tiếp</span></li>
                             <li><span style="color: #ffffff;">Không thu thêm bất cứ khoản phí nào</span></li>
                             <li><span style="color: #ffffff;">Hỗ trợ làm thủ tục trực tiếp với chủ đầu tư, trước và sau bán hàng</span></li>
-                            <li><span style="color: #ffffff;">Đồng hành cùng khách hàng cho đến khi nhận nhà</span></li>
                         </ul></div>
                 </section>									</div>
             <div class="col-sm-6 footer-2">
                 <section id="text-4" class="widget widget_text"><h3 class="widget-title">LIÊN HỆ PHÒNG BÁN HÀNG</h3>			
                 <div class="textwidget" id ="info">
-                <li><span style="color: #ffffff;">THÔNG TIN LIÊN HỆ<br>
-                
+                    <li><span style="color: #ffffff;">THÔNG TIN LIÊN HỆ</span></li>
+                    <span style="color: #ffffff;font-weight: bold;padding-left: 28px !important;padding: 10px 0px;">Tên công ty : {{ $appSetting['company'] }}</span><br>
+                    <span style="color: #ffffff;font-weight: bold;padding-left: 28px !important;padding: 10px 0px;">Email : {{ $appSetting['email'] }}</span><br>
+                    <span style="color: #ffffff;font-weight: bold;padding-left: 28px !important;padding: 10px 0px;">Hotline : {{ $appSetting['phone'] }}</span><br>
+                    <span style="color: #ffffff;font-weight: bold;padding-left: 28px !important;padding: 10px 0px;">Địa chỉ : {{ $appSetting['address'] }}</span><br>
+                    <span></span>
 
 				</div>
                 </section>									

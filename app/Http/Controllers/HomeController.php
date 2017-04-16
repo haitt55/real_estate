@@ -23,11 +23,14 @@ class HomeController extends Controller
      * @return void
      */
 	public $cookie;
+	public $appSetting;
+
     public function __construct()
     {
 //        $this->middleware('auth');
-        $this->currentProject = DB::table('projects')->where('is_current', '=', 1)
+        $this->currentProject = DB::table('main_projects')->where('is_current', '=', 1)
             ->first();
+        $this->appSetting = AppSetting::all()->pluck('value', 'key')->toArray();
     }
 
     /**
@@ -38,7 +41,11 @@ class HomeController extends Controller
     public function mainIndex(){
     	$mainProject = DB::table('main_projects')->get()->first();
     	$projects =DB::table('projects')->where('main_project_id', $mainProject->id)->get();
-    	return view('home.mainIndex')->with(['mainProject'=> $mainProject, 'projects'=>$projects]);
+    	return view('home.mainIndex')->with([
+    	    'appSetting' => $this->appSetting,
+    	    'mainProject'=> $mainProject,
+            'projects'=>$projects
+        ]);
     }
     
     
@@ -58,6 +65,8 @@ class HomeController extends Controller
     	->first();
     	
     	return view('home.index')->with ( [
+            'appSetting' => $this->appSetting,
+            'mainProject'=> $this->currentProject,
     			'project' => $project]);
     }
     public function position($id, $slug)
@@ -79,6 +88,8 @@ class HomeController extends Controller
     			->first();
     	// show the view and pass the nerd to it
     	return view ( 'home.position' )->with ( [
+            'appSetting' => $this->appSetting,
+            'mainProject'=> $this->currentProject,
     			'position' => $position,
                 'project' => $project
     	] );
@@ -102,6 +113,8 @@ class HomeController extends Controller
     			->first();
     	// show the view and pass the nerd to it
     	return view ( 'home.ground' )->with ( [
+            'appSetting' => $this->appSetting,
+            'mainProject'=> $this->currentProject,
     			'ground' => $ground,
             'project' => $project
     	] );
@@ -124,6 +137,8 @@ class HomeController extends Controller
     			->first();
     	// show the view and pass the nerd to it
     	return view ( 'home.utility' )->with ( [
+            'appSetting' => $this->appSetting,
+            'mainProject'=> $this->currentProject,
     			'utility' => $utility,
             'project' => $project
     	] );
@@ -147,6 +162,8 @@ class HomeController extends Controller
     			->first();
     	// show the view and pass the nerd to it
     	return view ( 'home.pricePolicy' )->with ( [
+            'appSetting' => $this->appSetting,
+            'mainProject'=> $this->currentProject,
     			'pricePolicy' => $pricePolicy,
             'project' => $project
     	] );
@@ -157,6 +174,8 @@ class HomeController extends Controller
     	$anotherNew = News::where('slug','!=', $slug)->get();
     	// show the view and pass the nerd to it
     	return view ( 'home.new' )->with ( [
+            'appSetting' => $this->appSetting,
+            'mainProject'=> $this->currentProject,
     			'news' => $news, 'anotherNew' => $anotherNew,
             'project' => $this->currentProject
     	] );
@@ -171,6 +190,8 @@ class HomeController extends Controller
     	
     	// show the view and pass the nerd to it
     	return view ( 'home.news' )->with ( [
+            'appSetting' => $this->appSetting,
+            'mainProject'=> $this->currentProject,
     			'news' => $news,
             'project' => $this->currentProject
     	] );
@@ -263,12 +284,17 @@ class HomeController extends Controller
     	
     	$progress = DB::table('progress')->get()->first();
     	return view('home.progress')->with ( [
-    			'progress' => $progress
+            'appSetting' => $this->appSetting,
+    			'progress' => $progress,
+            'mainProject'=> $this->currentProject
     	] );
     }
     public function contact(){
     	
-    	return view('home.contact');
+    	return view('home.contact')->with([
+            'mainProject'=> $this->currentProject,
+            'appSetting' => $this->appSetting,
+        ]);
     }
     public function store(Request $request){
 	    	$main_project = DB::table('main_projects')
