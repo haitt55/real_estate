@@ -38,33 +38,6 @@
 		$(".menu-item-pricePolicy").find( "a" ).attr("href", "/"+id+"/pricePolicy/default");	
 		}
 	
-			function openCustomerbox() {
-			    setTimeout( function() {$('#myModal').css('display', 'block') }, 10000);
-			}
-			$(document).ready(function() {
-				var isshow = localStorage.getItem('isshow');
-			    if (isshow== null) {
-			        localStorage.setItem('isshow', 1);
-					
-			        // Show popup here
-			        openCustomerbox();
-			    }
-				
-			    
-			});
-			$("#headerCloseButton").click(function (){
-						$("#myModal").css('display', 'none');
-			    });
-			$("#closeButton").click(function (){
-				$("#myModal").css('display', 'none');
-			});
-			$("#sendButton").click(function (){
-				var full_name =$("#full_name").val();
-				var email =$("#email").val();
-				var phone_number =$("#phone_number").val();
-				var message =$("#message").val();
-				var project_id = $("#project_id").val();});
-				
 </script>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 	<!-- Indicators -->
@@ -159,5 +132,32 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
 	
+			function openCustomerbox() {
+			    setTimeout( function() {$('#myModal').css('display', 'block') }, 10000);
+			}
+			$(document).ready(function() {
+				var isshow = localStorage.getItem('isshow');
+			    if (isshow== null) {
+			        localStorage.setItem('isshow', 1);
+					
+			        // Show popup here
+			        openCustomerbox();
+			    }
+				
+			    
+			});
+			$("#headerCloseButton").click(function (){
+						$("#myModal").css('display', 'none');
+			    });
+			
+			$("#sendButton").click(function (){
+				var full_name =$("#full_name").val();
+				var email =$("#email").val();
+				var phone_number =$("#phone_number").val();
+				var message =$("#message").val();
+				var project_id = $("#project_id").val();});
+				
+</script>
 	@endsection

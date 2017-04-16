@@ -6,7 +6,7 @@
 			role="navigation">
 			<div id="main-menu-desktop" class="menu-main-menu-container">
 				<ul id="menu-main-menu" class="nav navbar-nav">
-					<li class="logo"><a href="{{ route('mainProject.index') }}"> <img
+					<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ route('mainProject.index') }}" style="padding: 13px 24px;"> <img
 							id="image_header" class="center-block img-responsive">
 					</a></li>
 					

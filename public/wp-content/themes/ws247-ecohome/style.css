@@ -513,8 +513,9 @@ table tr.wpProQuiz_mextrixTr td{
 	}
 	.menu-main > div > ul > li > a{
 		font-weight: bold;
-		padding: 18px 25px;
+		padding: 22px 40px;
 		font-size: 15px;
+		
 	}
 	.menu-main > div > ul > li.menu-item-has-children > a:after{
 		font-family: 'Glyphicons Halflings';
