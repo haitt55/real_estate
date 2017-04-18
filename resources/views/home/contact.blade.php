@@ -4,7 +4,7 @@
 					style="text-align: center; line-height: 1.428571;">LIÊN HỆ</h1>
 				<h2 class="modal-title"
 					style="text-align: center; line-height: 1.428571;">Đăng kí nhận
-					thông tin dự án.</h2>
+					thông tin dự án.</h2><br>
 				<form action="{{route('store.index')}}" method = "POST">
 				{!! csrf_field() !!}
 					<div class="form-group" style="margin-left: 20%">
