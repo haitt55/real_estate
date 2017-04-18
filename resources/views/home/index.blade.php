@@ -84,7 +84,8 @@
 			<span class="sr-only">Next</span>
 		</a>
 	</div>
-	<header class="entry-header">
+</div>
+	<header class="entry-header" style="margin-top: 20px;">
 		<h1 class="entry-title" id="projectName">{{$project->project_name}}</h1>
 	</header>
 	<p style="text-align: center;">

@@ -59,11 +59,9 @@ class HomeController extends Controller
     	->select('projects.id as projectId', 'projects.project_name','projects.description','projects.project_image_ads',
     			'projects.project_image_ads1','projects.page_title','projects.meta_keyword','projects.meta_description',
     			'projects.project_image_header', 'positions.slug as position_slug', 'grounds.slug as ground_slug', 'utilities.slug as utility_slug', 'prices_policies.slug as pricePolicy_slug')
-    	->where('is_current', '=', 1)
     	->where('projects.id','=',$id)
     	->get()
     	->first();
-    	
     	return view('home.index')->with ( [
             'appSetting' => $this->appSetting,
             'mainProject'=> $this->currentProject,
