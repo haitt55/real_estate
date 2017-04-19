@@ -36,8 +36,16 @@
                                     <input type="text" name="phone" id="phone" class="form-control" value="{{ old('phone', $appSettings['phone']) }}">
                                 </div>
                                 <div class="form-group">
+                                    <label for="whole_phone">Di động 2</label>
+                                    <input type="text" name="phone2" id="phone2" class="form-control" value="{{ old('phone2', $appSettings['phone2']) }}">
+                                </div>
+                                <div class="form-group">
                                     <label for="address">Địa chỉ</label>
                                     <input type="text" name="address" id="address" class="form-control" value="{{ old('address', $appSettings['address']) }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="page_title">Cam kết bán hàng</label>
+                                    <textarea name="commitment" id="commitment" class="form-control">{{ old('commitment', $appSettings['commitment']) }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="page_title">Page Title</label>
@@ -70,5 +78,8 @@
 
 @section('inline_scripts')
     @parent
-
+    <script src="//cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'commitment' );
+    </script>
 @endsection
