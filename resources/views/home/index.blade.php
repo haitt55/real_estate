@@ -140,12 +140,12 @@
 			}
 			$(document).ready(function() {
 				var isshow = localStorage.getItem('isshow');
-			    if (isshow== null) {
+//			    if (isshow== null) {
 			        localStorage.setItem('isshow', 1);
 					
 			        // Show popup here
 			        openCustomerbox();
-			    }
+//			    }
 				
 			    
 			});
