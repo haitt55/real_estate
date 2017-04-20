@@ -232,7 +232,7 @@ img.wp-smiley, img.emoji {
 	</div>
 	<!-- #page -->
 
-
+	
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -296,7 +296,12 @@ img.wp-smiley, img.emoji {
 	</script>
 
 
-
+	<div id="boxhotro">
+		<div id="boxht-td" class="boxht-td">HotLine 1</div>
+		<p class="ht_tel">{{ $appSetting['phone'] }}</p>
+		<div id="boxht-td1" class="boxht-td">HotLine 2</div>
+		<p class="ht_tel">{{ $appSetting['phone2'] }}</p>
+	</div>
 	<div id="cfacebook">
 		<a href="javascript:;" class="chat_fb" onclick="javascript:fchat();"><i class="fa fa-comments"></i> Hỗ trợ trực tuyến</a>
 		<div id="fchat" class="fchat"  style="display: none;">
